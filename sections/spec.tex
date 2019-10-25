@@ -1,0 +1,96 @@
+\section{The Spec() functor}
+We aim to revisit previous considerations for an arbitrary ring.
+
+\begin{df}
+Let $A$ be a ring.
+We let $\spec(A) = \{ \mathfrak p \text{ a prime ideal in} A \}$.
+\end{df}
+
+\begin{example}
+  $\spec(\complex [x]) =  \{0\} \cup \{ (x-a) | a \in \complex \}$.
+\end{example}
+
+For a ring homomorphism $f \colon A \to B$ we obtain a map
+$\spec(B) \to \spec(A)$ given by 
+\[(\mathfrak q \subseteq B) \mapsto (f^{-1}(\mathfrak q) \subseteq A).\]
+
+This is a good start; however, we wish to upgrade this set $\spec(A)$ to a topological space. In this, we follow the previous motivation.
+
+\begin{df}
+For $E \subseteq A$ any subset, we define
+$V(f) = \{ \mathfrak p \in \spec(A) | f \in \mathfrak p \}$
+and call $V(f)$ the vanishing locus of $f$.
+\end{df}
+
+\begin{prop}
+  The sets $V(E)$, $E \subseteq A$, are the closed subsets of a topology. This topology is called the Zariski topology.
+\end{prop}
+
+\begin{proof}
+  $V(1) = \emptyset$, $V(0) = \spec(A)$.
+  It is clear that
+  $\cap_{i \in I} V(E_i) = V(\cup_{i \in I} E_i)$.
+  Further, we need to show that
+\[ V(E_1) \cup V(E_2) = V(E_1 \cdot E_2), \]
+where $E_1 \cdot E_2 = \{ e_1 \cdot e_2 \suchthat e_1 \in E_1, e_2 \in E_2 \}$.
+
+The nontrivial part is the left-way inclusion in the last statement: that $\mathfrak p$ is prime is used here.
+
+Suppose $\mathfrak p \not\supseteq E_1$ and $\mathfrak p \not\supseteq E_2$. Then there exist $e_i \in E_i \setminus \mathfrak p$, as well as $e_1 \cdot e_2 \in E_1 \cdot E_2 \setminus \mathfrak p$ because $\mathfrak p$ is prime.
+\end{proof}
+
+\begin{question}
+What is the Zariski topology for $A = \complex [x]$?
+\end{question}
+
+We note that
+\begin{align*}
+  V(f_1, \ldots, f_r) & = \{ \mathfrak p \text{ prime in } A \suchthat f_1, \dotsc, f_r \in \mathfrak p\} \\
+                      & = \{(x-a) \text{ maximal in } A \suchthat f_1, \dotsc, f_r \in (x-a)\} \\
+                      & = \{ (x-a) \suchthat f_1(a) = \dotsc = f_r(a) = 0 \}.
+\end{align*}
+
+If any $f_i$ is nonzero, then $0 \notin V(f_1, \dotsc, f_r)$.
+
+Now,
+\[ V(f_1, \ldots, f_r) = \text{ set of common roots of }f_1, \ldots, f_r .\]
+Hence, $V(f_1, \ldots, f_r)$ is finite.
+
+\begin{note}
+All finite subsets of the set of maximal ideals are of the form $V(f_1, \ldots, f_r)$.
+
+After some deliberation, this yields the cofinite topology augmented by \{0\}.
+\end{note}
+
+\begin{note}
+  The closure of $\{0\} \subseteq \spec(A)$ is $\spec(A)$ itself, since all other closed subsets do not contain 0; hence, all open subsets contain 0.
+In effect, the resulting space is not $T_1$, let alone Hausdorff.
+\end{note}
+
+\begin{prop}
+  Let $f \colon A \to B$ be a ring homomorphism. Then the induced map
+  \[f^* \colon \spec(B) \to \spec(A)
+    \quad \text{with} \quad
+    \mathfrak q \mapsto f^{-1}(\mathfrak q)\]
+  is continuous.
+\end{prop}
+\begin{proof}
+$E \subseteq A \implies V(E) \subseteq \spec(A)$.
+We claim further that
+\[ (f^*)^{-1}(V(E)) = V(f(E)), \]
+which ends the proof.
+\end{proof}
+
+The upshot is: when $k = \bar k$, $\spec_{max}(k[x_1, \ldots, x_n])$ is "nice". We will see later, in the Nullstellensatz, tha all maximal ideals in $k[x_1, \ldots, x_n]$ are of the form $(x_1 - a_1, \ldots x_n - a_n)$.
+
+In fact,
+$\spec_{max}(k[x_1, \ldots, x_n]) \cong k^n$
+under
+$(x_1 - a_1, \ldots, x_n - a_n) \mapsto (a_1, \ldots, a_n)$.
+
+The intuition here is: $k[x_1, \ldots, x_n]$ is the ring of regular functions on $k^n$.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../commalg"
+%%% End:

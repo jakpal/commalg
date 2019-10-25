@@ -1,0 +1,150 @@
+% begin 16.10.19
+\section{More on modules}
+\begin{note}
+  When we write $I \cdot M$, we mean the linear span of elements of the form $i \cdot m$.
+\end{note}
+
+\begin{lemma}[adjugate matrix]
+  \label{adjugate matrix}
+  Let
+  $X \in M_{n \times n}(A)$.
+  Then
+  \[ \exists Y \in M_{n \times n}(A) \quad \text{such that} \quad Y \cdot X = \diag(d), \enspace d = \det(X).\]
+  Concretely,
+  $Y$ is given by the formula
+  \[ Y \coloneqq [ (-1)^{i+j} \det X_{ji} ]_{ij}, \]
+  where
+  $X_{ij}$ is the submatrix of $X$ formed by excluding the $i$-th row and the $j$-th column.
+\end{lemma}
+
+\begin{proof}
+  \label{cayley-hamilton}
+  Let
+  \[ \pi \colon A^{\oplus n} \to M \quad \text{via} \quad e_i \mapsto m_i. \]
+  Then
+  \[ \forall i \enspace \exists u_{ij} \in I \enspace \phi(m_i) = \sum_j u_{ij} m_j\]
+  in face of the assumptions.
+  Define the lift of $\phi$ to a self-map $\tilde{\phi}$ of the free module $A^{\oplus n}$ by
+  \[ \tilde \phi \colon A^{\oplus n} \to A^{\oplus n} \quad \text{via} \quad \tilde \phi(e_i) = \sum_j u_{ij} e_j.\]
+  This can be fitted inside a commutative diagram
+  \begin{equation*}
+    \begin{tikzcd}[row sep=huge, column sep=huge]
+      A^{\oplus n} \arrow[swap]{d}{\pi} \arrow{r}{\tilde{\phi}}
+      & A^{\oplus n} \arrow[swap]{d}{\pi} \\
+      M \arrow{r}{\phi}
+      & M
+    \end{tikzcd}
+  \end{equation*}
+
+Let $B \coloneqq A[x]$ and make $A^{\oplus n}$ into a $B$-module by
+\[ \forall f \in A^{\oplus n} \quad x . f \coloneqq \tilde{\phi}(f).\]
+
+Now,
+\[ X \coloneqq [u_{ij}]_{ij} - \diag(x) \in M_{n \times n} (B).\]
+View X as an endomorphism of $A^{\oplus n}$. Then
+
+\[ X . e_i = \sum_j u_{ij} e_j - x \cdot e_i = \sum_j u_{ij} e_j - \tilde{\phi}(e_j) = 0.\]
+
+Hence $X$ acts on $A^{\oplus n}$ as the zero endomorphism.
+
+Now, use \cref{adjugate matrix} to see that
+\[ \exists Y \enspace Y \cdot X = \diag(d).\]
+Hence
+\[ \forall i \enspace 0 = Y \cdot X \cdot e_i = \diag{d} e_i = d \cdot e_i.\]
+Expand the determinant by columns:
+\[ d = \det(X) = x^n + a_1 x^{n-1} + \dotsc + a_n, \quad a_k \in I^k.\]
+So as an endomorphism of $A^{\oplus n}$,
+\[\tilde{\phi}^n + a_1 \tilde{\phi}^{n-1} + \dotsc + a_n = 0.\]
+But
+\[ \phi \circ \pi = \pi \circ \tilde{\phi}.\]
+So for all $i$
+\begin{align*}
+  (\phi^n + a_1 \phi^{n-1} + \dotsc + a_n)(m_i) & = \pi((\tilde{\phi}^n + a_1 \tilde{\phi}^{n-1} + \dotsc + a_n)(e_i)) \\
+            & = \pi (0) \\
+            & = 0.
+\end{align*}
+\end{proof}
+
+\begin{lemma}[Nakayama]
+  \label{nakayama}
+  Let $M$ be an $A$-module, $I \cdot M = M$. If $M$ is finitely generated, then
+  \[ \exists i \in I \enspace (1 - i) \cdot M = 0.\]
+\end{lemma}
+\begin{proof}
+  Consider $\id_M \colon M \xto{\simeq} M$.
+  By \cref{cayley-hamilton},
+  \[ \exists a_i \enspace \id^n + a_1 \id^{n-1} + \dotsc + a_n = 0\]
+  and then
+  \[ \forall m \in M (1 + a_1 + \dotsc + a_n) \cdot m = 0.\]
+  We now let
+  \[ -i \coloneqq a_1 + \dotsc + a_n.\]
+\end{proof}
+
+\begin{corollary}[local Nakayama]
+  \label{local-nakayama}
+  Let $A$ be a local ring, $\mathfrak m$ the maximal ideal of $A$, $M$ an $A$-module, $M$ finitely generated, $M = \mathfrak m \cdot M$. Then
+  \[ M = 0.\]
+\end{corollary}
+\begin{proof}
+  Apply \cref{nakayama}:
+  \[ \exists a \in \mathfrak m \enspace (1-a) \cdot M = 0, \quad (1-a) \notin \mathfrak m.\]
+  But $(1 - a)$ is invertible; let its inverse be $b$. Then
+  \[ M = 1 \cdot M = b(1-a) M = b \cdot 0 = 0.\]
+\end{proof}
+
+\begin{corollary}
+  \label{local-nakayama2}
+  Let $N \subseteq M$, $M$ finitely generated, $A$ local, $\mathfrak m$ maximal. Let
+  \[ M = N + \mathfrak m \cdot M.\]
+  Then $M = N$.
+\end{corollary}
+\begin{proof}
+  $(M / {N}) = \mathfrak (M / {N})$.
+  By \cref{local-nakayama}
+  $M / {N} = 0$.
+\end{proof}
+
+\begin{corollary}
+  Let $M$ be a finitely generated $A$-module, $(A, \mathfrak m)$ a local ring. Suppose
+  \[ m_1, \dotsc, m_k \in M\]
+  be such that their images in $M / {\mathfrak m \cdot M}$ generate $M / {\mathfrak m \cdot M}$. Then $m_1, \dotsc, m_k$ generate $M$.
+\end{corollary}
+\begin{proof}
+  Let
+  \[ N \coloneqq \sum_{i=1}^k A \cdot m_i \subseteq M.\]
+  Then the map
+  \[ N \to M / {\mathfrak m \cdot M}\]
+  is surjective by assumption, so by \cref{local-nakayama}:
+  \[ M = \mathfrak m \cdot M + N \implies M = N = \sum_{i=1}^k A \cdot m_i.\]
+  Note that
+  \[ A / {\mathfrak m}\]
+  is a field, so
+  \[ M / {\mathfrak m \cdot M}\]
+  is a vector space. This finishes the proof.
+\end{proof}
+
+\begin{example}
+  Consider $\rational \in \module{\integer}$. Consider $I = (2019) \subseteq \integer$.
+  Certainly $\rational = I \cdot \rational$, but there does not exist an $i \i I$ such that
+  \[ (1-i) \cdot \rational = 0,\]
+  so $\rational$ is not a finitely generated $\integer$-module. 
+\end{example}
+
+\begin{example}
+  Another counterexample (this time local) is given by $\integer_{(2)}$.
+\end{example}
+
+\begin{note}
+  Localizing is a typical way of finding non-finitely generated modules.
+\end{note}
+
+\begin{example}
+  Let $X = S^1$, $A = C(S^1, \real)$. Consider
+  \[ \mathfrak m_x = \{ f \suchthat f(x) = 0 \}. \]
+  Then $\mathfrak m_x^2 = \mathfrak m_x$, hence $\mathfrak m_x$ is not a finitely generated ideal.
+\end{example}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../commalg"
+%%% End:

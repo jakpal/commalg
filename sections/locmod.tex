@@ -1,0 +1,89 @@
+\section{Localization of modules}
+
+\begin{df}
+  The rank of a free module $F$ is
+  \[ \rank(F) \coloneqq \dim(F / {\mathfrak m F}) \text{ over } A /{\mathfrak m}.\]
+  This does not depend on the choice of $\mathfrak m$.
+\end{df}
+
+\begin{example}
+  $ \rank(A^{\oplus I}) = \abs{I}$.
+\end{example}
+
+\begin{example}
+  $\Omega_{A/{k}}$ is free of rank $n$.
+\end{example}
+
+\begin{df}
+  Let $S \subseteq A$ be a multiplicative subset, $M \in \mod{A}$. The one forms an $S^{-1}A$-module $S^{-1}M$ analogously to $S^{-1}A$ itself. That is,
+  \[ S^{-1}M \coloneqq \{ m / {s} \suchthat m \in M, s \in S\}\]
+  with
+  \[ m / {s} = m' / {s'} \iff \exists t \in S \enspace t(s'm - sm') = 0.\]
+\end{df}
+
+\begin{example}
+  If
+  \[ S = \{1, f, f^2, \dotsc \},\]
+  then we denote
+  \[ M_f = S^{-1}M.\]
+  Analogously, for
+  \[ S = A \setminus \mathfrak p,\]
+  write
+  \[M_{\mathfrak p} = S^{-1}M.\]
+\end{example}
+
+\begin{df}
+  A finitely generated $k$-algebra $A$ is smooth if
+  \[ \forall p \in \spec(A) \enspace (\Omega_{A/{k}})_{\mathfrak p} \text{ is free as an $A_{\mathfrak p}$-module}.\]
+\end{df}
+
+%Note that for the above definition we need also a definition of localization of modules.
+
+\begin{example}
+  $k[x_1, \dotsc, x_n]$ is smooth.
+\end{example}
+
+\begin{lemma}
+  Let $S \subseteq A$ be a multiplicative subset, $M$ an $A$-module. Then
+  \[ S^{-1}A \tensor_A M \cong S^{-1}M\]
+  under the map
+  \[ (a / {s}) \tensor m \mapsto am /{s}.\]
+\end{lemma}
+\begin{proof}
+  The given map
+  \[ f \colon S^{-1}A \tensor M \to S^{-1} M\]
+  is linear by the universal property of the tensor product. We show that it is an isomorphism.
+  \begin{enumerate}
+  \item $f$ is ``onto'':
+    \[ f(1/{s} \tensor m) = m /{s},\]
+  \item $f$ is ``into'': take an element
+    \[ n \in S^{-1}A \tensor_A M.\]
+    We write
+    \[ n = \sum_{k=1}^r a_k/{s_k} \tensor m_k = \sum_{k=1}^r \tilde{a}_k / {s} \tensor \tilde{m}_k.\]
+    If we let
+    \[s = \prod_{k=1}^r s_k,\]
+    we can write
+    \[ \sum_{k=1}^r 1 /{s} \tensor \tilde{a}_k m_k = 1 /{s} \tensor (\sum_{k=1}^r \tilde{a}_k m_k) \eqqcolon 1 / {s} \tensor m.\]
+    Since any $n$ is of the form, we may proceed as follows. Assume
+    $0 = f(n)$;
+    we will show
+    $n = 0$.
+    Have:
+    \[ 0 = f(n) = m /{s} \iff \exists t \in S \enspace tm = 0.\]
+    Then
+    \[ n = 1/ {s} \tensor m = 1 / {(st)} \tensor tm = 1 /{(st)} \tensor 0 = 0.\]
+  \end{enumerate}
+\end{proof}
+
+\begin{corollary}
+  \[S^{-1}( \oplus_{i \in I} M_i) = \oplus_{i \in I} S^{-1} M_i.\]
+\end{corollary}
+\begin{proof}
+  % TODO
+\end{proof}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../commalg"
+%%% End:

@@ -1,0 +1,116 @@
+\documentclass[10pt, a4paper, openany]{scrbook}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{bbm}
+\usepackage{geometry}
+\usepackage{thmtools}
+\usepackage{verbatim}
+\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem}
+\usepackage{microtype}
+\usepackage{tikz-cd}
+\usepackage{csquotes}
+\usepackage{booktabs}
+\usepackage{centernot}
+\usepackage{mathtools}
+\usepackage{xparse}
+\usepackage{graphicx}
+
+% keep these at the end, and definitions of theorems and their counters after that
+\usepackage{hyperref}
+\usepackage[capitalise, noabbrev]{cleveref}
+
+% stops line-breaking inline mathematics
+% \binoppenalty = \maxdimen
+% \relpenalty = \maxdimen
+% also requires discipline in typing
+
+\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
+
+\newcounter{alltheorems}
+\numberwithin{alltheorems}{chapter}
+
+\theoremstyle{plain}
+% daje brzydkie pochylone litery
+
+\theoremstyle{definition}
+\newtheorem{exercise}[alltheorems]{Exercise}
+\newtheorem{df}[alltheorems]{Definition}
+\newtheorem{example}[alltheorems]{Example}
+\newtheorem{construction}[alltheorems]{Construction}
+\newtheorem{lemma}[alltheorems]{Lemma}
+\newtheorem{theorem}[alltheorems]{Theorem}
+\newtheorem{corollary}[alltheorems]{Corollary}
+\newtheorem{prop}[alltheorems]{Proposition}
+
+% TODO give no counter
+\newtheorem{answer}[alltheorems]{Answer}
+
+\theoremstyle{remark}
+\newtheorem{note}[alltheorems]{Note}
+\newtheorem{question}[alltheorems]{Question}
+\newtheorem{intuition}[alltheorems]{Intuition}
+
+\declaretheoremstyle[
+spaceabove=6pt,
+spacebelow=6pt
+headfont=\normalfont\bfseries,
+headpunct={.} ,
+bodyfont=\normalfont,
+]{exobreak}
+
+\declaretheorem[style=exobreak, name=Exercise]{ex}
+
+% \newcommand{\ohne}{\backslash}
+% use \setminus instead
+\newcommand{\naturals}{\mathbb N}
+\newcommand{\integer}{\mathbb Z}
+\newcommand{\rational}{\mathbb Q}
+\newcommand{\real}{\mathbb R}
+\newcommand{\complex}{\mathbb C}
+\newcommand{\projective}{\mathbb P}
+\newcommand{\var}{\varepsilon}
+\newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+\newcommand{\outerp}{\Lambda}
+\newcommand{\smashp}{\wedge}
+\newcommand{\letequal}{\coloneqq}
+\newcommand{\equallet}{\eqqcolon}
+\newcommand{\spec}{\text{Spec}}
+\newcommand{\diag}{\text{diag}}
+\newcommand{\id}{\text{id}}
+\newcommand{\tensor}{\otimes}
+\newcommand{\existsunique}{\exists \text{!}}
+\newcommand{\set}{\text{Set}}
+\newcommand{\module}[1]{#1_\text{mod}}
+\newcommand{\disjointunion}{\bigsqcup}
+\newcommand{\dif}{\text{d}}
+
+% arrows
+\newcommand{\xto}{\xrightarrow}
+\newcommand{\xlongto}[1]{\xlongrightarrow{\;#1\;}}
+\newcommand{\embed}{\hookrightarrow}
+\newcommand{\embedded}{\hookleftarrow}
+\newcommand{\xra}[1]{\xrightarrow{#1}}
+\newcommand{\xla}[1]{\xleftarrow{#1}}
+\newcommand{\ot}{\leftarrow}
+
+\newcommand{\suchthat}{\mathrel{|}}
+
+\DeclareMathOperator*{\aut}{Aut}
+\DeclareMathOperator*{\im}{im}
+\DeclareMathOperator*{\rank}{rk}
+\DeclareMathOperator*{\colim}{colim}
+\DeclareMathOperator*{\lin}{lin}
+\DeclareMathOperator*{\en}{End}
+\DeclareMathOperator{\bilin}{Bilin}
+\DeclareMathOperator{\der}{Der}
+
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+
+\NewDocumentCommand{\restrict}{m m O{}}{#1|_{#2}^{#3}}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../commalg"
+%%% End:

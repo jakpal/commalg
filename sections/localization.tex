@@ -1,0 +1,274 @@
+\section{Localization}
+\begin{df}
+Let $A$ be a ring. $S \subseteq A$ is called a multiplicative subset if the both conditions hold:
+\begin{enumerate}
+\item $1 \in S$,
+\item $\forall s, t \in S \enspace st \in S$.
+\end{enumerate}
+\end{df}
+
+% TODO
+% The localization is a universal ??? which inverts ???.
+
+We wish to obtain a ring $S^{-1}A \xla{i} A$ such that the $i(s)$ are invertible; a pseudo-
+\[ \{\frac{a}{s} \suchthat a \in A, s \in S \}.\]
+
+\begin{construction}[localization of a ring at a multiplicative subset]
+  \mbox{}
+  
+  Step 1.
+Let
+\[I = \{ a \in A \suchthat \exists s \in S \enspace \exists sa = 0 \}.\]
+
+Note that if $a, b \in I$, then
+\[ \exists s \in S \enspace sa = 0, \quad \exists t \in S \enspace tb = 0.\]
+Then $(st)(a \pm b) = 0$.
+
+Upshot: $I$ is an ideal.
+We let
+$A \xra{\pi} A/I =: A'$.
+
+Step 2.
+$\pi(S) \subseteq A'$
+consists of non-zerodivisors.
+
+Indeed, suppose that $s \in S$, $\pi(s)$ is a zero divisor, that is
+\begin{align*}
+\exists 0 \neq a \in A \quad & \pi(s) \pi(a) = 0 \\
+\implies & \pi(sa) = 0 \\
+\implies & sa \in I \\
+\implies & \exists t \in S tsa = 0 \\
+\implies & (ts)a = 0.\\
+\end{align*}
+But
+\[ ts \in S \implies a \in I \implies \pi(a) = 0.\]
+Which means that $\pi(s)$ was not really a zero divisor.
+
+Define $S' := \pi(S)$. We want
+\[ (S')^{-1} A' = \{ \frac{a'}{s'} \suchthat a' \in A', s' \in S' \}.\]
+Consider pairs
+\[\{(a', s') \suchthat a' \in A', s' \in S'\}.\]
+Define a relation
+\[(a'_1, s'_1) \sim (a'_2, s'_2) \iff a'_1 s'_2 = a'_2 s'_1.\]
+To prove that this is an equivalence relation, we show transitivity (exercise; use that the $S'$ are non-zerodivisors).
+
+Step 3.
+\[(S')^{-1}A' := \{(a', s') \suchthat a' \in A', s' \in S' \} / {\sim}\]
+is a well-defined set.
+The ring operations are given by thinking about this as
+\[ \{ \frac{a'}{s'} \suchthat a' \in A', s' \in S'\}.\]
+This turns the set into an associative commutative ring with unity.
+\end{construction}
+
+\begin{lemma}
+  Let $a, b \in A$, $s, t \in S$. Then
+  \[ a / s = b / t \quad \iff \quad \exists u \in S \enspace u(at-bs)=0.\]
+\end{lemma}
+\begin{proof}
+  ``$(\impliedby)$'':
+  \begin{align*}
+    u(at - bs) = 0 & \\
+    \implies & uta = usb \\
+    \implies & uta / 1 = usb / 1 \\
+    \implies & a / s = uta / stu = usb / stu = b / t
+  \end{align*}
+  ``$(\implies)$'': Observe: the map $\phi: A /{I} = A' \to S'^{-1}A^{-1}$ is injective.
+  Note that
+  \[ \forall \bar a, \bar b \in A' \enspace \bar a / 1 = \bar b / 1 \iff \bar a = \bar b \iff 1 \cdot \bar a = 1 \cdot \bar b \]
+  % TODO
+\end{proof}
+
+\begin{corollary}
+  We could define $S^{-1}A$ as the set of points
+  \[ \{ (a, s) \suchthat a \in A, s \in S \} /{\sim}\]
+  under
+  \[ (a, s) \sim (b, t) \quad \iff \quad \exists s \in S \enspace u(at - bs) = 0.\]
+\end{corollary}
+
+\begin{example}
+  For $f \in A$, let $S = \{ 1, f, f^2, \ldots \}$. We denote $S^{-1}A$ by $A_f$.
+\end{example}
+
+\begin{example}
+  $\mathfrak p \in \spec(A)$,
+  $S \coloneqq A \setminus \mathfrak p$.
+  Then we denote $S^{-1}A$ by $A_{\mathfrak p}$.
+\end{example}
+
+\begin{note}
+  $S^{-1}A$ does not determine $S$, for instance
+  \[ \complex [x]_x = \complex [x]_{x^{2019}} \]
+\end{note}
+
+\begin{prop}[universal property of localization]
+  Let $f: A \to B$ be such that $f(S)$ consists of invertible elements.
+\begin{equation*}
+  \begin{tikzcd}
+    A \arrow{rr}{f} \arrow[swap]{dr}{i}
+    & & B \\
+    & S^{-1}A \arrow{ru}[swap]{S^{-1}f}
+    & \\
+  \end{tikzcd}
+  \end{equation*}
+  Then $\exists ! S^{-1} \colon S^{-1}A \to B$
+  such that
+  $f = (S^{-1}f) \circ i$.
+\end{prop}
+\begin{proof}
+  We write $\tilde f \coloneqq S^{-1}f$. Suppose that $\tilde f$ exists. Then
+  \[ \forall a \in A \enspace \tilde f (a / 1) = f(a) \]
+  and thus
+  \[ \forall s \in S \tilde f(\frac{a}{s} \cdot s) = f(\frac{a}{1}) = f(a) \]
+  and the formula
+  $\tilde{f}(a / s) = f(a) / f(s)$
+  is recovered.
+  One needs only to check that such a function is a homomorphism.
+\end{proof}
+
+\begin{lemma}
+  \label{loc-1}
+  $A_f \cong A[x] / {(fx-1)}$.
+\end{lemma}
+
+\begin{proof}
+  Note that $f$ is invertible in $A[x] / {(fx-1)}$.
+  Hence by universal property
+  \[\tilde{\phi}(a / f) = \phi(a) / \phi(f) = \bar{ax}. \]
+  Now take
+  $\psi \colon A[x] \to A_f$ a homomorphism of $A$-algebras defined by $\psi(x) = 1 / f$.
+  Then
+  \[ \psi(fx - 1) = f \cdot 1 / f - 1 = 0 \]
+  and so
+  \[ \exists \tilde \psi \colon A[x] /{(xf-1)} \to A_f \]
+  such that
+  \[ \forall a \in A, n \in \naturals \enspace \tilde \psi (a x^n) = a / f^n.\]
+  The maps $\tilde \phi$ and $\tilde \psi$ are then mutual inverses.
+\end{proof}
+
+\begin{corollary}
+  If $A$ is a finitely generated algebra, then $A_f$ is also a finitely generated algebra.
+\end{corollary}
+
+\begin{lemma}
+  For $A$ an algebra and $S$ a multiplicative subset:
+  \begin{enumerate}
+  \item $S^{-1}A = 0 \iff 0 \in S$
+  \item $A \xra{i} S^{-1}A$ is injective if and only if all elements of $S$ are non-zerodivisors in $A$
+  \item $A \to S^{-1}A$ is an isomorphism if and only if all elements of $S$ are invertible in $A$
+  \end{enumerate}
+\end{lemma}
+\begin{proof}
+  \begin{enumerate}
+  \item By \cref{loc-1}:
+    \[ \frac{1}{1} = \frac{0}{1} \iff \exists u \in S \enspace u(1 \cdot 1 - 0 \cdot 1 ) = 0 \iff \exists u \in S u = 0.\]
+  \item $i$ is injective if and only if
+    \[ (\{a \in A \suchthat \exists s \in S \enspace sa = 0 \}).\]
+    This happens if and only if $s$ is a non-zerodivisor.
+  \item If $A \to S^{-1}A$ is iso, then $\forall s \in S \enspace s/1 \text{ is invertible}$.
+    Hence, so is $s$.
+
+    Conversely, if all elements of $S$ are invertible in $A$, then they are non-zerodivisors. Hence $A \to S^{-1}A$ is injective by the previous point.
+    Moreover,
+    \[i (a s^{-1}) = \frac{a s^{-1}}{a} = \frac{a}{s},\]
+    so $i$ is ``onto''.
+  \end{enumerate}
+\end{proof}
+
+Intuitively, we think of $A_f$ as the ring of functions on $X_f$, where $X = \spec(A)$.
+
+We would expect $\spec(A_f)$ to be the same as $X_f$. Indeed, the following holds.
+
+\begin{prop}
+  \label{loc-2}
+  Consider the maps
+  \begin{gather*}
+    i \colon A \to S^{-1}A \\
+    i^* \colon \spec(S^{-1}A) \to \spec(A).
+  \end{gather*}
+  Then $i^*$ is injective and
+  \[ \im i^* = \{ \mathfrak p \suchthat \mathfrak p \cap S = \emptyset \}. \]
+\end{prop}
+
+Before presenting the proof, for which we will require some additional facts, we note the following corollaries.
+
+\begin{corollary}
+  If $S = \{1, f, f^2, \ldots \}$, then
+  \[ \im i^* = \{ \mathfrak p \suchthat \mathfrak p \not\ni f\} = (\spec(A))_f. \]
+\end{corollary}
+
+\begin{corollary}
+  For $\mathfrak q \in \spec(A)$, $S = A \setminus q$,
+  \[ \im i^* = \{ \mathfrak p \suchthat \mathfrak p \subseteq \mathfrak q \} = \spec(A_p). \]
+\end{corollary}
+
+\begin{lemma}
+  \label{loc-3}
+  Let $I \subseteq S^{-1}A$ be an ideal. If we let
+  \[ J = \{ a \in A \suchthat \frac{a}{1} \in I \}, \]
+  then
+  \[ I = \{ \frac{j}{s} \suchthat j \in J, s \in S\}. \]
+\end{lemma}
+\begin{proof}
+  ``$\supseteq$'':
+  \[ \forall j \in J \frac{j}{i} \in I \implies \frac{j}{s} = \frac{j}{1} \cdot \frac{1}{s} \in I \]
+  ``$\subseteq$'':
+  \[ \frac{a}{s} \in I \implies \frac{a}{1} = \frac{a}{s} \cdot \frac{s}{i} \in I \implies a \in J \implies \frac{a}{s} \in \{\frac{j}{s} \suchthat j \in J, s \in S \}\]
+\end{proof}
+
+\begin{proof}[\cref{loc-2}]
+  Let $\mathfrak q \in \spec(S^{-1}A)$. We let
+  \[ \mathfrak p = i^*(\mathfrak q) = i^{-1}(\mathfrak q) = \{a \in A \suchthat f \in \mathfrak q \}.\]
+  By \cref{loc-3} we can recover $\mathfrak q$ from $\mathfrak p$ alone, and so $i^*$ is injective.
+
+  Let
+  $\mathfrak p = i^* (\mathfrak q)$.
+  Suppose
+  $\mathfrak p \cap S \neq \emptyset$.
+  This means that
+  \[\frac{s}{1} \in \mathfrak q \text{ and } \frac{s}{t}  \text{ is invertible } \implies \mathfrak q = (1).\]
+
+  Suppose $\mathfrak p \in \spec(A)$, $\mathfrak p \cap S = \emptyset$.
+  We wish to find $\mathfrak q$. We guess that
+  \[ q \coloneqq \{ \frac{p}{s} \suchthat p \in \mathfrak p, s \in S \} \subseteq S^{-1}A\]
+  does the job.
+  This $\mathfrak q$ is an ideal, we want to see that it is prime.
+
+  Suppose that
+  \[ \frac{a}{s} \cdot \frac{b}{t} \in \mathfrak q .\]
+  Then
+  $ab / 1 \in \mathfrak q$
+  and so
+  %TODO
+\end{proof}
+
+\begin{corollary}
+  For $f \in A$, the following are equivalent:
+  \begin{enumerate}
+  \item $f$ is nilpotent (that is, $\exists n > 0 \enspace f^n = 0$),
+  \item $f \in \cap \{\mathfrak p \suchthat p \in \spec(A) \}$,
+  \item $V(f = \spec(A)$.
+  \end{enumerate}
+\end{corollary}
+
+\begin{proof}
+  The equivalence between 2 and 3 is checked formally.
+
+  1 $\implies$ 2: $\forall \mathfrak p \enspace f^n = 0 \in \mathfrak p \implies f \in \mathfrak p$.
+
+  Negation of 1 implies negation of 2:
+  let
+  $0 \notin \{ 1, f, f^2, \ldots \}$
+  so $A_f \neq 0$ by \cref{loc-3}.
+  Hence, $\spec(A_f) \neq \emptyset$, so by \cref{loc-2}
+  \[ \spec(A_f) = \{ \mathfrak p \in \spec(A) \suchthat f \notin \mathfrak p \} \neq \emptyset \} \]
+\end{proof}
+
+\begin{df}
+  The nilradical of a ring $A$ is defined as
+  \[ \text{nil}(A) = \cap \{ \mathfrak p \suchthat p \in \spec(A) \} = \{f \in A \suchthat \exists n > 0 \enspace f^n = 0 \}.\]
+\end{df}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../commalg"
+%%% End:

@@ -1,0 +1,36 @@
+\section{Pictures of spectra}
+
+For any $I$, we get
+\[ V(I) = \spec(A/{I}) \hookrightarrow \spec(A)\]
+with a bijection:
+\[\{ \bar{\mathfrak p} \subseteq A / I\} \simeq \{ \mathfrak q \subseteq A | \mathfrak q \supseteq I\}.\]
+From
+\[\pi: A \to A/{I}\]
+we get $\pi^*$, which is injective with image $V(I)$. Hence, we identify
+\[ \spec(A/I) \quad \text{with} \quad V(I) \subseteq \spec(A). \]
+
+\begin{example}
+  Consider
+  \[ \spec(k[x,y]/(xy-1)) \hookrightarrow \spec(k[x,y]) \supseteq \spec_{\max}(k[x,y]) = k^2.\]
+A point $(a, b) \in k^2$ is seen as the maximal ideal $(x-a,y-b)$; that comes from $\spec(k[x,y]/{(xy-1)})$ if and only if $ab-1 = 0$.
+\end{example}
+
+\begin{example}
+  $\spec (k[x,y]/{xy})$ gives the "cross" $\{ ab=0 \}$.
+\end{example}
+
+\begin{example}
+  In the case $\spec(k[x,y]/(x^2 + y^2 + 1)) \hookleftarrow \spec(k[x,y])$ we do not know how to draw.
+\end{example}
+
+\begin{note}
+  In this case we do not lose anything by thinking about $\spec_{\max}$ instead of $\spec$.
+\end{note}
+
+% TODO
+%*Question*. When do we lose something?
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../commalg"
+%%% End:

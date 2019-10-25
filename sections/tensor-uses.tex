@@ -1,0 +1,115 @@
+\section{Why do we care?}
+
+
+First of all, as noted before, we have the folowing isomorphisms:
+\[ M \tensor_A A /{I} \cong M /{IM},\]
+\[ M \tensor_A S^{-1}A \cong S^{-1} M.\]
+
+Moreover:
+\begin{prop}
+Tensoring with an $A$-algebra $B$ is left adjoint to the forgetful functor
+\[ \module{B} \to \module{A}.\]
+\end{prop}
+
+\begin{prop}
+  \label{tensor-coproduct-of-algebras}
+Suppose $A$-algebras $B, C$ are given. Then
+\[ B \tensor_A C\]
+is an $A$-algebra with multiplication
+\[ (b_1 \tensor c_1) \cdot (b_2 \tensor c_2) = (b_1 b_2) \tensor (c_1 c_2).\]
+We claim that
+\[ B \tensor_A C\]
+is in fact the coproduct of $B$ and $C$.
+\end{prop}
+
+\begin{note}
+In the same setting, one has the diagram
+\begin{equation*}
+  \begin{tikzcd}
+    & \spec(B) \arrow{dl} & \\
+    \spec(A)
+    & & \spec(B \tensor_k C) \arrow{ul} \arrow{dl} \\
+    & \spec(C) \arrow{ul} &
+  \end{tikzcd}
+\end{equation*}
+Note that then
+\[ \spec(B \tensor_k C) \neq \spec(B) \times \spec(C);\]
+we only get the arrows demanded that make the diagram commute.
+\end{note}
+
+We note the following special cases of \cref{tensor-coproduct-of-algebras}.
+
+\begin{corollary}
+  Let $A = k$ a field,
+  \[ B = k[x_1, \dotsc, x_s], \quad C = k[y_1, \dotsc, y_k].\]
+  Then
+  \[ B \tensor_k C \cong k[x_1, \dotsc, x_s, y_1, \dotsc, y_t].\]
+\end{corollary}
+\begin{proof}
+  Note that $B$ and $C$ are free $k$-modules, so $B \tensor_k C$ is a free $k$-module with basis
+  \[x_1^{a_1} \tensor \dotso \tensor x_s^{a_s} \tensor y_1^{b_1} \tensor \dotso \tensor y_t^{b_t}.\]
+  One checks that the obvious map defined by the universal property is an isomorphism.
+\end{proof}
+
+\begin{corollary}
+  Suppose
+  \[ B = k[x_1, \dotsc, x_s] / {I},\]
+  \[ C = k[y_1, \dotsc, y_t] /{J}.\]
+  Then
+  \[ B \tensor_k C \cong k[x_1, \dotsc, x_s, y_1, \dotsc, y_t] / {(I + J)}.\]
+\end{corollary}
+
+In differential geometry, the fiber of a map $f \colon X \to Y$ over a point is not typically a manifold.
+
+In contrast, in the $\spec$-world, we have the following.
+
+\begin{df}
+  Let $f \colon A \to B$ be a homomorphism, $\mathfrak m \subseteq A$ a maximal ideal. Then the fiber of $f$ over $\mathfrak m$ is
+  \[ B /{\mathfrak m B}.\]
+\end{df}
+
+\begin{prop}
+  In the above setting,
+  \[\spec(B /{\mathfrak m B}) \cong \{ \mathfrak p \subseteq B \suchthat f^*(\mathfrak p) = \{ \mathfrak m \} \}.\]
+\end{prop}
+
+Note that
+\[ \spec(A_{\mathfrak p}) = \{ \mathfrak q \subseteq \mathfrak p\}, \quad
+\spec(A /{\mathfrak p}) = \{ \mathfrak q \supseteq \mathfrak o\}.\]
+
+\begin{df}
+  More generally, if $f \colon A \to B$ is a homomorphism, $\mathfrak p \subseteq B$ a prime ideal, then the fiber of $f$ over $\mathfrak p$ is given by
+  \[ B \tensor_A \kappa(\mathfrak p),\]
+  where
+  \[ \kappa(\mathfrak p) = A_{\mathfrak p} / {\mathfrak p A_{\mathfrak p}}.\]
+\end{df}
+
+\begin{prop}
+  For any prime ideal $\mathfrak p \subseteq B$, $\kappa(\mathfrak p)$ is a field.
+\end{prop}
+
+\begin{note}
+  If $\mathfrak m$ is maximal, then
+  \[ \kappa(\mathfrak m) \cong A / {\mathfrak m}.\]
+\end{note}
+
+\begin{prop}
+  There is a commutative diagram
+  \begin{equation*}
+    \begin{tikzcd}[row sep = huge, column sep = huge]
+      \spec(B) \arrow{d}{f^*}
+      & \spec(B \tensor_A \kappa(\mathfrak p)) \arrow{l} \arrow{d} \\
+      \spec(A) &
+      \spec(\kappa(\mathfrak p) \arrow{l}
+      &
+    \end{tikzcd}
+  \end{equation*}
+\end{prop}
+
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../commalg"
+%%% End:

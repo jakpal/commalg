@@ -1,0 +1,45 @@
+\section{First definitions}
+
+\begin{df}
+Let $A$ be a ring. Then an $A$-algebra is a ring $B$ together with a fixed homomorphism $A \to B$. This homomorphism is called the structural homomorphism.
+
+The homomorphism is presumed to preserve 1.
+\end{df}
+
+\begin{df}
+  Le $A$ be a ring. A homomorphism of $A$-algebras is a ring homomorphism commuting with the structural maps, that is, if $\phi: A \to B$, $\psi: A \to C$ are $A$-algebras, then a ring homomorphism $f:B \to C$ is an algebra homomorphism if $\psi = f \circ \phi$.
+\end{df}
+
+\begin{example}
+  $f: \complex \to \complex$ is given by $z \mapsto \bar z$ (the complex conjugation). Here:
+\begin{itemize}
+\item f is a ring homomorphism
+\item f is a real algebra homomorphism
+\item f is not a complex algebra homomorphism
+\end{itemize}
+The intuition for this is: we wish to see no ``dirty tricks'' with respect to $A$.
+\end{example}
+
+\begin{example}
+  In the case
+  \[ B = \complex [x] / {I}, \enspace C = \complex [y] / {J},\]
+  the quotient map $B \to C$ is a complex algebra homomorphism.
+\end{example}
+
+\begin{df}
+\mbox{}
+\begin{enumerate}
+\item A ring $A$ is a domain if
+  \[\forall a,b \in A \enspace ( ab = 0 \implies a = 0 \lor b = 0. )\]
+\item An ideal $I$ in a ring $B$ is prime if $B/{I}$ is a domain.
+\item A ring $A$ is a field if
+  \[\forall 0 \neq a \in A \enspace \exists b \in A \enspace ab = 1,\] that is, every nonzero element has a multiplicative inverse.
+\item An ideal $I$ in a ring $B$ is maximal if $B/{I}$ is a field.
+\end{enumerate}
+\end{df}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../commalg"
+%%% End:
