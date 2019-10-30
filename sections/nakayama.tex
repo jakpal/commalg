@@ -30,7 +30,7 @@
   \begin{equation*}
     \begin{tikzcd}[row sep=huge, column sep=huge]
       A^{\oplus n} \arrow[swap]{d}{\pi} \arrow{r}{\tilde{\phi}}
-      & A^{\oplus n} \arrow[swap]{d}{\pi} \\
+      & A^{\oplus n} \arrow{d}{\pi} \\
       M \arrow{r}{\phi}
       & M
     \end{tikzcd}
@@ -125,7 +125,7 @@ So for all $i$
 
 \begin{example}
   Consider $\rational \in \module{\integer}$. Consider $I = (2019) \subseteq \integer$.
-  Certainly $\rational = I \cdot \rational$, but there does not exist an $i \i I$ such that
+  Certainly $\rational = I \cdot \rational$, but there does not exist an $i \in I$ such that
   \[ (1-i) \cdot \rational = 0,\]
   so $\rational$ is not a finitely generated $\integer$-module. 
 \end{example}

@@ -1,0 +1,118 @@
+\section{Finite and integral ring extensions}
+Consider $B$ an $A$-algebra.
+
+\begin{df}
+  An element $b \in B$ is \textit{integral} over $A$ if
+  \[ \exists a_{n-1}, \dotsc, a_0 \in A \enspace b^n + a_{n-1} b^{n-1} + \dotso + a_0 = 0.\]
+
+  $B$ is integral over $A$ if all its elements are integral over $A$.
+\end{df}
+
+\begin{df}
+  An $A$-algebra $B$ is \textit{finite} over $A$ if it is finitely generated as an $A$-module, that is,
+  \[ \exists b_1 \dotsc, b_k \enspace B = A b_1 + \dotso + A b_k.\]
+\end{df}
+
+\begin{example}
+  The following hold:
+  \begin{enumerate}
+  \item $\integer \to \integer[i]$ is finite,
+  \item $\integer \to \integer /{n}$ is finite,
+  \item more generally, $A \to A/{I}$ is finite,
+  \item $\integer \to \integer[x]$ is not finite.
+  \end{enumerate}
+\end{example}
+
+\begin{lemma}
+  If $A \to B$ is finite, then it is integral.
+\end{lemma}
+\begin{proof}
+  Let $b \in B$ and consider the multiplication map
+  \[ \phi \colon B \to B, \quad \phi(a) = a \cdot b.\]
+  This is an $A$-module homomorphism.
+  By Cayley-Hamilton with $I = (1)$, one has
+  \[ \exists a_{n-1}, \dotsc, a_0 \in A \enspace b^n + a_{n-1} b^{n-1} + \dotso + a_0 = 0.\]
+\end{proof}
+
+\begin{lemma}
+  \label{lem-integral-fingen-fin}
+  If $A \to B$ is integral and $B$ is a finitely generated $A$-algebra, then $A \to B$ is finite.
+\end{lemma}
+\begin{proof}
+  Let
+  \[ B A[x_1, \dotsc, x_n]/{I}.\]
+  Then every $x_i \in B$ is integral over $A$ and so
+  \[ \exists n \forall i \exists a_0^{(i)} \enspace x_i^n + a_{n-1}^{(i)} + \dotso + a_0^{(i)} = 0.\]
+  We check that $B$ is generated as an $A$-module by the finitely many monomials
+  \[ \{ x_1^{c_1}, \dotsc, x_n^{c_n}, 0 \leq c_i \leq n\}.\]
+\end{proof}
+
+\begin{example}
+  The extension
+  \[ \rational \to \bar \rational\]
+  is integral, but not finite.
+\end{example}
+
+\begin{df}
+  For $B$ and $A$-algebra, $b \in B$ an element, $A[b]$ will denote the smallest $A$-algebra contained in $B$ and containing $b \in B$.
+\end{df}
+
+\begin{prop}
+  \label{prop-integral}
+  Let $A \to B$ be an $A$-algebra, $b \in B$. The following conditions are equivalent:
+  \begin{enumerate}
+  \item $v$ is integral over $A$,
+  \item $A[b]$ is a finitely generated $A$-module,
+  \item $A[b]$ is contained in a finitely generated $A$-module
+  \end{enumerate}
+\end{prop}
+\begin{proof}
+  ``$1 \implies 2 \implies 3$'' is formal: the first one uses the same trick as in \cref{lem-integral-fingen-fin}.
+
+  For ``$ 3 \implies 1$, fix a finitely generated $A$-module $A[b] \subseteq C$. Then the multiplication map
+  \[ \phi_b \colon C \to C\]
+  is an $A-$module homomorphism, so Cayley-Hamilton implies
+  \[ \exists n \exists a_{n-1}, \dotsc, a_0 \in A \enspace b^n + a_{n-1} b^{n-1} + \dotso + a_0 = 0.\]
+\end{proof}
+
+\begin{df}
+  Let $B$ be an $A$-algebra. Then the \textit{integral closure} of $A$ in $B$ is
+  \[ \bar A = \{ b \in B \suchthat \text{$b$ is integral in $A$}\}.\]
+
+  The \textit{normalization} of a domain $A$ is its integral closure in the field of fractions $\text{Frac}(A)$.
+\end{df}
+
+
+\begin{corollary}
+  $\bar A$ is an $A$-algebra.
+\end{corollary}
+\begin{proof}
+  Consider $x, y \in \bar A$. By \cref{prop-integral}, $A[x]$ and $A[y]$ are finitely generated $A$-modules. In fact, by the proof of \cref{lem-integral-fingen-fin}, $A[x, y]$ is a finitely generated $A$-module.
+
+  One has
+  \[ A[x - y] \subseteq A[x,y], \quad A[xy] \subseteq A[x, y],\]
+  so by \cref{prop-integral}, point 3,
+  \[ x- y, xy \in \bar A.\]
+  Hence, $\bar A$ is a ring. One has also the map
+  \[ A \to \bar A\]
+  which makes $\bar A$ an $A$-algebra; indeed, an $A$-subalgebra of $B$.
+\end{proof}
+
+\begin{example}
+  Let $\integer \to \rational \to K$ with $\rational \to K$ finite.
+  Then one has also
+  \[ O_K = \bar Z \to K\]
+  - the ring of algebraic integers in $K$. This is Noetherian.
+\end{example}
+
+\begin{theorem}[Nagata]
+  If $A$ is finitely generated over $k$, then the normalization of $A$ is as well. Moreover,
+  \[ A \to \bar A\]
+  is finite.
+\end{theorem}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../commalg"
+%%% End:
