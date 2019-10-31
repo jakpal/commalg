@@ -1,30 +1,38 @@
 \section{First definitions}
 
 \begin{df}
-Let $A$ be a ring. Then an $A$-algebra is a ring $B$ together with a fixed homomorphism $A \to B$. This homomorphism is called the structural homomorphism.
-
-The homomorphism is presumed to preserve 1.
+  Let $A$ be a ring. Then an \textit{$A$-algebra} is a ring $B$ together with a fixed homomorphism
+  \[A \to B.\]
+  This homomorphism is called the \textit{structural homomorphism}.
 \end{df}
 
 \begin{df}
-  Le $A$ be a ring. A homomorphism of $A$-algebras is a ring homomorphism commuting with the structural maps, that is, if $\phi: A \to B$, $\psi: A \to C$ are $A$-algebras, then a ring homomorphism $f:B \to C$ is an algebra homomorphism if $\psi = f \circ \phi$.
+  Let $A$ be a ring. A \textit{homomorphism of $A$-algebras} is a ring homomorphism commuting with the structural maps, that is, if
+  \[ \phi: A \to B, \quad \psi: A \to C\]
+  are $A$-algebras, then a ring homomorphism
+  $f:B \to C$
+  is an algebra homomorphism if
+  \[\psi = f \circ \phi.\]
 \end{df}
 
 \begin{example}
-  $f: \complex \to \complex$ is given by $z \mapsto \bar z$ (the complex conjugation). Here:
+  Let $f: \complex \to \complex$ be given by $z \mapsto \bar z$ (the complex conjugation). Then:
 \begin{itemize}
-\item f is a ring homomorphism
-\item f is a real algebra homomorphism
-\item f is not a complex algebra homomorphism
+\item f is a ring homomorphism,
+\item f is a real algebra homomorphism,
+\item f is not a complex algebra homomorphism.
 \end{itemize}
-The intuition for this is: we wish to see no ``dirty tricks'' with respect to $A$.
 \end{example}
 
 \begin{example}
-  In the case
-  \[ B = \complex [x] / {I}, \enspace C = \complex [y] / {J},\]
-  the quotient map $B \to C$ is a complex algebra homomorphism.
+  The polynomial ring $\complex [x]$ becomes a $\complex$-algebra under the inclusion map onto the zero degree component.
+
+  In this case, if $I$ is an ideal, then 
+  the quotient map
+  \[ \complex[x] \to \complex[x]/{I}\]
+  is a complex algebra homomorphism.
 \end{example}
+% X-REF: was something with two ideals before, but it did not make much sense.
 
 \begin{df}
 \mbox{}

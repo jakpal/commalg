@@ -16,6 +16,7 @@
 \usepackage{mathtools}
 \usepackage{xparse}
 \usepackage{graphicx}
+\usepackage{yfonts}
 
 % keep these at the end, and definitions of theorems and their counters after that
 \usepackage{hyperref}
@@ -44,8 +45,7 @@
 \newtheorem{corollary}[alltheorems]{Corollary}
 \newtheorem{prop}[alltheorems]{Proposition}
 
-% TODO give no counter
-\newtheorem{answer}[alltheorems]{Answer}
+\newtheorem*{answer}{Answer}
 
 \theoremstyle{remark}
 \newtheorem{note}[alltheorems]{Note}

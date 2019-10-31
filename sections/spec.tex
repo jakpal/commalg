@@ -1,48 +1,60 @@
 \section{The Spec() functor}
-We aim to revisit previous considerations for an arbitrary ring.
+We aim to repeat the previous considerations of \cref{mot-circle} for an arbitrary ring.
 
 \begin{df}
-Let $A$ be a ring.
-We let $\spec(A) = \{ \mathfrak p \text{ a prime ideal in} A \}$.
+Let $A$ be a ring. The \textit{spectrum} of $A$ is its set of prime ideals:
+\[\spec(A) = \{ \mathfrak p \text{ a prime ideal in} A \}.\]
 \end{df}
 
 \begin{example}
   $\spec(\complex [x]) =  \{0\} \cup \{ (x-a) | a \in \complex \}$.
 \end{example}
 
-For a ring homomorphism $f \colon A \to B$ we obtain a map
-$\spec(B) \to \spec(A)$ given by 
-\[(\mathfrak q \subseteq B) \mapsto (f^{-1}(\mathfrak q) \subseteq A).\]
+For a ring homomorphism $f \colon A \to B$, \cref{primes are preserved under preimage} asserts that there is a map
+\[f^* \colon \spec(B) \to \spec(A)\]
+given by 
+\[B \supseteq \mathfrak q \mapsto f^{-1}(\mathfrak q) \subseteq A.\]
 
-This is a good start; however, we wish to upgrade this set $\spec(A)$ to a topological space. In this, we follow the previous motivation.
+We will now move towards upgrading spectra of rings (which up to this point we considered as mere sets) to topological spaces in such a way that makes the maps $f^*$ continuous. In this, we follow the previous motivation.
 
 \begin{df}
-For $E \subseteq A$ any subset, we define
-$V(f) = \{ \mathfrak p \in \spec(A) | f \in \mathfrak p \}$
-and call $V(f)$ the vanishing locus of $f$.
+For $E \subseteq A$ an arbitrary subset, we define the \textit{vanishing locus of $E$} as the set
+\[V(E) = \{ \mathfrak p \in \spec(A) \suchthat E \subseteq \mathfrak p \} .\]
 \end{df}
 
 \begin{prop}
-  The sets $V(E)$, $E \subseteq A$, are the closed subsets of a topology. This topology is called the Zariski topology.
+  \label{zariski-prop}
+  The sets $V(E)$, $E \subseteq A$, are the closed subsets of a topology.
 \end{prop}
 
 \begin{proof}
-  $V(1) = \emptyset$, $V(0) = \spec(A)$.
-  It is clear that
-  $\cap_{i \in I} V(E_i) = V(\cup_{i \in I} E_i)$.
-  Further, we need to show that
-\[ V(E_1) \cup V(E_2) = V(E_1 \cdot E_2), \]
-where $E_1 \cdot E_2 = \{ e_1 \cdot e_2 \suchthat e_1 \in E_1, e_2 \in E_2 \}$.
+  One sees immediately that
+  \[ V(1) = \emptyset, \quad V(0) = \spec(A).\]
+  Elementary set-theoretic considerations reveal that
+  \[\cap_{i \in I} V(E_i) = V(\cup_{i \in I} E_i).\]
 
-The nontrivial part is the left-way inclusion in the last statement: that $\mathfrak p$ is prime is used here.
+  It now suffices to show that
+\[ V(E_1) \cup V(E_2) = V(E_1 \cdot E_2), \quad E_1 \cdot E_2 \coloneqq \{ e_1 \cdot e_2 \suchthat e_1 \in E_1, e_2 \in E_2 \}.\]
 
-Suppose $\mathfrak p \not\supseteq E_1$ and $\mathfrak p \not\supseteq E_2$. Then there exist $e_i \in E_i \setminus \mathfrak p$, as well as $e_1 \cdot e_2 \in E_1 \cdot E_2 \setminus \mathfrak p$ because $\mathfrak p$ is prime.
+The inclusion $V(E_1) \cup V(E_2) \subseteq V(E_1 \cdot E_2)$ is easy to verify. Suppose without loss of generality that $\mathfrak p \in V(E_1)$, that is $\mathfrak p \supseteq E_1$. Then
+\[ E_1 \cdot E_2 \subseteq \mathfrak p \cdot E_2 \subseteq \mathfrak p,\]
+because $\mathfrak p$ is an ideal.
+
+In order to prove the other inclusion, we need to use that $\mathfrak p$ is prime. Suppose that
+\[ \mathfrak p \not\supseteq E_1 \quad \text{and} \quad \mathfrak p \not\supseteq E_2.\]
+Then there exist $e_i \in E_i \setminus \mathfrak p$, $i=1,2$. For those \[ e_1 \cdot e_2 \in E_1 \cdot E_2 \setminus \mathfrak p\]
+holds because $\mathfrak p$ is prime.
 \end{proof}
+
+\begin{df}
+  The topology on $\spec(A)$ defined by \cref{zariski-prop} is called the \textit{Zariski topology}.
+\end{df}
 
 \begin{question}
 What is the Zariski topology for $A = \complex [x]$?
 \end{question}
 
+\begin{answer}
 We note that
 \begin{align*}
   V(f_1, \ldots, f_r) & = \{ \mathfrak p \text{ prime in } A \suchthat f_1, \dotsc, f_r \in \mathfrak p\} \\
@@ -52,19 +64,15 @@ We note that
 
 If any $f_i$ is nonzero, then $0 \notin V(f_1, \dotsc, f_r)$.
 
-Now,
-\[ V(f_1, \ldots, f_r) = \text{ set of common roots of }f_1, \ldots, f_r .\]
-Hence, $V(f_1, \ldots, f_r)$ is finite.
+Hence,
+\[ V(f_1, \ldots, f_r) = \text{ set of common roots of }f_1, \ldots, f_r \]
+and one sees that $V(f_1, \ldots, f_r)$ is finite.
+
+In fact, all finite subsets of the set of maximal ideals are of the form $V(f_1, \ldots, f_r)$. Note that the only closed set containing the prime ideal $0$ is $\spec(A)$ itself; in other words, $0$ lies in every nonempty open set. This yields the cofinite topology augmented by $\{0\}$.
+\end{answer}
 
 \begin{note}
-All finite subsets of the set of maximal ideals are of the form $V(f_1, \ldots, f_r)$.
-
-After some deliberation, this yields the cofinite topology augmented by \{0\}.
-\end{note}
-
-\begin{note}
-  The closure of $\{0\} \subseteq \spec(A)$ is $\spec(A)$ itself, since all other closed subsets do not contain 0; hence, all open subsets contain 0.
-In effect, the resulting space is not $T_1$, let alone Hausdorff.
+  Because the closure of $\{0\} \subseteq \spec(A)$ is $\spec(A)$ itself, the resulting space is not T1, let alone Hausdorff. It is, however, T0.
 \end{note}
 
 \begin{prop}
@@ -75,13 +83,20 @@ In effect, the resulting space is not $T_1$, let alone Hausdorff.
   is continuous.
 \end{prop}
 \begin{proof}
-$E \subseteq A \implies V(E) \subseteq \spec(A)$.
-We claim further that
-\[ (f^*)^{-1}(V(E)) = V(f(E)), \]
-which ends the proof.
+It suffices to see that the preimage of every closed set is closed. Indeed, we claim that
+\[ (f^*)^{-1}(V(E)) = V(f(E)).\]
+We unravel the definitions:
+\begin{align*}
+  (f^*)^{-1}(V(E)) & = \{ \mathfrak p \subseteq B \suchthat f^*(\mathfrak p) \in V(E)\} \\
+                   & = \{ \mathfrak p \subseteq B \suchthat f^{-1}(\mathfrak p) \in V(E)\} \\
+                   & = \{ \mathfrak p \subseteq B \suchthat E \subseteq f^{-1}(\mathfrak p) \} \\
+                   & = \{ \mathfrak p \subseteq B \suchthat f(E) \subseteq \mathfrak p\} \\
+                   & = V(f(E)).
+\end{align*}
+Note that the considerations here are purely set-theoretical. The condition that $f$ be a ring homomorphism is only relevant for $f^*$ to be well defined on spectra.
 \end{proof}
 
-The upshot is: when $k = \bar k$, $\spec_{max}(k[x_1, \ldots, x_n])$ is "nice". We will see later, in the Nullstellensatz, tha all maximal ideals in $k[x_1, \ldots, x_n]$ are of the form $(x_1 - a_1, \ldots x_n - a_n)$.
+The upshot is: when $k = \bar k$, $\spec_{max}(k[x_1, \ldots, x_n])$ is well-behaved. We will see later, in the Nullstellensatz, that all maximal ideals in $k[x_1, \ldots, x_n]$ are of the form $(x_1 - a_1, \ldots x_n - a_n)$.
 
 In fact,
 $\spec_{max}(k[x_1, \ldots, x_n]) \cong k^n$
