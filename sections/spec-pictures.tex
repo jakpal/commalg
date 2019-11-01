@@ -3,7 +3,7 @@
 For any $I$, we get
 \[ V(I) = \spec(A/{I}) \hookrightarrow \spec(A)\]
 with a bijection:
-\[\{ \bar{\mathfrak p} \subseteq A / I\} \simeq \{ \mathfrak q \subseteq A | \mathfrak q \supseteq I\}.\]
+\[\{ \bar{\mathfrak p} \subseteq A / I\} \cong \{ \mathfrak q \subseteq A \suchthat \mathfrak q \supseteq I\}.\]
 From
 \[\pi: A \to A/{I}\]
 we get $\pi^*$, which is injective with image $V(I)$. Hence, we identify
@@ -20,15 +20,18 @@ A point $(a, b) \in k^2$ is seen as the maximal ideal $(x-a,y-b)$; that comes fr
 \end{example}
 
 \begin{example}
-  In the case $\spec(k[x,y]/(x^2 + y^2 + 1)) \hookleftarrow \spec(k[x,y])$ we do not know how to draw.
+  In the case of
+  \[\spec(k[x,y]/(x^2 + y^2 + 1)) \hookleftarrow \spec(k[x,y]),\]
+  geometric interpretations transcend our $\real$-intuitions.
 \end{example}
 
-\begin{note}
-  In this case we do not lose anything by thinking about $\spec_{\max}$ instead of $\spec$.
-\end{note}
-
 % TODO
-%*Question*. When do we lose something?
+% on second thought, comment about spec_max vs spec was not very enlightening
+
+\begin{note}
+  In general, $\spec_{\text{max}}$ is the set of closed points in $\spec$, and if the ring $A$ be of finite type (that is, finitely generated over a field or $\integer$), then
+  \[ \overline{\spec_{\text{max}}(A)} = \spec(A).\]
+\end{note}
 
 %%% Local Variables:
 %%% mode: latex

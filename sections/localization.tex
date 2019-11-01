@@ -1,6 +1,6 @@
 \section{Localization}
 \begin{df}
-Let $A$ be a ring. $S \subseteq A$ is called a multiplicative subset if the both conditions hold:
+Let $A$ be a ring. A subset $S \subseteq A$ is called \textit{multiplicative} if the following conditions hold:
 \begin{enumerate}
 \item $1 \in S$,
 \item $\forall s, t \in S \enspace st \in S$.
@@ -10,15 +10,18 @@ Let $A$ be a ring. $S \subseteq A$ is called a multiplicative subset if the both
 % TODO
 % The localization is a universal ??? which inverts ???.
 
-We wish to obtain a ring $S^{-1}A \xla{i} A$ such that the $i(s)$ are invertible; a pseudo-
+We wish to obtain an initial $A$-algebra
+\[A \xto{i} S^{-1}A\]
+such that the $i(s)$ are invertible; a pseudo-
 \[ \{\frac{a}{s} \suchthat a \in A, s \in S \}.\]
+Indeed, in the case that $A$ is a domain, the preceding definition is entirely satisfactory.
 
 \begin{construction}[localization of a ring at a multiplicative subset]
   \mbox{}
   
   Step 1.
 Let
-\[I = \{ a \in A \suchthat \exists s \in S \enspace \exists sa = 0 \}.\]
+\[I = \{ a \in A \suchthat \exists s \in S \enspace sa = 0 \}.\]
 
 Note that if $a, b \in I$, then
 \[ \exists s \in S \enspace sa = 0, \quad \exists t \in S \enspace tb = 0.\]
@@ -32,29 +35,28 @@ Step 2.
 $\pi(S) \subseteq A'$
 consists of non-zerodivisors.
 
-Indeed, suppose that $s \in S$, $\pi(s)$ is a zero divisor, that is
+Indeed, suppose that $s \in S$. If $w \in A'$ is such that $w \pi(s) = 0$, then from surjectivity of $\pi$ it follows that
 \begin{align*}
-\exists 0 \neq a \in A \quad & \pi(s) \pi(a) = 0 \\
-\implies & \pi(sa) = 0 \\
-\implies & sa \in I \\
-\implies & \exists t \in S tsa = 0 \\
-\implies & (ts)a = 0.\\
+  \exists a \in A \quad & w = \pi(a) \\
+                        & \pi(s) \pi(a) = 0 \\
+                        & \implies \pi(sa) = 0 \\
+                        & \implies  sa \in I \\
+                        & \implies \exists t \in S tsa = 0 \\
+                        & \implies (ts)a = 0.
 \end{align*}
-But
-\[ ts \in S \implies a \in I \implies \pi(a) = 0.\]
-Which means that $\pi(s)$ was not really a zero divisor.
+But because $ts \in S$, it follows that $a \in I$ and so $\pi(a) = 0$. This means that $\pi(s)$ is not a zero divisor.
 
 Define $S' := \pi(S)$. We want
 \[ (S')^{-1} A' = \{ \frac{a'}{s'} \suchthat a' \in A', s' \in S' \}.\]
 Consider pairs
-\[\{(a', s') \suchthat a' \in A', s' \in S'\}.\]
-Define a relation
+\[\{(a', s') \suchthat a' \in A', s' \in S'\}\]
+and define their relation $\sim$ thus:
 \[(a'_1, s'_1) \sim (a'_2, s'_2) \iff a'_1 s'_2 = a'_2 s'_1.\]
 To prove that this is an equivalence relation, we show transitivity (exercise; use that the $S'$ are non-zerodivisors).
 
 Step 3.
 \[(S')^{-1}A' := \{(a', s') \suchthat a' \in A', s' \in S' \} / {\sim}\]
-is a well-defined set.
+is a well defined set.
 The ring operations are given by thinking about this as
 \[ \{ \frac{a'}{s'} \suchthat a' \in A', s' \in S'\}.\]
 This turns the set into an associative commutative ring with unity.
@@ -62,24 +64,23 @@ This turns the set into an associative commutative ring with unity.
 
 \begin{lemma}
   Let $a, b \in A$, $s, t \in S$. Then
-  \[ a / s = b / t \quad \iff \quad \exists u \in S \enspace u(at-bs)=0.\]
+  \[ \frac{a}{s} = \frac{b}{t} \quad \iff \quad \exists u \in S \enspace u(at-bs)=0.\]
 \end{lemma}
 \begin{proof}
-  ``$(\impliedby)$'':
+  ``$\impliedby$'':
   \begin{align*}
-    u(at - bs) = 0 & \\
-    \implies & uta = usb \\
-    \implies & uta / 1 = usb / 1 \\
-    \implies & a / s = uta / stu = usb / stu = b / t
+    u(at - bs) = 0 & \implies uta = usb \\
+                   & \implies \frac{uta}{1} = \frac{usb}{1} \\
+                   & \implies  \frac{a}{s} = \frac{uta}{stu} = \frac{usb}{stu} = \frac{b}{t}.
   \end{align*}
-  ``$(\implies)$'': Observe: the map $\phi: A /{I} = A' \to S'^{-1}A^{-1}$ is injective.
+  ``$\implies$'': Observe that the map $\phi: A /{I} = A' \to (S')^{-1}A^{-1}$ is injective.
   Note that
-  \[ \forall \bar a, \bar b \in A' \enspace \bar a / 1 = \bar b / 1 \iff \bar a = \bar b \iff 1 \cdot \bar a = 1 \cdot \bar b \]
+  \[ \forall \bar a, \bar b \in A' \enspace \frac{\bar a}{1} = \frac{\bar b}{1} \iff \bar a = \bar b \iff 1 \cdot \bar a = 1 \cdot \bar b \]
   % TODO
 \end{proof}
 
 \begin{corollary}
-  We could define $S^{-1}A$ as the set of points
+  A model of $S^{-1}A$ is given as the quotient
   \[ \{ (a, s) \suchthat a \in A, s \in S \} /{\sim}\]
   under
   \[ (a, s) \sim (b, t) \quad \iff \quad \exists s \in S \enspace u(at - bs) = 0.\]
@@ -101,6 +102,7 @@ This turns the set into an associative commutative ring with unity.
 \end{note}
 
 \begin{prop}[universal property of localization]
+  \label{loc-univ}
   Let $f: A \to B$ be such that $f(S)$ consists of invertible elements.
 \begin{equation*}
   \begin{tikzcd}
@@ -118,12 +120,16 @@ This turns the set into an associative commutative ring with unity.
   We write $\tilde f \coloneqq S^{-1}f$. Suppose that $\tilde f$ exists. Then
   \[ \forall a \in A \enspace \tilde f (a / 1) = f(a) \]
   and thus
-  \[ \forall s \in S \tilde f(\frac{a}{s} \cdot s) = f(\frac{a}{1}) = f(a) \]
+  \[ \forall s \in S \enspace \tilde f(\frac{a}{s} \cdot s) = f(\frac{a}{1}) = f(a) \]
   and the formula
   $\tilde{f}(a / s) = f(a) / f(s)$
   is recovered.
   One needs only to check that such a function is a homomorphism.
 \end{proof}
+
+\begin{corollary}
+  Consider the category $\mathcal C$ of $A$-algebras whose structure maps invert $S$. Then \cref{loc-univ} reads: $S^{-1}A$ is the initial object of this category.
+\end{corollary}
 
 \begin{lemma}
   \label{loc-1}
@@ -141,7 +147,7 @@ This turns the set into an associative commutative ring with unity.
   and so
   \[ \exists \tilde \psi \colon A[x] /{(xf-1)} \to A_f \]
   such that
-  \[ \forall a \in A, n \in \naturals \enspace \tilde \psi (a x^n) = a / f^n.\]
+  \[ \forall a \in A \enspace \forall n \in \naturals \enspace \tilde \psi (a x^n) = a / f^n.\]
   The maps $\tilde \phi$ and $\tilde \psi$ are then mutual inverses.
 \end{proof}
 
@@ -210,7 +216,7 @@ Before presenting the proof, for which we will require some additional facts, we
 \end{lemma}
 \begin{proof}
   ``$\supseteq$'':
-  \[ \forall j \in J \frac{j}{i} \in I \implies \frac{j}{s} = \frac{j}{1} \cdot \frac{1}{s} \in I \]
+  \[ \forall j \in J \enspace \frac{j}{i} \in I \implies \frac{j}{s} = \frac{j}{1} \cdot \frac{1}{s} \in I \]
   ``$\subseteq$'':
   \[ \frac{a}{s} \in I \implies \frac{a}{1} = \frac{a}{s} \cdot \frac{s}{i} \in I \implies a \in J \implies \frac{a}{s} \in \{\frac{j}{s} \suchthat j \in J, s \in S \}\]
 \end{proof}
@@ -245,27 +251,27 @@ Before presenting the proof, for which we will require some additional facts, we
   For $f \in A$, the following are equivalent:
   \begin{enumerate}
   \item $f$ is nilpotent (that is, $\exists n > 0 \enspace f^n = 0$),
-  \item $f \in \cap \{\mathfrak p \suchthat p \in \spec(A) \}$,
-  \item $V(f = \spec(A)$.
+  \item $f \in \bigcap \{\mathfrak p \suchthat p \in \spec(A) \}$,
+  \item $V(f) = \spec(A)$.
   \end{enumerate}
 \end{corollary}
 
 \begin{proof}
   The equivalence between 2 and 3 is checked formally.
 
-  1 $\implies$ 2: $\forall \mathfrak p \enspace f^n = 0 \in \mathfrak p \implies f \in \mathfrak p$.
+  ``$1 \implies 2$'': $\forall \mathfrak p \enspace f^n = 0 \in \mathfrak p \implies f \in \mathfrak p$.
 
-  Negation of 1 implies negation of 2:
+  `` $\neg 1 \implies \neg 2$":
   let
-  $0 \notin \{ 1, f, f^2, \ldots \}$
+  $0 \notin \{ 1, f, f^2, \dotsc \}$
   so $A_f \neq 0$ by \cref{loc-3}.
   Hence, $\spec(A_f) \neq \emptyset$, so by \cref{loc-2}
-  \[ \spec(A_f) = \{ \mathfrak p \in \spec(A) \suchthat f \notin \mathfrak p \} \neq \emptyset \} \]
+  \[ \spec(A_f) = \{ \mathfrak p \in \spec(A) \suchthat f \notin \mathfrak p \} \neq \emptyset .\]
 \end{proof}
 
 \begin{df}
   The nilradical of a ring $A$ is defined as
-  \[ \text{nil}(A) = \cap \{ \mathfrak p \suchthat p \in \spec(A) \} = \{f \in A \suchthat \exists n > 0 \enspace f^n = 0 \}.\]
+  \[ \text{nil}(A) = \bigcap \{ \mathfrak p \suchthat p \in \spec(A) \} = \{f \in A \suchthat \exists n > 0 \enspace f^n = 0 \}.\]
 \end{df}
 
 %%% Local Variables:
