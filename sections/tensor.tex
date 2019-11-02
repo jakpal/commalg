@@ -1,13 +1,11 @@
 \section{Tensor product}
-Fix $A$-modules $M, N$. We will construct another $A$-module, denoted by
-\[ M \tensor_A N,\]
-and study its properties.
+Fix $A$-modules $M, N$. We will construct their tensor product $M \tensor N$ - another $A$-module whose definition demands that it in some way classify ``$A$-multiplications'' with domain $M \times N$.
 
 \begin{df}
   \label{def-bilinear}
   Let $P$ be an $A$-module. A function (not a homomorphism!)
   \[ f \colon M \times N \to P\]
-  is called bilinear if:
+  is called $A$-bilinear if:
   \begin{enumerate}
   \item $\forall a \in A, m \in M, n \in N \enspace a f(m, n) = f(am, n) = f(m, an)$,
   \item $f(m_1 + m_2, n) = f(m_1, n) + f(m_2, n)$,
@@ -17,44 +15,39 @@ and study its properties.
   \[ \operatorname{Bilin}_{M \times N} (P).\]
 \end{df}
 
-Intuitively, we wil think about $f$ as a ``multiplication''.
-
-\begin{example}
+\begin{prop}
   \label{tensor-pullback}
-  For a homomorphism
-  \[ \phi \colon P \to R,\]
-  where $R$ is an $A$-module, we get
+  For a homomorphism of $A$-modules $\phi \colon P \to R$ one gets a map
   \[ \phi^* \colon \bilin_{M \times N}(P) \to \bilin_{M \times N}(R) \quad \text{via} \quad f \mapsto \phi \circ f.\]
-\end{example}
+\end{prop}
 
 \begin{theorem}
   \label{tensor-exists}
-  In \cref{tensor-pullback}, there exists
-  \[ T \in \module{A}, g \in \bilin_{M \times N}(T) \quad \text{such that} \quad \forall P \in \module{A} \quad \forall f \in \bilin_{M \times N}(P) \enspace \existsunique \enspace f' \colon T \to P\]
+  There exists a unique (up to isomorphism) pair
+  \[ T \in \module{A}, \quad g \in \bilin_{M \times N}(T)\]
   such that
-  \[ f = f' \circ g.\]
-  Moreover, this $T$ is unique.
+  \[ \quad \forall P \in \module{A} \enspace \forall f \in \bilin_{M \times N}(P) \enspace \existsunique f' \colon T \to P \enspace f = f' \circ g.\]
 \end{theorem}
 
 \begin{note}
-  One can rephrase the theorem as the existence of a natural isomorphism
+  One can rephrase \cref{tensor-exists} as the existence of a natural isomorphism
   \[ \hom(T, -) \simeq \bilin_{M \times N}(-).\]
 \end{note}
 
 \begin{df}
   The $A$-module $T$ of \cref{tensor-exists} is denoted by
   \[ M \tensor_A N \]
-  and called a tensor product of $M$ and $N$.
+  and called the tensor product of $M$ and $N$.
   The map $g$ is written as
   \[ m \tensor n \coloneqq g(m, n).\]
 \end{df}
 
-\begin{proof}[\cref{tensor-exists}]
+\begin{proof}(\cref{tensor-exists})
   Let
   \[ T_0 = A^{M \times N}.\]
   Then
-  \[ \forall p \enspace \hom(T_0, P) \simeq \set(M \times N, P) \quad \text{via} \quad  f \mapsto \sum a_i f(e_i) ,\]
-  that is, the free module functor is adjoint to the forgetful functor to $\set$.
+  \[ \forall P \enspace \hom(T_0, P) \simeq \set(M \times N, P) \quad \text{via} \quad  f \mapsto \sum a_i f(e_i)\]
+  as the free module functor is adjoint to the forgetful functor to $\set$.
   Denote the generator of $T_0$ corresponding to $(m, n)$ by $e(m, n)$. Now define
   \[ T = T_0 / {\sim}, \]
   where $\sim$ describes the relations given in \cref{def-bilinear}.
@@ -75,7 +68,8 @@ Intuitively, we wil think about $f$ as a ``multiplication''.
   Yes, provided the category considered has all coproducts, as then for functors into $\set$ the two conditions are in fact equivalent; the same holds in the case of corepresentability and having a right adjoint.
 
   Concretely, the left adjoint to a functor represented by $X$ is given by
-  \[ Y \mapsto \disjointunion_Y X.\] 
+  \[ Y \mapsto \disjointunion_Y X.\]
+  Note that this does not agree with our definition of a tensor product. Indeed, while the representable functors considered in this question are Set-valued, the one right adjoint to the tensor product is an endofunctor of the category of $A$-modules.
 \end{answer}
 
 \begin{df}
@@ -89,7 +83,7 @@ Intuitively, we wil think about $f$ as a ``multiplication''.
   There exists an $A$-module
   \[ \Omega_{A / {k}}, \enspace d \colon A \to \Omega_{A /{k}}\]
   such that
-  \[ \forall P \in \module{A} \forall f \in \der_k(A, P) \existsunique f' \colon \Omega_{A /{k}} \to P \quad \text{such that} \quad f = f' \circ d.\]
+  \[ \forall P \in \module{A} \enspace \forall f \in \der_k(A, P) \enspace \existsunique f' \colon \Omega_{A /{k}} \to P \enspace f = f' \circ d.\]
   One can rephrase this as
   \[ \hom_{\Omega_{A/{k}}} \simeq \der_k(A, -).\]
 \end{theorem}
@@ -117,13 +111,11 @@ Intuitively, we wil think about $f$ as a ``multiplication''.
   Consider the $k$-linear derivation gradient
   \[ \nabla \colon A \to A^{\oplus n} \quad \text{via} \quad f \mapsto ( \frac{\partial f}{\partial x_1}, \dotsc, \frac{\partial f}{\partial x_n}).\]
   By the universal property of localization we obtain
-  \[ \pi \colon \Omega_{A /{k}} \text{ such that } \forall 1 \leq i \leq r \enspace \pi(\dif x_i) = e_i.\]
+  \[ \pi \colon \Omega_{A /{k}} \to S^{\oplus n}\text{ such that } \forall 1 \leq i \leq r \enspace \pi(\dif x_i) = e_i.\]
 
   If we let
-  \[ \phi \colon S^{\oplus n} \to \Omega_{A /{k}} \quad \text{via} \quad e_i \mapsto \dif x_i.\]
-  Then $\phi$ is onto and since
-  \[ \pi \circ \phi = \id_{S^{\oplus n}},\]
-  $\phi$ is a bijection (and hence, an isomorphism).
+  \[ \phi \colon S^{\oplus n} \to \Omega_{A /{k}} \quad \text{via} \quad e_i \mapsto \dif x_i,\]
+  then $\phi$ is onto and because $\pi \circ \phi = \id_{S^{\oplus n}},$ it is a bijection (and hence, an isomorphism).
 \end{example}
 
 

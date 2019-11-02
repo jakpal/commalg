@@ -16,7 +16,7 @@ such that:
 
 \begin{df}
   A homomorphism of $A$-modules $\phi \colon M \to N$ is a homomorphism of abelian groups such that
-  \[ \forall a \in A, \enspace m \in M \enspace a \phi(m) = \phi(am). \]
+  \[ \forall a \in A \enspace \forall m \in M \enspace a \phi(m) = \phi(am). \]
 \end{df}
 
 \begin{example}
@@ -32,12 +32,12 @@ such that:
   \[ Am_1 + Am_2 + \ldots + Am_k = \{ \sum_{i=1}^k a_i m_i \suchthat a_i \in A \}.\]
 \end{df}
 
-\begin{note}
+\begin{prop}
   The set
   \[ \hom_A(M, N) = \{ \phi: M \to N \text{ an $A$-module homomorphism} \} \]
   is an $A$-module under
   \[ (a.\phi)(m) \coloneqq \phi(am) = a \phi(m).\]
-\end{note}
+\end{prop}
 
 \begin{df}
   An $A$-module is finitely generated if
@@ -56,21 +56,9 @@ such that:
 \end{example}
 
 \begin{lemma}
-  An $A$-module $M$ is finitely generated if and only if
-  \[ \exists \phi: \bigoplus_{i=1}^k A \to M \text{ surjective}.\]
+  An $A$-module $M$ is finitely generated if and only if there exists a surjective homomorphism
+  \[ \phi: \bigoplus_{i=1}^k A \to M.\]
 \end{lemma}
-\begin{proof}
-  % TODO
-\end{proof}
-
-\begin{theorem}[Cayley-Hamilton]
-  Let $M$ be an $A$-module. Let $\phi: M \to M$ be a homomorphism of $A$-modules such that
-  \[ \phi(m) = IM = \{ \sum i_k m_k \suchthat i_k \in I, m_k \in M \}. \]
-  Then there exist elements
-  \[ a_{n-1} \in I, a_{n-2} \in I^2, \ldots, a_0 \in I^n \]
-  such that
-  \[ \phi^n + a_{n-1} \phi^{n-1} + \ldots + a_0 = 0 \text{ (the zero morphism)}. \]
-\end{theorem}
 
 %%% Local Variables:
 %%% mode: latex

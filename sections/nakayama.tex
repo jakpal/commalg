@@ -1,7 +1,6 @@
-% begin 16.10.19
 \section{More on modules}
 \begin{note}
-  When we write $I \cdot M$, we mean the linear span of elements of the form $i \cdot m$.
+  In the following, when we write $I \cdot M$, we will mean the linear span of elements of the form $i \cdot m$.
 \end{note}
 
 \begin{lemma}[adjugate matrix]
@@ -16,6 +15,17 @@
   where
   $X_{ij}$ is the submatrix of $X$ formed by excluding the $i$-th row and the $j$-th column.
 \end{lemma}
+
+We skip the proof of \cref{adjugate matrix}.
+
+\begin{theorem}[Cayley-Hamilton]
+  Let $M$ be an $A$-module. Let $\phi: M \to M$ be a homomorphism of $A$-modules such that
+  \[ \phi(m) = IM = \{ \sum i_k m_k \suchthat i_k \in I, m_k \in M \}. \]
+  Then there exist elements
+  \[ a_{n-1} \in I, a_{n-2} \in I^2, \ldots, a_0 \in I^n \]
+  such that
+  \[ \phi^n + a_{n-1} \phi^{n-1} + \ldots + a_0 = 0 = \text{ the zero morphism}. \]
+\end{theorem}
 
 \begin{proof}
   \label{cayley-hamilton}
