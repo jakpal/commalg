@@ -1,0 +1,116 @@
+\section{Krull dimension}
+
+\begin{df}
+  Let $A$ be a ring. A \textit{chain of prime ideals} in $A$ is a sequence of proper inclusions
+  \[ \mathfrak p_0 \subseteq \mathfrak p_1 \subseteq \dotso \subseteq \mathfrak p_s\]
+  of prime ideals.
+
+  The \textit{length} of such a chain is the number of those inclusions, that is, a number smaller by one than the number of ideals in the chain.
+\end{df}
+
+\begin{df}
+  The \textit{Krull dimension} of $A$ is
+  \[ \dim A = \sup \{ \text{ length of a chain of prime ideals in $A$} \}.\]
+\end{df}
+
+\begin{example}
+  \mbox{}
+  \begin{enumerate}
+  \item If $k$ is a field, then $\dim k = 0$.
+  \item If $A$ is a principal ideal domain, then $\dim A = 1$, since nonzero prime ideals are maximal.
+  \end{enumerate}
+\end{example}
+
+The following result is more difficult to prove.
+
+\begin{theorem}
+  \label{poly dimension}
+  If $k$ is a field, then
+  \[\dim (k[x_1, \dotsc, x_n]) = n.\]
+\end{theorem}
+
+A chain of length $n$ is given as
+\[ (0) \subseteq (x_1) \subseteq (x_1, x_2) \subseteq \dotso \subseteq (x_1, \dotsc, x_n).\]
+However, $k[x_1, \dotsc, x_n]$ has many more prime ideals than those.
+
+\begin{example}
+  Let $f = x_n^3 + x_n^2 x_1$. One can take $x_i' = x_i$ for $i=1, 2, \dotsc, n-1$. Then
+  \[ x_n^3 + x_1' x_n^2 - f = 0\]
+  and the extension $k[x_1', \dotsc, x_{n-1}', x_n \cdot f] \subseteq k[x_1, \dotsc, x_n]$ is finite.
+\end{example}
+
+This approach can be extended in a way allowing us to prove \cref{poly dimension}.
+
+\begin{lemma}[Nagata's trick]
+  Let $f \in S = k[x_1, \dotsc, x_n]$, $f \notin k$. Then there exist $x_1', x_2', \dotsc, x_{n-1}' \in S$ such that
+  \[k[x_1', x_2', \dotsc, x_{n-1}' \cdot f] \subseteq k[x_1, \dotsc, x_n]\]
+  is a finite extension.
+\end{lemma}
+\begin{proof}
+  Fix $e > \deg(f)$ and assume without loss of generality that $x_n$ appears in $f$. Consider a $k$-algebra homomorphism
+  \[ \phi \colon S \to S \quad \text{via} \quad x_i \mapsto x_i - x_n^{e^{n+1-i}}, \enspace x_n \mapsto x_n.\]
+  We claim that $\phi$ is an isomorphism with inverse
+  \[ \phi^{-1} \colon S \to S \quad \text{via} \quad x_i \mapsto x_i + x_n^{e^{n+1-i}} \enspace x_n \to x_n.\]
+  Moreover, $\phi(f) = \pm x_n^D + \text{ monomials of a smaller total degree}$.
+
+  Indeed, one sees that distinct monomials are mapped by $\phi$ to polynomials with different top degree of $x_n$. More specifically, if $m = x_1^{a_1} \cdot \dotsb \cdot x_n^{a_n}$ is such that $a_n > 0$ and $m$ is lexicographically the greatest possible of all monomials in $f$, then
+  \[ D = \sum_{i=0}^n a_i e^{n-i}.\]
+  The process is akin to coding the variables in base $e$, and our claim is that decoding remains possible.
+
+  One takes $x_i' = \phi^{-1}(x_i)$. Then all $x_i$ are integral over $k[x_1', \dotsc, x_{n-1}', \phi(f)$. One may look at the diagram
+  \begin{tikzcd}[column sep = huge]
+    k[x_1, \dotsc, x_{n-1}, \phi(f)] \arrow{r}{\text{integral}} \arrow{d}{\phi^{-1}}
+    & k[x_1, \dotsc, x_n] \arrow{d}{\phi^{-1}} \\
+    k[x_1', \dotsc, x_{n-1}', f] \arrow{r}
+    & k[x_1, \dotsc, x_n]
+  \end{tikzcd}
+  The horizontal inclusions are integral, and because $B$ is finitely generated over $A$, the extension must be finite by \cref{lem-integral-fingen-fin}.
+\end{proof}
+
+\begin{prop}
+  If $A \into B$ is integral, then $\dim A = \dim B$.
+\end{prop}
+\begin{proof}
+  First, we show $\dim A \leq \dim B$.
+  Take a chain of prime ideals in $A$
+  \[ p_0 \subseteq p_1 \subseteq \dotso \subseteq \mathfrak p_s.\]
+  We will lift it to a chain in $B$. We shall proceed by induction:
+  \begin{itemize}
+  \item The base case follows from surjectivity of $\spec(B) \to \spec(A)$.
+  \item For the induction step, consider a partial lift
+    \[ \mathfrak q_0 \subseteq \dotso \subseteq \mathfrak q_k.\]
+    We wish to find $\mathfrak q_{k+1}$ such that $\mathfrak q_{k+1} \cap A = \mathfrak p_{k+1}$.
+    Consider $A/{\mathfrak p_k} \to B/{\mathfrak q_k}$; this is injective, and so it is surjective by
+    % TODO
+    .
+    Then one picks a preimage of $p_{k+1}$ in $B/{\mathfrak q_k}$.
+  \end{itemize}
+  For $\dim A \geq \dim B$, take
+  \[ \mathfrak q_0 \subseteq \dotso \subseteq q_s\]
+  a chain in $B$; take $p_i = \mathfrak q_i \cap A$. Then
+  \[ \mathfrak p_0 \subseteq \dotso \subseteq \mathfrak p_s\]
+  is a chain in $A$, as if $\mathfrak p_i = \mathfrak p_{i+1}$, $\mathfrak q_i \cap A = \mathfrak q_{i+1} \cap A$ and then by incomparability
+  % TODO give ref
+  $\mathfrak q_i = \mathfrak q_{i+1}$.
+\end{proof}
+
+\begin{proof}(\cref{poly dimension})
+  Proceed by induction on $n$. Base $n=0$ is fine.
+
+  Now assume that we have shown the claim for $n-1$ want to prove for $n$. Suppose that this is false, and so we get a chain of length $n+1$. For $i \geq 1$, pick $f \in \mathfrak p_i$.
+  Use Nagata's trick to get a finite extension
+  \[ A = k[x_1', \dotsc, x_{n-1}' \cdot f] \subseteq k[x_1, \dotsc, x_n].\]
+  Take a preimage of a chain on the right side in the left side.
+  Consider a quotient map
+  \[ k[y_1, \dotsc y_{n-1}] \to k[x_1', \dotsc, x_n' \cdot f]/{(f)}.\]
+  Put $\bar{\mathfrak q_i} = \mathfrak q_i /{f}$.
+  If we let $\mathfrak r_i$ to be the preimage of $\bar{\mathfrak q_i}$ in $k[y_1, \dotsc, y_{n-1}]$, then
+  \[ \mathfrak r_1 \subseteq \mathfrak r_2 \subseteq \dotso \subseteq \mathfrak r_{n+1}\]
+  is a chain of length $n$, in contradiction of the inductive assumption.
+\end{proof}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../commalg"
+%%% End:

@@ -1,0 +1,71 @@
+\section{Further properties of integral extensions}
+
+Recall that we have talked about the fiber and noted an isomorphism of $A$-algebras $A_{\mathfrak p} /{ \mathfrak p A_{\mathfrak p}}$ and $\text{Frac}(A/{\mathfrak p})$; we denoted this result by $\kappa(\mathfrak p)$.
+
+
+As motivation for the following, consider the diagram
+\begin{tikzcd}[column sep = huge]
+  A \arrow{r}{\text{integral}} \arrow{d}
+  & B \arrow{d} \\
+  A/{\mathfrak p} \arrow{r}{\text{integral}}
+  & B/{\mathfrak q}
+\end{tikzcd}
+with $\mathfrak p$, $\mathfrak q$ prime.
+
+\begin{lemma}
+  \label{integral extensions of domains propagate fields}
+  Let $f \colon A \into B$ be an integral extension and let $f$ be injective. Suppose that $A$ and $B$ are domains. Then $A$ is a field if and only if $B$ is a field.
+\end{lemma}
+\begin{proof}
+  Assume that $A$ is a field. Take $0 \neq b \in B$ and minimum $n$ such that
+  \[ b^n + a_{n-1} b^{n-1} + \dotsb + a_1b + a_0 = 0.\]
+  Then $a_0$ cannnot be zero since $n$ is minimal. Thus, it is invertible (as $A$ is a field). One can then write
+  \[ b (b^{n-1} + \dotsb + a_2b + a_1) = - a_0,\]
+  so that $b$ is invertible. Hence, $A$ is a field.
+
+  Conversely, supose $B$ is a field. Let $a \in A\setminus\{0\}$, so that for some $b \in B$, $ab=1$ holds. Let
+  \[ b^n + a_{n-1}b^{n-1} + \dotsb + a_1 b + a_0 = 0\]
+  and multiply both sides by $a^{n-1}$.
+  We then have
+  \[ b (ab)^{n-1} + a_{n-1} (ab)^{n-1} + \dotsb + a_1 (ab) a^{n-2} + a_0 a^{n-1} = 0.\]
+  Thus, for some $a' \in A$, one has $b+a=0$. Thus $b \in A$ and so $a$ is invertible in $A$.
+\end{proof}
+
+\begin{prop}
+  Suppose $f \colon A \into B$ is integral with $f$ injective. Then
+  \[ f^* \colon \spec(B) \to \spec(A)\]
+  is surjective.
+\end{prop}
+\begin{proof}
+  Let $\mathfrak p \in \spec(A)$, $S = A \setminus \mathfrak p$. An exercise shows that
+  \[ S^{-1} f \colon S^{-1} A \into S^{-1}B\]
+  is integral and injective.
+  In particular, $S^{-1}B$ is nonzero.
+  Thus, there exists a maximal ideal $\mathfrak m \subseteq S^{-1}B$. If we now let $\mathfrak p'$ be the preimage of $\mathfrak p$, then by \cref{integral extensions of domains propagate fields}, $S^{-1}A /{\mathfrak p'}$ is a field.
+
+  In particular, $A_{\mathfrak p} = S^{-1}A$ has only one maximal ideal $\mathfrak p A_{\mathfrak p}$ and we get $\mathfrak p' = mathfrak p A_{\mathfrak p}$.
+
+  If we now tahe $\mathfrak m \subseteq B$ to be the preimage of $\mathfrak m \subseteq S^{-1}B$, then $f^*(\mathfrak m) = \mathfrak p$.
+\end{proof}
+
+\begin{note}
+  For $f \colon A \to A/{\mathfrak p}$ integral, $\spec(A) \ot \spec(A/{\mathfrak p}$ is not usually surjective.
+\end{note}
+
+
+\begin{prop}[incomparability]
+  Suppose $f \colon A \to B$ is integral, $\mathfrak p \in \spec(A)$. Let $\mathfrak q_1 \subseteq \mathfrak q_2$, $\mathfrak q_i \in \spec(B)$ such that $f^*(\mathfrak q_1) = f^*(\mathfrak q_2) = \mathfrak p$. Then $\mathfrak q_1 = \mathfrak q_2$.
+\end{prop}
+\begin{proof}
+  Take $D \coloneqq \kappa(\mathfrak p) \tensor_A B$. Consider the integral extensions
+  \[ \kappa(\mathfrak p) \to D \to D/{\mathfrak q_i D}.\]
+  By \cref{integral extensions of domains propagate fields}, from $\kappa(\mathfrak p$ being a field it follows that $D/{\mathfrak q_i D}$ is also a field, and hence $\mathfrak q_i D \subseteq D$ is maximal. But $\mathfrak q_1 D \subseteq \mathfrak q_2 D$ and so $\mathfrak q_1 D = \mathfrak q_2 D$.
+
+  Then the claim follows, as $\mathfrak q_i = g^{-1}(\mathfrak q_i D)$, where $g \colon B \to D$ is the natural map.
+\end{proof}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../commalg"
+%%% End:
