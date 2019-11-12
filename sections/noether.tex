@@ -42,9 +42,17 @@
 \end{df}
 
 \begin{prop}
-  This happens exactly when every ideal of $A$ is finitely generated, and exactly when every prime ideal of $A$ is finitely generated.
+  \label{prime noetherian is noetherian}
+  Let $A$ be a ring. The following conditions are equivalent:
+  \begin{enumerate}
+  \item $A$ is Noetherian,
+  \item every ideal of $A$ is finitely generated,
+  \item every prime ideal of $A$ is finitely generated.
+  \end{enumerate}
+  \hfill\blacksquare
 \end{prop}
-% TODO proof?
+
+The implication ``$3 \implies 1$'' of \cref{prime noetherian is noetherian} is due to Cohen, 1950.
 
 \begin{prop}
   \label{noetherian-extensions}
@@ -57,12 +65,13 @@
 \begin{proof}
   We start with ``$1 \implies 2$''. First, we show that $N$ is Noetherian; indeed, if
   \[ N_1 \subseteq N_2 \subseteq \ldots \subseteq N \subseteq M\]
+  \(793124\)
   is a sequence of submodules of $N$, it is also a sequence of submodules of $M$ and the claim follows.
 
   To show that $M /{N}$ is Noetherian, consider a sequence of submodules
   \[ P_1 \subseteq P_2 \subseteq M /{N}.\]
   If then $\pi \colon M \to M /{N}$ denotes the quotient map, then the sequence
-  \[ \pi^{-1}(P_1) \subseteq pi^{-1}(P_2) \subseteq \ldots \subseteq M\]
+  \[ \pi^{-1}(P_1) \subseteq \pi^{-1}(P_2) \subseteq \ldots \subseteq M\]
   stabilizes, and since $\pi$ is surjective, we have
   \[ \pi(\pi^{-1}(P_n)) = P_n,\]
   ending the proof of ``$1 \implies 2$''.
@@ -114,10 +123,13 @@ the middle term is Noetherian if and only if the other ones are.
 
 
 \begin{theorem}[Hilbert basis theorem]
+  \label{hilbert basis}
   If $A$ is Noetherian, then
   \[ A[x_1, \dotsc, x_n]\]
-  is also Noetherian.
+  is also a Noetherian ring.
 \end{theorem}
+
+Note the difference: when considered as a $\complex$-module, $\complex[x]$ is not Noetherian, as it is not finitely generated. However, \cref{hilbert basis} states that as a module over itself, it is Noetherian.
 
 \begin{corollary}
   If $A$ is Noetherian and $B$ is a finitely generated $A$-algebra, then $B$ is also Noetherian.

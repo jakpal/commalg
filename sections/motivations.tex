@@ -8,14 +8,14 @@
 \begin{proof}
   Consider the following diagram.
   \begin{equation*}
-  \begin{tikzcd}
+  \begin{tikzcd}[column sep = huge]
     A \arrow[r] \arrow[d]
     & B \arrow[d] \\
     A /{ f^{-1}(\mathfrak p) } \arrow[r]
     & B /{\mathfrak p}
   \end{tikzcd}
 \end{equation*}
-The preimage of an ideal is an ideal; moreover, the lower vertical map is a injective. Hence,
+The preimage of an ideal is an ideal. Moreover, the lower horizontal map is injective; this is elementary, using but the definition of a quotient ring and the set-theoretical properties of preimages. Hence,
   $A /{f^{-1}(\mathfrak p)} \subseteq B /{\mathfrak p}$
   is a subring. If then $\mathfrak p$ is prime, $B /{\mathfrak p}$ is a domain; its every subring is then a domain as well. Thus,
 $A / {f^{-1}(\mathfrak p)}$
