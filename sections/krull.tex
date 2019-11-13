@@ -58,12 +58,14 @@ This approach can be extended in a way allowing us to prove \cref{poly dimension
   The process is akin to coding the variables in base $e$, and our claim is that decoding remains possible.
 
   One takes $x_i' = \phi^{-1}(x_i)$. Then all $x_i$ are integral over $k[x_1', \dotsc, x_{n-1}', \phi(f)$. One may look at the diagram
+  \[
   \begin{tikzcd}[column sep = huge]
     k[x_1, \dotsc, x_{n-1}, \phi(f)] \arrow{r}{\text{integral}} \arrow{d}{\phi^{-1}}
     & k[x_1, \dotsc, x_n] \arrow{d}{\phi^{-1}} \\
     k[x_1', \dotsc, x_{n-1}', f] \arrow{r}
     & k[x_1, \dotsc, x_n]
   \end{tikzcd}
+  \]
   The horizontal inclusions are integral, and because $B$ is finitely generated over $A$, the extension must be finite by \cref{lem-integral-fingen-fin}.
 \end{proof}
 
@@ -86,7 +88,7 @@ This approach can be extended in a way allowing us to prove \cref{poly dimension
     Then one picks a preimage of $p_{k+1}$ in $B/{\mathfrak q_k}$.
   \end{itemize}
   For $\dim A \geq \dim B$, take
-  \[ \mathfrak q_0 \subseteq \dotso \subseteq q_s\]
+  \[ \mathfrak q_0 \subseteq \dotso \subseteq \mathfrak q_s\]
   a chain in $B$; take $p_i = \mathfrak q_i \cap A$. Then
   \[ \mathfrak p_0 \subseteq \dotso \subseteq \mathfrak p_s\]
   is a chain in $A$, as if $\mathfrak p_i = \mathfrak p_{i+1}$, $\mathfrak q_i \cap A = \mathfrak q_{i+1} \cap A$ and then by incomparability

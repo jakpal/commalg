@@ -4,12 +4,14 @@ Recall that we have talked about the fiber and noted an isomorphism of $A$-algeb
 
 
 As motivation for the following, consider the diagram
+\[
 \begin{tikzcd}[column sep = huge]
   A \arrow{r}{\text{integral}} \arrow{d}
   & B \arrow{d} \\
   A/{\mathfrak p} \arrow{r}{\text{integral}}
   & B/{\mathfrak q}
 \end{tikzcd}
+\]
 with $\mathfrak p$, $\mathfrak q$ prime.
 
 \begin{lemma}
@@ -59,7 +61,7 @@ with $\mathfrak p$, $\mathfrak q$ prime.
 \begin{proof}
   Take $D \coloneqq \kappa(\mathfrak p) \tensor_A B$. Consider the integral extensions
   \[ \kappa(\mathfrak p) \to D \to D/{\mathfrak q_i D}.\]
-  By \cref{integral extensions of domains propagate fields}, from $\kappa(\mathfrak p$ being a field it follows that $D/{\mathfrak q_i D}$ is also a field, and hence $\mathfrak q_i D \subseteq D$ is maximal. But $\mathfrak q_1 D \subseteq \mathfrak q_2 D$ and so $\mathfrak q_1 D = \mathfrak q_2 D$.
+  By \cref{integral extensions of domains propagate fields}, from $\kappa(\mathfrak p)$ being a field it follows that $D/{\mathfrak q_i D}$ is also a field, and hence $\mathfrak q_i D \subseteq D$ is maximal. But $\mathfrak q_1 D \subseteq \mathfrak q_2 D$ and so $\mathfrak q_1 D = \mathfrak q_2 D$.
 
   Then the claim follows, as $\mathfrak q_i = g^{-1}(\mathfrak q_i D)$, where $g \colon B \to D$ is the natural map.
 \end{proof}
