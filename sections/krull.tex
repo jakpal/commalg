@@ -70,12 +70,13 @@ This approach can be extended in a way allowing us to prove \cref{poly dimension
 \end{proof}
 
 \begin{prop}
+  \label{going-up}
   If $A \into B$ is integral, then $\dim A = \dim B$.
 \end{prop}
 \begin{proof}
   First, we show $\dim A \leq \dim B$.
   Take a chain of prime ideals in $A$
-  \[ p_0 \subseteq p_1 \subseteq \dotso \subseteq \mathfrak p_s.\]
+  \[ \mathfrak p_0 \subseteq \mathfrak p_1 \subseteq \dotso \subseteq \mathfrak p_s.\]
   We will lift it to a chain in $B$. We shall proceed by induction:
   \begin{itemize}
   \item The base case follows from surjectivity of $\spec(B) \to \spec(A)$.
@@ -107,12 +108,64 @@ This approach can be extended in a way allowing us to prove \cref{poly dimension
   \[ k[y_1, \dotsc y_{n-1}] \to k[x_1', \dotsc, x_n' \cdot f]/{(f)}.\]
   Put $\bar{\mathfrak q}_i = \mathfrak q_i /{f}$.
   If we let $\mathfrak r_i$ to be the preimage of $\bar{\mathfrak q}_i$ in $k[y_1, \dotsc, y_{n-1}]$, then
-  \[ \mathfrak r_1 \subseteq \mathfrak r_2 \subseteq \dotso \subseteq \mathfrak r_{n+1}\]
+  \( \mathfrak r_1 \subseteq \mathfrak r_2 \subseteq \dotso \subseteq \mathfrak r_{n+1}\)
   is a chain of length $n$, in contradiction of the inductive assumption.
 \end{proof}
 
+\begin{corollary}
+  \label{cor poly dimension}
+  If
+  \(A = k[x_1, \dotsc, x_d] /{I}\)
+  with
+  \(I \neq 0,\)
+  then
+  \(\dim(A) < d.\)
+\end{corollary}
+\begin{proof}
+  Suppose
+  \(\dim(A) \geq d.\)
+  Choose a chain of prime ideals
+  \[\mathfrak p_0 \subseteq \mathfrak p_1 \subseteq \dotso \subseteq \mathfrak p_d\]
+  in \(A\) and consider their preimages in
+  \(k[x_1, \dotsc, x_d],\)
+  that is,
+  \[\mathfrak q_1 \subseteq \mathfrak q_2 \subseteq \dotso \subseteq \mathfrak q_d.\]
+  This is again a chain of prime ideals. Then by considering \(I\) one gets a chain of length
+  \(d +1\)
+  in \( k [x_1, \dotsc, x_d],\)
+  contradicting \cref{poly dimension}.
+\end{proof}
 
+\begin{example}
+  Take
+  \(A = k[x_1, \dotsc, x_d]/{(f)}.\)
+  What is the dimension of \(A\)?
+  \begin{enumerate}
+  \item \(f = 0  \implies \dim(A) = d,\)
+  \item \(f \in k \setminus {0} \implies A = 0,\) whose dimension may be taken to be \(-1\) or \(-\infty,\)
+  \item If \(f \notin k,\) then by Nagata's coordinate change there exists a finite extension
+    \[k[x_1', \dotsc, x_{d-1}', f] \subseteq k[x_1, \dotsc, x_d].\]
+    Now, \(k[x_1', \dotsc, x_{d-1}', f]\) is a polynomial ring, since its dimension is \(d\) and thus \cref{cor poly dimension} implies that there are no relations.
 
+    Because of this, there exists a chain
+    \[0 \subseteq (f) \subseteq (f, x_1') \subseteq (f, x_1', x_2') \subseteq \dotso \subseteq (f, x_1', x_2', \dotsc, x_{d-1}')\]
+    Now, by \cref{going-up} this chain lifts to a chain
+    \[0 \subseteq \mathfrak p_0 \subseteq \mathfrak p_1 \subseteq \dotso \subseteq \mathfrak p_{d-1}.\]
+  Because \(f \in \mathfrak p_0,\)
+  we get a chain in \(k[x_1, \dotsc, x_n]/{(f)},\)
+  giving the dimension of
+  \(k[x_1, \dotsc, x_d]/{(f)}\)
+  as \(d-1.\) 
+  \end{enumerate}
+\end{example}
+
+\begin{prop}
+  If
+  \(I \subseteq k[x_1, \dotsc, x_d]\)
+  and \(x_d \in I,\)
+  then
+  \[k[x_1, \dotsc, x_d]/{I} \cong k[x_1, \dotsc, x_d]/{I \cap k[x_1, \dotsc, x_{d-1}]}.\]
+\end{prop}
 
 
 
