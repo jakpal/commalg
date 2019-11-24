@@ -1,4 +1,4 @@
-\documentclass[10pt, a4paper, openany]{scrbook}
+\documentclass[10pt, a4paper, openany, bibliography=totoc]{scrbook}
 \usepackage{amsfonts}
 \usepackage{amsmath}
 \usepackage{amsthm}
@@ -19,9 +19,14 @@
 \usepackage{graphicx}
 \usepackage{yfonts}
 
+% If using AucTeX, run C-c biber whenever bibliography is changed; due to a bug, biber is not recognized as a backend.
+\usepackage[backend=biber,style=alphabetic]{biblatex}
+\bibliography{references.bib}
+
 % keep these at the end, and definitions of theorems and their counters after that
 \usepackage{hyperref}
 \usepackage[capitalise, noabbrev]{cleveref}
+
 
 % stops line-breaking inline mathematics
 % \binoppenalty = \maxdimen
