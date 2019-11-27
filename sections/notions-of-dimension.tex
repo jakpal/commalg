@@ -1,0 +1,46 @@
+\section{Other notions of dimension for rings}
+\begin{df}
+  Let \(k \subseteq K\) be fields. We say that \(x_1, \dotsc, x_b \in K\) are \emph{algebraically independent} over \(k\) if there is no nonzero polynomial
+  \(0 \neq f \in k[X_1, \dotsc, X_b]\)
+  such that \(f(x_1, \dotsc, x_b) = 0.\)
+  One says that
+  \(\{x_1, \dotsc, x_b\} \subseteq K\) is a \emph{transcendence basis} of \(K\) over \(k\) if \(x_1, \dotsc, x_b\) are algebraically independent and the extension
+  \(k(x_1, \dotsc, x_b) \subseteq K\)
+  is integral.
+\end{df}
+
+\begin{lemma}
+  Every two transcendence bases have the same cardinality, provided \(K\) is finitely generated over \(k.\)
+\end{lemma}
+
+\begin{df}
+  The number of elements in a transcendence basis is called the \emph{transcendence degree} of \(K\) over \(k\) and denoted by
+  \(\trdeg_k(K).\)
+\end{df}
+
+\begin{theorem}
+  Ket \(A\) be a finitely generated \(k\)-algebra. Assume that \(A\) is a domain with \(\fractions(A) = K.\) Then
+  \(\dim(A) = \trdeg_k(K).\)
+\end{theorem}
+\begin{proof}
+  Noether normalization implies that there exists a finite extension
+  \[k[x_1, \dotsc, x_d] \subseteq A, \quad d = \dim(A).\]
+  Let \(S = k[x_1, \dotsc, x_n] \setminus \{0\}.\)
+  Then, the extension
+  \(K = S^{-1}k[x_1, \dotsc, x_d] \subseteq S^{-1}A\)
+  is finite, and because \(S^{-1}A\) is a domain, it follows that \(S^{-1}A = \fractions(A)\) is a field; that is, \(\fractions(S^{-1}A) = \fractions(A).\)
+
+  Hence, we have a finite extension
+  \(k(x_1, \dotsc, x_d) \subseteq \fractions(A),\)
+  so \(\{x_1, \dotsc, x_d\}\) is a transcendence basis. The claim follows.
+\end{proof}
+
+\begin{example}
+  \(\dim(k[x,y] / {y^2-x^3-x}) = 1\).
+\end{example}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../commalg"
+%%% End:
