@@ -37,7 +37,7 @@ In the following, we will consider an algebraically closed field \(k = \cl{k}.\)
     \begin{align*}
       \alpha \in V(E) & \iff \forall f \in \bigsetsum_{i \in I} \enspace f(\alpha = 0) \\
                       & \iff \forall i \in I \enspace \forall f \in E_i \enspace f(\alpha) = 0 \\
-                      & \iff \forall i \in I \alpha \in V(E_i) \\
+                      & \iff \forall i \in I \enspace \alpha \in V(E_i) \\
                       & \iff \alpha \in \bigsetintersection_{i \in I} V(E_i),
     \end{align*}
   \item if we put \(E = E_1 \cdot E_2 = \{f_1 \cdot f_2 \suchthat f_1 \in E_1, f_2 \in E_2\},\) then for any \(\alpha \in k^n\) the following holds:
@@ -47,7 +47,7 @@ In the following, we will consider an algebraically closed field \(k = \cl{k}.\)
                       & \iff \forall f_1 \in E_1, f_2 \in E_2 \enspace f_1(\alpha) = 0 \enspace \lor f_2(\alpha) = 0 \\
                       & \iff \alpha \notin V(E_1) \implies \alpha \in V(E_2) \enspace \land \enspace \alpha \notin V(E_2) \implies \alpha \in V(E_1) \\
                       & \iff \alpha \in V(E_1) \enspace \lor \alpha \in V(E_2) \\
-                      & \alpha \in V(E_1) \cup \alpha \in V(E_2)
+                      & \iff \alpha \in V(E_1) \cup V(E_2)
     \end{align*}
   \end{enumerate}
 \end{proof}
@@ -110,12 +110,12 @@ If \(J = \rad{I}\), then \(\rad{J} = J\), and so \(J\) is radical.
 
 \begin{corollary}
   \label{closed in bijection with radical}
-  The functions \(I(-)\) and \(V(-)\) give a bijective correspondence
+  The functions \(I(-)\) and \(V(-)\) give a bijective (inclusion-reversing) correspondence
   \[\{Z \subseteq k^n, \text{$Z$ closed}\} \cong \{J \subseteq S \suchthat \rad{J} = J\}.\]
 \end{corollary}
 
 \begin{note}
-  If \(k\) is not algebraically closed, then the weak Nullstellensatz and the relaed results may well fail. For example, one can produce a polynomial \(f \in k[x_1, \dotsc, x_n]\) such that
+  If \(k\) is not algebraically closed, then the weak Nullstellensatz and the related results may well fail. For example, one can produce a polynomial \(f \in k[x_1, \dotsc, x_n]\) such that
   \(V(f) = \{(0, \dotsc, 0)\} \subseteq k^n).\)
 \end{note}
 
@@ -135,7 +135,7 @@ If \(J = \rad{I}\), then \(\rad{J} = J\), and so \(J\) is radical.
   \item If \(J\) is not prime, then \(V(J)\) is reducible.
   \end{enumerate}
   For the first, one, write \(V(J) = V_1 \cup V_2.\) By \cref{algebraic set nullstellensatz},
-  \(J = I(V(J)) = I(V_1 \cup V_2) = I(V_1) \cap I(V_2).\)
+  \[J = I(V(J)) = I(V_1 \cup V_2) = I(V_1) \cap I(V_2).\]
   Hence,
   \(I(V_1) \cdot I(V_2) \subseteq J.\)
   Because \(J\) is prime, it follows that either \(I(V_1) \subseteq J\) or \(I(V_2) \subseteq J\) (again by \cref{algebraic set nullstellensatz}).
@@ -180,13 +180,13 @@ If \(J = \rad{I}\), then \(\rad{J} = J\), and so \(J\) is radical.
 \end{example}
 
 \begin{lemma}
-  \(k^n\) equipped with the Zariski topoloy is a Noetherian topological space.
+  \(k^n\) equipped with the Zariski topology is a Noetherian topological space.
 \end{lemma}
 \begin{proof}
   Consider a descending sequence \(V_1 \supseteq V_2 \supseteq \dotso\) of closed sets; this leads to an ascending sequence of ideals
   \[I(V_1) \subseteq I(V_2) \subseteq \dotso \subseteq k[x_1, \dotsc, x_n].\]
-  This stabilizes, because \(k[x_1, \dotsc, x_n]\) is Noetherian. Suppose is stabilizes at \(k\); then
-  \(\forall l \geq k V(I(V_l) = V(I(V_k))).\)
+  This stabilizes, because \(k[x_1, \dotsc, x_n]\) is Noetherian. Suppose is stabilizes at \(k\); then for all \(l \geq k\),
+  \(V(I(V_l) = V(I(V_k))).\)
   But \(V(I(V_i)) = V_i\) by the Nullstellensatz (\cref{algebraic set nullstellensatz}), since \(V_i\) are closed,
   % TODO correct the reference
   and so the claim is proved.
