@@ -1,0 +1,64 @@
+\section{Local theory}
+One wonders what the dimension of \(k[x_1, \dotsc, x_n] / {(f_1, \dotsc, f_r)}\) may be.
+
+For instance, \(\dim(k[x_1, \dotsc, x_n]/{(f)})\) may be \(n\) if \(f=0;\) \(-1\) if \(f \in k^*\); \(n-1\) otherwise.
+
+In general, \(\dim(k[x_1, \dotsc, x_n]/{(f_1, \dotsc, f_r)})\) may be \(-1\) if \((f_1, \dotsc, f_r) = (1)\) and otherwise it is no smaller than \(n - r.\)
+
+\begin{example}
+  \[\dim(k[x_1, x_2, x_3]/{(x_1^2, x_1 x_2, x_2^2)}) = \dim(k[x_1, x_2, x_3]/{(x_1, x_2)}) = 1.\]
+\end{example}
+
+\begin{theorem}[Krull's principal ideal theorem]
+  Let \(A\) be a Noetherian ring, \(f \in A.\) If \(\mathfrak p \in V(f)\) is minimal, then
+  \(\dim(A_{\mathfrak p}) \leq 1.\)
+\end{theorem}
+
+\begin{corollary}
+  Let \(A\) be a Noetherian ring, \(f_1, \dotsc, f_r \in A.\) If \(\mathfrak p \in V(f_1, \dotsc, f_r)\) is minimal, then \(\dim(A_{\mathfrak p}) \leq r.\)
+\end{corollary}
+
+\begin{corollary}
+  Let \(\mathfrak m \subseteq A\) be a  maximal ideal. Then
+  \[\dim(A_{\mathfrak m}) \leq \dim_{A/{\mathfrak m}} (\mathfrak m /{\mathfrak m^2}).\] 
+\end{corollary}
+
+\begin{df}
+  A maximal ideal \(\mathfrak m \in \spec(A)\) is \emph{regular} if
+  \[\dim(A_{\mathfrak m}) = \dim_{A/{\mathfrak m}} (\mathfrak m /{\mathfrak m^2}).\]
+\end{df}
+
+\begin{theorem}
+  If \(\mathfrak m\) is regular, then \(A_{\mathfrak m}\) is a unique factorization domain (UFD).
+\end{theorem}
+\begin{proof}
+  See Eisenbud.
+\end{proof}
+
+\begin{note}
+  Being regular is a property of \(A_{\mathfrak m}.\)
+\end{note}
+
+\begin{example}
+  All DVRs are regular.
+\end{example}
+
+\begin{note}
+  By Nakayama, \(\dim_{A/{\mathfrak m}}(\mathfrak m/{\mathfrak m^2})\) is equal to the number of generators of \(\mathfrak m A_{\mathfrak m},\) provided \(A\) is Noetherian.
+
+  Indeed, suppose that \(f_1, \dotsc, f_d \in \mathfrak m A_{\mathfrak m}\) are such that \(\tilde{f}_1, \dotsc, \tilde{f}_d\) span \(\mathfrak m /{\mathfrak m^2} = \mathfrak m A_{\mathfrak m}/{\mathfrak m^2 A_{\mathfrak m}}.\)
+
+  Then,
+  \[(f_1, \dotsc, f_d) A_{\mathfrak m} + \mathfrak m^2 A_{\mathfrak m} = \mathfrak m A_{\mathfrak m}\]
+  and by Nakayama, \((f_1, \dotsc, f_d) A_{\mathfrak m} = \mathfrak m A_{\mathfrak m}.\)
+\end{note}
+
+
+
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../commalg"
+%%% End:
