@@ -134,13 +134,12 @@ If \(J = \rad{I}\), then \(\rad{J} = J\), and so \(J\) is radical.
   \item If \(J\) is prime, then \(V(J)\) is irreducible.
   \item If \(J\) is not prime, then \(V(J)\) is reducible.
   \end{enumerate}
-  For the first, one, write \(V(J) = V_1 \cup V_2.\) By \cref{algebraic set nullstellensatz},
+  For the first, one writes \(V(J) = V_1 \cup V_2.\) By \cref{algebraic set nullstellensatz},
   \[J = I(V(J)) = I(V_1 \cup V_2) = I(V_1) \cap I(V_2).\]
   Hence,
   \(I(V_1) \cdot I(V_2) \subseteq J.\)
-  Because \(J\) is prime, it follows that either \(I(V_1) \subseteq J\) or \(I(V_2) \subseteq J\) (again by \cref{algebraic set nullstellensatz}).
-  In any case, it follows that \(V_1 = V(J)\) or \(V_2 = V(J)\), and so \(V(J)\) is irreducible since \(V_1, V_2\) were arbitrary.
-  % TODO finish argument
+  Because \(J\) is prime, it follows that either \(I(V_1) \subseteq J\) or \(I(V_2) \subseteq J\); indeed, in general, \(J_1 \cdot J_2 \subseteq \mathfrak p\) with \(\mathfrak p\) prime implies that one of the \(J_i\) is contained in \(\mathfrak p\), as a pair of elements exposing the contrary would deny that \(\mathfrak p\) is prime.
+  It follows that \(V_1 = V(J)\) or \(V_2 = V(J)\), and so \(V(J)\) is irreducible since \(V_1, V_2\) were arbitrary.
 
   For the second claim, pick \(a, b \notin J\) such that \(ab \in J\). We let
   \(V_1 = V((a) + J),\)
@@ -155,11 +154,8 @@ If \(J = \rad{I}\), then \(\rad{J} = J\), and so \(J\) is radical.
   Analogously, \(V_2 = V(J)\) leads to contradiction.
 \end{proof}
 
-% In a way, \cref{prime irreducible} allows us to think of
-% forgot the intuition
-
 \begin{example}
-  Let \(n = 1,\) \(S = k[x].\) Then the irreducible subseteq of \(k^1\) are:
+  Let \(n = 1,\) \(S = k[x].\) Then the irreducible subsets of \(k^1\) are:
   \begin{itemize}
   \item \(k^1 = \cl{V(0)}),\)
   \item \(V(x-\lambda), \enspace \lambda \in k.\)
@@ -202,8 +198,7 @@ If \(J = \rad{I}\), then \(\rad{J} = J\), and so \(J\) is radical.
 \begin{proof}
   \(V(J) = V(\rad{J}) = V_1 \cup \dotsb \cup V_r\) with \(V_i\) irreducible algebraic sets. Then
   \[\rad{J} = I(V(J)) = I(V_1 \cup \dotsb \cup V_r) = I(V_1) \cap \dotsb \cap I(V_r),\]
-  and the \(I(V_i) = \mathfrak p_i\) are in fact prime ideals, because \(V_i\) is irreducible.
-  % TODO fix reference
+  and the \(I(V_i) = \mathfrak p_i\) are in fact prime ideals, because \(V_i\) are irreducible.
 \end{proof}
 
 

@@ -1,0 +1,174 @@
+\section{Regular points}
+
+\begin{example}
+  Consider the elliptic curve
+  \(V(y^2-x^3-x) \subseteq \spec(k[x, y]).\)
+  The Jacobian has constant rank \(1\) (on the zero locus).
+  % TODO so what?
+\end{example}
+
+We will aim to show existence of regular points. We recall a fact.
+\begin{note}
+  If \(f \colon A \to B\) is a ring homomorphism, \(M\) is an \(A\)-module and \(N\) a \(B\)-module, then there is a natural bijection
+  \[\hom_A(M, N) \cong \hom_B(B \tensor_A M, N)\]
+  that generalizes to an adjunction between tensoring by \(B\) and forgetting the structure of a \(B\)-module.
+\end{note}
+
+\begin{theorem}[Krull's principal ideal theorem]
+  \label{krull's principal ideal theorem}
+  Let \(A\) be Noetherian, \(f \in A,\) \(\mathfrak p \in V(f)\) minimal. Then \(\dim(A_{\mathfrak p}) \leq 1.\)
+\end{theorem}
+\begin{proof}
+  Let \(\mathfrak q \subseteq \mathfrak p\) be distinct prime ideals. We wish to have
+  \(\spec(A_{\mathfrak q}) = \{ \mathfrak q A_{\mathfrak q}\}.\)
+  We replace \(A\) by \(A_{\mathfrak p}\) and write further on \(A\) instead of \(A_{\mathfrak p}.\)
+  Now, because \(\mathfrak p\) is minimal over \(f,\) we have
+  \(V(f) = \{\mathfrak p A_{\mathfrak p}\}.\)
+  Because \(\dim(A/{(f)}) = 0,\) \(A/{(f)}\) is Artinian.
+  Let \(\pi \colon A \to A_{\mathfrak q}.\) Now, a sequence
+  \[\mathfrak q A_{\mathfrak q} \supseteq \mathfrak q^2 A_{\mathfrak q} \supseteq \dotso \supseteq \mathfrak q^n A_{\mathfrak q}\]
+  leads to a sequence
+  \[I_1 \coloneqq \pi^{-1}(\mathfrak q A_{\mathfrak q}) \supseteq\]
+  % TODO etc.
+  Then \(I_n+(f)/{(f)}\) stabilizes, because \(A/{(f)}\) is Artinian. Hence, \(I_n + (f)\) stabilizes. In particular, there exists an \(n\) such that \(I_n + (f) = I_{n+1} + (f).\)
+  Hence, if we choose \(i \in I_n,\) there will be an \(\tilde{i} \in I_{n+1}\) and an \(a \in A\) such that
+  \(i = \tilde{i} + af.\)
+
+  We deduce that \(I_n = I_{n+1} + f \cdot I_n\). By Nakayama,
+  % TODO ref
+  we get \(I_n = I_{n+1}.\)
+  Since we have
+  \[\mathfrak q^n A_{\mathfrak q} = \pi(I_n)A_{\mathfrak q} = \pi(I_{n+1}) A_{\mathfrak q} = \mathfrak q^{n+1} A_{\mathfrak q},\]
+  another use of Nakayama implies that \(\mathfrak q^n A_{\mathfrak q} = 0\) and so \(\mathfrak q A_{\mathfrak q}\) is nilpotent.
+  This finishes the proof.
+\end{proof}
+
+\begin{corollary}
+  \label{krull corollary}
+  Let \(A\) be Noetherian,
+  \(f_1, \dotsc, f_r \in A,\)
+  \(\mathfrak p \in V(f_1, \dotsc, f_r)\) minimal.
+  Then
+  \(\dim(A_{\mathfrak p}) = 1.\)
+\end{corollary}
+\begin{proof}
+  We proceed by induction on \(r,\) seeing that the case \(r=1\) is correct. In the following, replace \(A\) by \(A_{\mathfrak p}.\)
+
+  For the induction step, consider a proper inclusion \(\mathfrak q \subseteq \mathfrak p\) of prime ideals, with no prime ideals between. We claim that \(\dim(A_{\mathfrak q}) \leq r-1.\)
+  We have
+  \(\{f_1, \dotsc, f_r\} \not\subseteq \mathfrak q,\)
+  for example \(f_1 \notin \mathfrak q.\)
+
+  Then \(\mathfrak p \in V(\mathfrak q + (f_1))\) is a  minimal element; if not, then \(\mathfrak q = \mathfrak r \subseteq \mathfrak p\) is a proper inclusion, \(f_1 \in \mathfrak p.\)
+
+  Now,
+  \[\spec(A/{(\mathfrak q + (f_1))}) = \{\mathfrak p\} \implies \nil(A / {\mathfrak q + (f_1)}) = \mathfrak p\]
+  and so \(f_2, \dotsc, f_r \in \nil(A/{\mathfrak q + (f_1)}),\) hence
+  \[\exists n \forall i = 2, \dotsc, r \enspace \exists g_i \in \mathfrak q \enspace \exists a_i \in A \enspace f_i^n = g_i + f_1 a_i.\]
+  Consider now \(\tilde{f}_1 \in A/{(g_2, \dotsc, g_r)},\) and \(\tilde{\mathfrak p}\) a minimal element of \(V(f_1).\)
+
+  By \cref{krull's principal ideal theorem}, we get
+  \(\dim(A/{(g_2, \dotsc, g_r)}) \leq 1,\)
+  \(\spec(A/{(g_2, \dotsc, g_r)}) = \{\tilde{\mathfrak q}, \tilde{\mathfrak p}\},\)
+  with \(\tilde{\mathfrak q}\) a minimal element of the spectrum.
+
+  \(\mathfrak q \in V(g_2, \dotsc, g_r)\) is minimal, so by induction \(\dim(A_{\mathfrak q}) \leq r - 1.\) Then \(\dim(A_{\mathfrak p}) \leq r.\)
+\end{proof}
+
+\begin{corollary}
+  Let \(A\) be Noetherian, \(\mathfrak m\) a maximal ideal. Then
+  \[\dim(A_{\mathfrak m}) \leq \dim_{A/{\mathfrak m}}(\mathfrak m /{\mathfrak m^2}).\]
+\end{corollary}
+\begin{proof}
+  Let \(r = \dim_{A/{\mathfrak m}}(\mathfrak m /{\mathfrak m^2}).\) Choose \(f_1 \dotsc, f_r\) that span \(\mathfrak m /{\mathfrak m^2}\). Nakayama implies that
+  \(\mathfrak m A_{\mathfrak m} = (f_1, \dotsc, f_r) A_{\mathfrak m},\)
+  \(\mathfrak m A_{\mathfrak m} \in V(f_1, \dotsc, f_r),\)
+  and we use the \cref{krull corollary} to derive the result.
+\end{proof}
+
+\begin{note}
+  In the above,
+  \[\mathfrak m /{\mathfrak m^2} = \mathfrak m A_{\mathfrak m} /{\mathfrak m^2 A_{\mathfrak m}}.\]
+\end{note}
+
+For some time, we will consider the following setup: \(A\) is a finitely generated algebra over \(k = \cl{k},\) as well as a domain. Then the set of regular points is open (does not need the domain assumption) and we will claim that \(A\) has regular points.
+For technical reasons, we will consider the case of characteristic zero, though our results carry over to arbitrary characteristic.
+
+\begin{example}
+  If \(A\) is not a domain, then \(A = k[\varepsilon]/{\varepsilon^2}\) has no regular points.
+\end{example}
+
+\begin{df}
+  The \emph{cotangent space} at \(\mathfrak m\) is \(\mathfrak m / {\mathfrak m^2}.\)
+\end{df}
+
+Recall that \(\Omega = \Omega_{A /{\mathfrak m}}\) is defined by the universal property
+\(\hom_A(\Omega, M) \cong \der_k(A, M).\)
+
+For now, we use the following two facts without proof.
+
+\begin{lemma}
+  \(\forall \mathfrak m\)
+  \[\Omega /{\mathfrak m \Omega} \cong \mathfrak m /{\mathfrak m^2}.\]
+\end{lemma}
+
+\begin{lemma}
+  Let \(K = \fractions(A).\) Then
+  \(\Omega \tensor_A K = K^{\oplus \dim(A)}.\)
+\end{lemma}
+
+We also require a nontrivial result.
+\begin{theorem}
+  If \(A\) is a domain, then for any maximal ideal \(\mathfrak m \subseteq A\),
+  \(\dim(A) = \dim(A_{\mathfrak m}).\)
+\end{theorem}
+
+Those allow us to derive the following.
+
+\begin{prop}
+  \label{prop omega}
+  The following are equivalent, where \(d = \dim(A).\)
+  \begin{enumerate}
+  \item \(\mathfrak m\) is regular,
+  \item \(\dim_k(\Omega /{\mathfrak m \Omega}) = d,\)
+  \item \(\dim_k(\Omega / {\mathfrak m \Omega}) \leq d,\)
+  \item \(\Omega_{\mathfrak m}\) is a free \(A\)-module.
+  \end{enumerate}
+\end{prop}
+\begin{proof}
+  \(3 \implies 2,\) because otherwise,
+  \[\dim_k(\mathfrak m /{\mathfrak m^2}) = \dim_k(\Omega / {\mathfrak m \Omega}) < d,\]
+  contradicting a corollary from Krull and Theorem above.
+  % TODO ref
+  For \(2 \iff 4,\) use a result from the exercise sheet.
+  % TODO ?
+\end{proof}
+
+\begin{prop}[smearing out]
+  \label{smearing out}
+  Let \(M\) be a finitely generated \(A\)-module. If \(\mathfrak p \in \spec(A)\) is such that
+  \[\dim_{\kappa(\mathfrak p)}(M \tensor_A \kappa(\mathfrak p)) \leq d,\]
+  then there exists \(f \in A \setminus \mathfrak p\) such that \(M_f\) is generated by no more than \(d\) elements.
+\end{prop}
+
+\begin{corollary}
+  With assumptions on \(A\) as before, there exists \(f \in A \setminus \{0\}\) such that \(\Omega_f\) is generated by at most \(d\) elements. Hence, every point outside \(V(f)\) is regular.
+\end{corollary}
+\begin{proof}
+  Apply \cref{smearing out} to \(\mathfrak p = (0) \subseteq A,\) \(M = \Omega.\) We get \(f\) such that \(\Omega_f\) is generated by no more than \(d\) elements. By \cref{prop omega},
+  \[\forall f \notin \mathfrak m \enspace \Omega/{\mathfrak m \Omega} \cong \Omega_f /{\mathfrak m \Omega_f}\]
+  which is generated by no more than \(d\) elements, which is equivalent to
+  \(\dim_k(\Omega / {\mathfrak m \Omega}) \leq d.\)
+  By \cref{prop omega}, \(\mathfrak m\) is regular.
+\end{proof}
+
+
+
+
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../commalg"
+%%% End:
