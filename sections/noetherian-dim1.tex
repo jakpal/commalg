@@ -1,0 +1,364 @@
+\section{Noetherian rings of dimension one}
+
+\begin{example}
+  The following are examples of Noetherian local rings of dimension one:
+  \begin{enumerate}
+  \item \(k[[x]]\),
+  \item \(k[x]_{(x)}\),
+  \item \(\integer_{(p)}\).
+  \end{enumerate}
+\end{example}
+
+\begin{df}
+  A \emph{valuation} on a field \(R\) is a function \(V \colon R \to \integer \cup \{\infty\}\) satisfying:
+  \begin{itemize}
+  \item \(\forall a, b \in R \enspace V(ab) = V(a) + V(b),\)
+  \item \(\forall a, b \in R \enspace V(a + b) \geq \min(V(a), V(b)),\)
+  \item \(V(0) = \infty,\)
+  \item \(V\) is surjective.
+  \end{itemize}
+  The \emph{valuation ring} of \(R\) is
+  \(A = \{x \in R \suchthat V(x) \geq 0\}.\)
+\end{df}
+
+\begin{example}
+  One can introduce a ``mock valuation'' on \(k[[x]]\) by considering \(k((x)) = k[[x]]_x.\)
+\end{example}
+
+\begin{prop}
+  The valuation ring of any field \(k\) is a local ring with maximal ideal
+  \[\mathfrak m = \{x \in k \suchthat V(x) > 0\}.\]
+\end{prop}
+\begin{proof}
+  \(\mathfrak m\) is an ideal.
+  Let \(a \in A \setminus \mathfrak m.\) \(V(a) = 0,\) so
+  \[V(a^{-1}) = -V(a) = 0,\]
+  so \(a^{-1} \in A,\) hence \(a\) is invertible in \(A.\)
+  Now,
+  \(V(1 \cdot 1) = V(1) + V(1),\)
+  so \(V(1) = 0.\)
+  In particular, all invertible elements (and so, all elements of the complement of \(\mathfrak m\) in \(A\)) are mapped to \(0\) under \(V.\) This concludes the proof.
+\end{proof}
+
+\begin{lemma}
+  \label{val inclusions}
+  If \(A\) is a valuation ring, \(a, b \in A\), then
+  \[(a) \subseteq (b) \implies V(a) \geq V(b).\]
+\end{lemma}
+\begin{proof}
+  \((a) \subseteq (b) \iff \exists c \in A \enspace a = bc.\) For such a \(c,\) \(V(a) = V(c) + V(b) \geq V(b).\)
+\end{proof}
+
+\begin{corollary}
+  \label{val equality}
+  With notation of \cref{val inclusions},
+  \[V(a) = V(b) \iff (a) = (b).\]
+\end{corollary}
+
+\begin{df}
+  A \emph{local parameter} or \emph{uniformizer} of a valuation ring \(A\) is any element \(t \in A\) such that \(V(t) = 1.\)
+\end{df}
+
+\begin{prop}
+  If \(t_1\) and \(t_2\) are uniformizers of a valuation ring \(A\) and \(n\) is a natural number, then \((t_1^n) = (t_2^n).\)
+\end{prop}
+\begin{proof}
+  This follows from \cref{val inclusions} and the property \(V(ab) = V(a) + V(b).\)
+\end{proof}
+
+\begin{corollary}
+  The principal ideals of a valuation ring \(A\) are totally ordered by inclusion.
+\end{corollary}
+\begin{proof}
+  It suffices to show that if \(a, b \in A\) and \((a) \not\subseteq (b),\) \((b) \subseteq (a)\) follows.
+  % TODO fix
+\end{proof}
+
+\begin{lemma}
+  The only ideals of a valuation ring \(A\) are \((0)\) and \((t^n)\) for \(n = 0, 1, \dotsc\) and \(t\) a uniformizer of \(A.\)
+\end{lemma}
+\begin{proof}
+  Let \(I \subseteq A\) be an ideal, \(0 \neq I.\) Let
+  \[n = \min\{V(i) \suchthat i \in I\} < \infty.\]
+  Pick \(i \in I,\) \(V(i) = n.\)
+  % Then from \cref{val equality} we infer that \(i\) is in fact the only element of \(I\) with \(V(i) = n.\)
+  From \cref{val equality} it follows that \((i) = (t^n).\)
+  % TODO fix
+\end{proof}
+
+\begin{corollary}
+  A valuation ring is a principal ideal domain (in particular Noetherian) of dimension \(1,\) local.
+\end{corollary}
+
+\begin{df}
+  A valuation ring is called a \emph{discrete valuation ring} (DVR).
+\end{df}
+
+\begin{lemma}
+  A DVR is normal (that is, integrally closed in \(\fractions(A)\)).
+\end{lemma}
+\begin{proof}
+  Let \(A \subseteq \fractions(A) \ni \alpha,\) \(V(\alpha) = v.\)
+  Let
+  \[\alpha^n + a_{n-1} \alpha^{n-1} + \dotsb + a_0 = 0, \quad \alpha^{n} = -(a_{n-1} \alpha^{n-1} + \dotsb + a_0).\]
+  From this, it follows that
+  \(n \cdot b V(\alpha^n) = V(a_{n-1} \alpha^{n-1} + \dotsb + a_0).\)
+  ...
+  If \(v < 0,\) then \(nv \geq (n-1)v \iff v \geq 0.\) Hence \(v = V(\alpha) \geq 0\) and so \(A\) is normal.
+\end{proof}
+
+\begin{theorem}
+  \label{dvr noetherian}
+  Let \(A\) be a ring. The following conditions are equivalent:
+  \begin{enumerate}
+  \item \(A\) is a DVR,
+  \item \(A\) is a Noetherian local domain, \(\dim(A) = 1,\) normal.
+  \end{enumerate}
+\end{theorem}
+\begin{proof}
+  The implication \(1 \implies 2\) has already been proved.
+  % TODO ref
+  For the other implication, let us consider
+  \(\mathfrak m\) the maximal ideal.
+  Nakayama implies \(\mathfrak m \neq \mathfrak m^2,\) since \(\mathfrak m \neq 0.\)
+  Pick \(t \in \mathfrak m \setminus \mathfrak m^2.\) We wish to show that \((t) = \mathfrak m.\)
+  Suppose not; then
+  \[\spec(A /{(t)}) = V(t) = \{\mathfrak m\} \subseteq \spec(A).\]
+  In particular,
+  \[\nil(A / {(t)}) = \bigsetintersection \mathfrak p = \mathfrak m /{(t)}.\]
+  Now, there exists an \(n\) such that
+  \(\nil(A/{(t)})^n = 0.\)
+  Hence,
+  \((\mathfrak m / {(t)})^n = 0\)
+  and so
+  \(\mathfrak m^t \subseteq (t).\)
+  Let \(k\) be a number one less than the smallest such \(n.\)
+  If we now choose
+  \(y \in \mathfrak m^k \setminus {(t)},\)
+  then
+  \(y \mathfrak m \subseteq (t).\)
+  Hence, because \(A\) is a domain,
+  \(y / {t} \cdot \mathfrak m \subseteq A.\)
+  Now,
+  \(y /{t} \cdot \mathfrak m\) is an \(A\)-module as a subset of \(A\) and so it is an ideal of \(A.\)
+
+  \(A\) is a local ring, and so either
+  \(y / {t} \cdot \mathfrak m = A\)
+  or \(y /{t} \cdot \mathfrak m \subseteq \mathfrak m.\)
+
+  In the first case, one gets
+  \(y \mathfrak m = (t),\)
+  \(y \in \mathfrak m^k\) and \(k \geq 1,\)
+  so \(y \cdot \mathfrak m \subseteq \mathfrak m^{k+1} \subseteq \mathfrak m^2,\)
+  so \(t \in \mathfrak m^2.\) This is absurd.
+
+  In the other case, by Cayley-Hamilton
+  % TODO ref
+  we get \(y/{t}\) integral over \(A\) and by normality, \(y/{t} \in A\). Hence, \(y \in (t),\) which is absurd.
+
+  Hence, we have \(\mathfrak m = (t).\)
+
+  Now, we claim that
+  \[\bigsetintersection_{n \in \naturals} (t^n) = 0.\]
+  Suppose that there is a nonzero \(x \in \bigsetintersection_{n \in \naturals} (t^n).\)
+  Then
+  \[\forall i \enspace \exists a_i \enspace x = a_i t^i\]
+  This gives a
+  ...
+  so \(t\) is invertible, which is absurd.
+
+  We now construct a valuation. For each nonzero \(x \in A\), one has a number \(n \geq 0\) such that \(x \in (t^n)\) and \(x \notin (t^{n+1})\). One puts \(\val(x) = n.\)
+  Further, define
+  \[\val(\frac{x}{y}) = \val(x) - \val(y) \text{ for } \frac{x}{y} \in \fractions(A).\]
+
+  One checks that this in fact defines a valuation.
+  % TODO
+
+  That \(A\) is a valuation ring is now tautological in terms of the previous considerations.
+  % TODO why
+\end{proof}
+
+We now explore various ways in which DVRs arise.
+
+\begin{lemma}
+  Let \(A\) be a domain with fraction field \(K\) and integral closure \(\cl{A} \subseteq K.\)
+  Let \(S \subseteq A\) be a multiplicatively closed subset. Then
+  \(S^{-1}\cl{A} = \cl{S^{-1}A}.\)
+\end{lemma}
+\begin{proof}
+  \(A \subseteq S^{-1}A \implies \cl{A} \subseteq \cl{S^{-1}A}.\)
+  Moreover,
+  \(S^{-1}A \subseteq \cl{S^{-1}A},\)
+  so
+  \(S^{-1}A \subseteq \cl{S^{-1}A}.\)
+  Take \(x \in \cl{S^{-1}A},\) so that
+  \(x^n + (\frac{a_{n-1}}{s_{n-1}})x^{n-1} + \dotsb + \frac{a_0}{s_0}, \quad a_i \in A, \enspace s_i \in S.\)
+  Take \(s = s_0 \cdot \dotsm \cdot s_n-1.\)
+  Then
+  ...
+  so \(xs \in \cl{A},\)
+  so \(x \in S^{-1}\cl{A}.\)
+  The claim follows.
+\end{proof}
+
+\begin{corollary}
+  \label{localization of normal is normal}
+  Let \(A\) be a normal domain and \(S \subseteq A\) a multiplicative subset. Then \(S^{-1}A\) is also normal.
+\end{corollary}
+\begin{proof}
+  \(A = \cl{A},\) so \[\cl{S^{-1}A} = S^{-1}\cl{A} = S^{-1}A.\]
+\end{proof}
+
+\begin{prop}
+  Let \(A\) be a Noetherian normal domain. Let \(\mathfrak p\) be a minimal nonzero prime ideal. Then \(A_{\mathfrak p}\) is a DVR.
+\end{prop}
+\begin{proof}
+  \(A_{\mathfrak p}\) is a Noetherian domain and normal. By \cref{localization of normal is normal},
+  \[\spec(A_{\mathfrak p}) = \{\mathfrak q \subseteq \mathfrak p\} = \{0, \mathfrak p\},\]
+  so \(\dim(A) = 1\) and \(A_{\mathfrak p}\) satisfies the assumptions of \cref{dvr noetherian}.
+  % DONE fixed reference by shortening label
+\end{proof}
+
+\begin{df}
+  A Noetherian normal domain of dimension one is called a \emph{Dedekind domain}.
+\end{df}
+
+\begin{example}
+  \(\integer\) and \(k[x]\) are Dedekind domains.
+\end{example}
+
+\begin{theorem}[cf. Milne]
+  Let \(\rational \subseteq K\) be a finite field extension. Let \(\mathcal{O}_K\) be the integral closure of \(\integer\) in \(K\).
+  Then \(\mathcal{O}_K\) is a Dedekind domain.
+\end{theorem}
+
+\begin{corollary}
+  If \(A\) is Dedekind, \(\mathfrak m \subseteq A\) is a maximal ideal, then \(A_{\mathfrak m}\) is a DVR.
+\end{corollary}
+
+\begin{lemma}
+  \label{domain = intersection of localizations}
+  Let \(A\) be a domain. Then
+  \[A = \bigsetintersection_{\mathfrak m \text{ maximal}} A_{\mathfrak m} \subseteq \fractions(A).\]
+\end{lemma}
+\begin{proof}
+  Trivially, \(A \subseteq \setintersection A_{\mathfrak m}\). We wish to show the converse inclusion.
+
+  Pick \(x / {y} \in \fractions(A),\) \(x/{y} \in \setintersection A_{\mathfrak m}.\)
+  Then,
+  \[\forall \mathfrak m \subseteq A \text{ maximal } \exists s \in A \setminus \mathfrak m, a \in A \enspace \frac{x}{y} = \frac{a}{s} \enspace (\iff s \cdot \frac{x}{y} \in A).\]
+  Consider the ideal
+  \(D \coloneqq \{a \in A \suchthat a \cdot \frac{x}{y} \in A\} \subseteq A.\)
+  Now, if \(D = (1)\), we get what we want; in the other case, a contradiction.
+  % TODO explain
+\end{proof}
+
+\begin{prop}
+  Let \(A\) be a Noetherian domain such that for all maximal ideals \(\mathfrak m \subseteq A\), \(A \mathfrak m\) is a DVR.
+  Then \(A\) is a Dedekind domain.
+\end{prop}
+\begin{proof}
+  We want \(A\) to satisfy \(\dim(A) = 1\) and normality.
+  Recall that in general
+  \(\dim(A) = \sup \dim(A_{\mathfrak m}).\)
+  In our case, the RHS is equal to \(1.\)
+  Now, by \cref{domain = intersection of localizations}, we get \(A = \setintersection A_{\mathfrak m}.\)
+  Pick \(\alpha \in \fractions(A),\) \(\alpha\) integral over \(A.\)
+  Then for all maximal ideals \(\mathfrak m \subseteq A,\) \(\alpha\) is integral over \(A_{\mathfrak m}\). By normality of \(A_{\mathfrak m}\), \(\alpha \in A_{\mathfrak m}.\)
+  Hence,
+  \[\alpha \in \setintersection A_{\mathfrak m} = A\]
+  and thus \(A\) is normal.
+\end{proof}
+
+\begin{example}
+  If one takes \(A = \integer \times \integer,\) then for any maximal ideal \(\mathfrak m \subseteq A,\) \(A_{\mathfrak m}\) is a DVR. However, \(A\) is not a domain.
+  In fact, \(\spec(A) = \spec(\integer) \disjointsetsum \spec(\integer).\)
+\end{example}
+
+
+\begin{lemma}
+  \label{local to global}
+  Let \(A\) be a ring, \(M, N \in \mod{A}.\) Let \(\phi \colon M \to N\) be an \(A\)-module homomorphism.
+  Then the following hold:
+  \begin{enumerate}
+  \item \(M = 0 \iff \forall \mathfrak m \subseteq A M_{\mathfrak m} = 0,\)
+  \item \(\phi\) is onto if and only if for any \(\mathfrak m \subseteq A\) \(M_{\mathfrak m} \to N_{\mathfrak m}\) is onto,
+  \item into if and only if into,
+  \item iso if and only if iso.
+  \end{enumerate}
+  % TODO full sentences
+\end{lemma}
+\begin{proof}
+  \begin{enumerate}
+  \item Take a  nonzero \(m \in M\) and consider its annihilator \(ann(m).\) Because \(1 \notin ann(m), \) there exists a maximal ideal \(\mathfrak m\) containing \(ann(m).\)
+    But if \(m / {1} \in M_{\mathfrak m}\) is zero, then there exists \(s \in A \setminus \mathfrak m\) with \(s \cdot m = 0.\) But then \(s \in ann(m) \subseteq \mathfrak m\), which makes a contradiction.
+  \item Consider \(C = N /{\phi(M)}.\) Then \(C = 0\) if and only if \(\phi\) is onto. But the same holds in localizations:
+    \[C_{\mathfrak m} = N_{\mathfrak m} /{\phi(M)_{\mathfrak m}} = N_{\mathfrak m} / {\phi(M_{\mathfrak m})}.\]
+    Now, \(\phi_{\mathfrak m}\) is onto if and only if \(C_\mathfrak m = 0\); by 1. this happens for all \(\mathfrak m\) if and only if \(C = 0\). This ends the proof.
+  \item Same as 2. but with \(K = \ker(\phi).\)
+  \item Follows from 2. and 3.
+  \end{enumerate}
+\end{proof}
+
+\begin{theorem}
+  \label{Dedekind thingy}
+  Let \(A\) be a Dedekind domain, \(0 \neq I \subseteq A\) an ideal. Then there exist prime ideals \(\mathfrak p_1, \dotsc, \mathfrak p_r \subseteq A\) and \(e_1, \dotsc, e_r \in \integer_{\geq 1}\) such that
+  \[I = \mathfrak p_1^{e_1} \cdot \dotsm \cdot \mathfrak p_r^{e_r}.\]
+  The \(\mathfrak p_i\) and \(e_i\) are unique.
+\end{theorem}
+\begin{proof}
+  Let \(\mathfrak p \in \spec(A)\) be a maximal ideal. For any \(I,\) \(I A_{\mathfrak p} = \mathfrak p^e A_{\mathfrak p}\)  for some \(e \in \integer_{\geq 0}\) (because \(A_{\mathfrak p}\) is a DVR). Let \(e \eqqcolon \val_{\mathfrak p}(I).\)
+
+  One defines
+  \(\prod_{\mathfrak p \text{ maximal}} \mathfrak p^{\val_{\mathfrak p}(I)}.\)
+  One notes that the definition is correct.
+  % TODO in what way?
+  % TODO why?
+  One then considers localizations of such product in maximal ideals to check that it is equal to \(I;\) this uses \cref{local to global}.
+  % TODO do this
+  % TODO uniqueness skipped
+\end{proof}
+
+\begin{note}
+  In a Dedekind domain, the map \(I \tensor J \into I \cdot J\) is an isomorphism.
+\end{note}
+
+In the following, we use that a zero-dimensional Noetherian ring is the same as an Artinian ring; moreover, in an Artinian ring all prime ideals are maximal and there are only finitely many of those. \cite{atiyah1994introduction}
+
+\begin{lemma}
+  Let \(A\) be an Artinian ring, \(\spec(A) = \{\mathfrak m_1, \dotsc, \mathfrak m_r\}.\) Then \(A = A_{\mathfrak m_1} \times \dotsb \times A_{\mathfrak m_r}.\)
+\end{lemma}
+\begin{proof}
+  Consider the homomorphism of modules \(A \to A_{\mathfrak m_1} \times \dotsb \times A_{\mathfrak m_r}\) given by \(a \mapsto (a, \dotsc, a).\) For any maximal \(\mathfrak m \subseteq A\) this gives \(A_{\mathfrak m} \to (A_{\mathfrak m_1})_{\mathfrak m_1}) \times \dotsb \times (A_{\mathfrak m_r})_{\mathfrak m}.\)
+  If \(\mathfrak m \neq \mathfrak m_i,\) then \((A_{\mathfrak m_i})_{\mathfrak m} = 0.\)
+  On the other hand,
+  \(\spec(A_{\mathfrak m}) = \{\mathfrak m \cdot A_{\mathfrak m}\}.\)
+  We get the claim by \cref{local to global}.
+\end{proof}
+
+\begin{theorem}
+  Let \(A\) be a Dedekind domains. Let \(0 \neq I \subseteq A\). Then there exist \(f, g \in A\) such that \(I = (f, g)\). In fact, for any nonzero \(f\) there exists a \(g \in A\) such that \(I = (f, g).\)
+\end{theorem}
+\begin{proof}
+  Let \(0 \neq f \in I.\) One has \(V(f) = \{\mathfrak p_1, \dotsc, \mathfrak p_s\}.\)
+  Then \(A /{(f)}\) is Noetherian and \(0\)-dimensional, and so Artinian.
+  \[A / {(f)} \cong \prod_{i=1}^s (A/{(f)})_{\mathfrak p_i} = \prod_{i=1}^r \frac{A_{\mathfrak p_i}}{f A_{\mathfrak p_i}}.\]
+  From \cref{Dedekind thingy} we know that
+  \[I = \mathfrak p_1^{e_1} \cdot \dotsm \cdot \mathfrak p_r^{e_r}, \enspace e_i \geq 0.\]
+  If we fix \(t_i \in A\) for \(i = 1, \dotsc, r,\) we are free to put \(g = t_1^{e_1} \cdot \dotsm \cdot t_s^{e_s}.\)
+
+  We then get \(I / {(f)} = (g, f) = (g, f)/{(f)},\) so \(I = (g, f).\)
+
+  The proof is incorrect.
+\end{proof}
+
+
+
+
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../commalg"
+%%% End:
