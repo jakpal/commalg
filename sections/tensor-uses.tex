@@ -1,5 +1,4 @@
-\section{Why do we care?}
-
+\section{Fibers}
 
 First of all, as noted before, we have the folowing isomorphisms:
 \[ M \tensor_A A /{I} \cong M /{IM},\]
@@ -14,28 +13,29 @@ Tensoring with an $A$-algebra $B$ is left adjoint to the forgetful functor
 \begin{prop}
   \label{tensor-coproduct-of-algebras}
 Suppose $A$-algebras $B, C$ are given. Then
-\[ B \tensor_A C\]
+\( B \tensor_A C\)
 is an $A$-algebra with multiplication
 \[ (b_1 \tensor c_1) \cdot (b_2 \tensor c_2) = (b_1 b_2) \tensor (c_1 c_2).\]
 We claim that
-\[ B \tensor_A C\]
+\( B \tensor_A C\)
 is in fact the coproduct of $B$ and $C$.
 \end{prop}
 
 \begin{note}
-In the same setting, one has the diagram
+Under application of the \(\spec()\) functor, \cref{tensor-coproduct-of-algebras} leads to the pullback diagram
 \begin{equation*}
-  \begin{tikzcd}
-    & \spec(B) \arrow{dl} & \\
-    \spec(A)
-    & & \spec(B \tensor_k C) \arrow{ul} \arrow{dl} \\
-    & \spec(C) \arrow{ul} &
+  \begin{tikzcd}[column sep = huge, row sep = huge]
+    \spec(B \tensor_A C) \arrow{d} \arrow{r}
+    & \spec(C) \arrow{d} \\
+    \spec(B) \arrow{r}
+    & \spec(A)
   \end{tikzcd}
 \end{equation*}
-Note that then
-\[ \spec(B \tensor_k C) \neq \spec(B) \times \spec(C);\]
-we only get the arrows demanded that make the diagram commute.
 \end{note}
+
+Note that in general,
+\[ \spec(B \tensor_A C) \neq \spec(B) \times \spec(C).\]
+In the case that \(B, C\) are polynomial rings over the field \(A,\) this holds as an equality of sets, but not of topological spaces. Indeed, if \(B = C = A[x],\) the diagonal \(\{x = y\}\) is a closed subset of \(\mathbb{A}^2,\) while not being closed in \(\mathbb{A}^1 \times \mathbb{A}^1\) (as the opposite would expose \(\mathbb{A}^1\) as a Hausdorff space).
 
 We note the following special cases of \cref{tensor-coproduct-of-algebras}.
 
@@ -59,9 +59,7 @@ We note the following special cases of \cref{tensor-coproduct-of-algebras}.
   \[ B \tensor_k C \cong k[x_1, \dotsc, x_s, y_1, \dotsc, y_t] / {(I + J)}.\]
 \end{corollary}
 
-In differential geometry, the fiber of a map $f \colon X \to Y$ over a point is not typically a manifold.
-
-In contrast, in the $\spec$-world, we have the following.
+In differential geometry, the fiber \(f^{-1}(x)\) of a map $f \colon X \to Y$ over a point \(x \in Y\) is not typically a manifold. In contrast, in the algebraic case, we have the following.
 
 \begin{df}
   Let $f \colon A \to B$ be a homomorphism, $\mathfrak m \subseteq A$ a maximal ideal. Then the \textit{fiber} of $f$ over $\mathfrak m$ is
@@ -73,7 +71,7 @@ In contrast, in the $\spec$-world, we have the following.
   \[\spec(B /{\mathfrak m B}) \cong \{ \mathfrak p \subseteq B \suchthat f^*(\mathfrak p) = \{ \mathfrak m \} \}.\]
 \end{prop}
 
-Note that
+Recall that
 \[ \spec(A_{\mathfrak p}) = \{ \mathfrak q \subseteq \mathfrak p\}, \quad
 \spec(A /{\mathfrak p}) = \{ \mathfrak q \supseteq \mathfrak p\}.\]
 
@@ -82,7 +80,7 @@ Note that
   \[ B \tensor_A \kappa(\mathfrak p),\]
   where
   \[ \kappa(\mathfrak p) = A_{\mathfrak p} / {\mathfrak p A_{\mathfrak p}}\]
-  is the \textit{residue field}.
+  is called the \textit{residue field}.
 \end{df}
 
 \begin{prop}
@@ -95,14 +93,13 @@ Note that
 \end{note}
 
 \begin{prop}
-  There is a commutative diagram
+  A ring homomorphism \(f \colon A \to B\) together with choice of a prime ideal \(\mathfrak{p} \subseteq A\) leads to a pullback diagram
   \begin{equation*}
-    \begin{tikzcd}[row sep = huge, column sep = huge]
-      \spec(B) \arrow{d}{f^*}
-      & \spec(B \tensor_A \kappa(\mathfrak p)) \arrow{l} \arrow{d} \\
-      \spec(A) &
-      \spec(\kappa(\mathfrak p)) \arrow{l}
-      &
+    \begin{tikzcd}[column sep = huge, row sep = huge]
+      \spec(B \tensor_A \kappa(\mathfrak p)) \arrow{r} \arrow{d}
+      & \spec(B) \arrow{d}{f^*} \\
+      \spec(\kappa(\mathfrak p)) \arrow{r}
+      & \spec(A)
     \end{tikzcd}
   \end{equation*}
 \end{prop}
