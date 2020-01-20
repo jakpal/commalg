@@ -1,0 +1,102 @@
+\section{Derivations and Kaehler differentials}
+
+\begin{df}
+  \label{def derivation}
+  Let \(R \to S\) be a ring homomorphism and \(M\) an \(S\)-module. A map of abelian groups \(\dif \colon S \to M\) is a \emph{derivation} if it satisfies the \emph{Leibniz formula}
+  \(\forall f, g \in S \enspace \dif(fg) = f \dif(g) + g \dif(f).\)
+  If in addition, \(\dif\) is a homomorphism of \(R\)-modules, it is called \emph{\(R\)-linear}.
+  The set of \(R\)-linear derivations \(S \to M\) is then denoted by \(\der_R(S, M).\)
+\end{df}
+
+\begin{note}
+  That the map \(\dif\) of \cref{def derivation} is \(R\)-linear means that \(\dif(rs) = r \dif(s).\) Under the Leibniz rule, this is equivalent to \(\dif(R) = 0.\)
+\end{note}
+
+\begin{prop}
+  The set \(\der_R(S, M)\) is an \(S\)-module under
+  \((s \action d)(f) = s \action(\dif(f)).\)
+\end{prop}
+
+Much like in the case of bilinear maps, derivations are also represented by an \(S\)-module.
+
+\begin{theorem}
+  \label{kaehler exists}
+  There exists an $S$-module
+  \( \Omega_{S / {R}}\)
+  together with a \(k\)-derivation
+  \(\dif \colon S \to \Omega_{S /{R}}\)
+  such that
+  \[ \forall M \in \module{S} \enspace \forall e \in \der_R(S, M) \enspace \existsunique e' \colon \Omega_{S /{R}} \to M \enspace e = e' \circ \dif,\]
+  \(e'\) being an \(S\)-module homomorphism.
+  \begin{equation*}
+    \begin{tikzcd}[column sep = huge, row sep = huge]
+      & \Omega_{S/{R}} \arrow[dashed]{d}{e'} \\
+      S \arrow{ru}{\dif} \arrow{r}{e} & M
+    \end{tikzcd}
+  \end{equation*}
+\end{theorem}
+\begin{proof}
+  Take \(\Omega_{S/{R}}\) to be generated freely by \(\{\dif(f) \suchthat f \in S\}\) (that is to say, a quotient of \(S^S\), whose \(S\)-generators are denoted by \(\dif(f)\)) subject to relations
+  \[\forall a, a' \in R, b, b' \in S \enspace \dif(b b') = b \dif(b') + b' \dif (b), \enspace \dif(ab + a'b') = a \dif(b') + a' \dif(b').\]
+  If, as was assumed, \(e \colon S \to M\) is a function, then \(e'\) must necessarily send \(d(f)\) to \(e(f),\) which proves uniqueness of \(e'.\) It remains to see that it is well defined (as then it is clearly an \(S\)-module homomorphism). But indeed, because \(e\) is a derivation, the map defined factors through the relations placed on free generators of \(\Omega_{S/{R}}.\)
+\end{proof}
+
+\begin{note}
+  \label{kaehler nat iso}
+  One can rephrase \cref{kaehler exists} as stating the existence of an \(S\)-module isomorphism, natural in \(M:\)
+  \[ \hom_S(\Omega_{S/{R}}, M) \simeq \der_R(S, M).\]
+\end{note}
+
+\begin{df}
+  The \(S\)-module \(\Omega_{S/{k}}\) is called the module of \emph{Kaehler differentials}.
+\end{df}
+
+The generators \(\dif(f), f \in S,\) are frequently abbreviated as \(\dif f.\)
+
+\begin{prop}
+  \label{gens give kaehler gens}
+  If \(S\) is generated as an \(R\)-algebra by elements \(f_i,\) then \(\Omega_{S/{R}}\) is generated as an \(S\)-module by the \(\dif f_i.\)
+\end{prop}
+\begin{proof}
+  That the \(f_i\) generate \(S\) as an \(R\)-algebra means that any element \(f \in S\) is equal to an \(R\)-polynomial in the \(f_i.\) But then, \(R\)-linearity together with the Leibniz formula give an \(S\)-linear formula for \(\dif f\) in terms of the \(\dif f_i.\)
+\end{proof}
+
+\begin{prop}
+  Let \(S = R[x_1, \dotsc, x_n]\) be a polynomial ring over \(R.\) Then \(\Omega_{S/{R}}\) is a free \(S\)-module on \(n\) generators
+  \(\dif x_1, \dotsc, \dif x_n.\)
+\end{prop}
+\begin{proof}
+  Consider for \(i = 1, \dotsc, n\) the differentiation map
+  \(\frac{\partial}{\partial x_i} \colon S \to S.\)
+  Clearly, those maps are derivations, and so is their direct sum, which is the derivation gradient
+  \[\nabla = (\frac{\partial}{\partial x_1}, \dotsc, \frac{\partial}{\partial x_n}) \colon S \to S^n.\]
+  By universal property of \(\Omega_{S/{R}},\) an \(S\)-linear map \(\partial \colon \Omega_{S/{R}}\) is induced, taking \(\dif x_i\) to the sequence of length \(n\) having \(1\) in its \(i\)-th term and only \(0\)s elsewhere.
+  But then \(\partial\) is exactly the inverse of the surjection \(S^n \onto \Omega_{S/{R}}\) of \cref{gens give kaehler gens}.
+\end{proof}
+
+\begin{note}
+  Kaehler differentials are closely related to differential forms as known from smooth geometry, capturing their algebraic aspects.
+
+  More precisely, let \(M\) be a real smooth manifold, \(A = C^\infty(M)\) - the ring of smooth functions on \(A.\) One considers the module of Kaehler differentials \(\Omega_{A/{\real}}.\) By \cref{kaehler nat iso}, there is a natural isomorphism of \(A\)-modules
+  \[\der_\real(A, A) \cong \hom_A(\Omega_{A/{\real}}, A).\]
+  Those adept in differential geometry will recognize \(\der_\real(A, A)\) as the tangent bundle \(TM.\) If we should be inclined to denote, for \(X \in \module{A},\) \(X \coloneqq \hom_A(X, A),\) then we may well write \(\Omega_{A/{\real}}^{*} \cong TM.\)
+  Consequently, \(\Omega_{A/{\real}}^* \cong (TM)^* = T*M\) is the cotangent bundle, its sections the differential forms on \(M.\)
+
+  It is not true that \(\Omega_{A/{\real}} \to T^*M\) is an isomorphism of \(A\)-modules. It is not surjective as it only has the exact forms in its image; it is not injective, as \(\dif(e^x)\) and \(e^x \dif x\) are not equal in \(\Omega_{A/{\real}},\) at least if one assumes the Axiom of Choice. \cite{MO}
+\end{note}
+
+
+
+
+
+
+
+
+
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../commalg"
+%%% End:
