@@ -60,19 +60,16 @@ This turns the set into an associative commutative ring with unity.
 
 \begin{lemma}
   Let $a, b \in A$, $s, t \in S$. Then
-  \[ \frac{a}{s} = \frac{b}{t} \quad \iff \quad \exists u \in S \enspace u(at-bs)=0.\]
+  \[ \frac{a'}{s'} = \frac{b'}{t'} \quad \iff \quad \exists u \in S \enspace u(at-bs)=0.\]
 \end{lemma}
 \begin{proof}
   ``$\impliedby$'':
   \begin{align*}
     u(at - bs) = 0 & \implies uta = usb \\
-                   & \implies \frac{uta}{1} = \frac{usb}{1} \\
-                   & \implies  \frac{a}{s} = \frac{uta}{stu} = \frac{usb}{stu} = \frac{b}{t}.
+                   & \implies \frac{u't'a'}{1} = \frac{u's'b'}{1} \\
+                   & \implies  \frac{a'}{s'} = \frac{u't'a'}{s't'u'} = \frac{u's'b'}{s't'u'} = \frac{b'}{t'}.
   \end{align*}
-  ``$\implies$'': Observe that the map $\phi: A /{I} = A' \to (S')^{-1}A^{-1}$ is injective.
-  Note that
-  \[ \forall \bar a, \bar b \in A' \enspace \frac{\bar a}{1} = \frac{\bar b}{1} \iff \bar a = \bar b \iff 1 \cdot \bar a = 1 \cdot \bar b \]
-  % TODO
+  ``$\implies$'': if \(a't' - b's' = 0\) in \(A/{I},\) then \(at - bs \in I.\) But by definition of \(I,\) this means that there is \(u \in S\) such that \(u(at - bs) = 0.\)
 \end{proof}
 
 \begin{corollary}
@@ -164,7 +161,7 @@ This turns the set into an associative commutative ring with unity.
   \item By \cref{loc-1}:
     \[ \frac{1}{1} = \frac{0}{1} \iff \exists u \in S \enspace u(1 \cdot 1 - 0 \cdot 1 ) = 0 \iff \exists u \in S u = 0.\]
   \item $i$ is injective if and only if
-    \[ (\{a \in A \suchthat \exists s \in S \enspace sa = 0 \}).\]
+    \[ \{a \in A \suchthat \exists s \in S \enspace sa = 0 \} = \emptyset.\]
     This happens if and only if $s$ is a non-zerodivisor.
   \item If $A \to S^{-1}A$ is iso, then $\forall s \in S \enspace s/1 \text{ is invertible}$.
     Hence, so is $s$.
@@ -176,32 +173,8 @@ This turns the set into an associative commutative ring with unity.
   \end{enumerate}
 \end{proof}
 
-Intuitively, we think of $A_f$ as the ring of functions on $X_f$, where $X = \spec(A)$.
-
-We would expect $\spec(A_f)$ to be the same as $X_f$. Indeed, the following holds.
-
-\begin{prop}
-  \label{loc-2}
-  Consider the maps
-  \begin{gather*}
-    i \colon A \to S^{-1}A \\
-    i^* \colon \spec(S^{-1}A) \to \spec(A).
-  \end{gather*}
-  Then $i^*$ is injective and
-  \[ \im i^* = \{ \mathfrak p \suchthat \mathfrak p \cap S = \emptyset \}. \]
-\end{prop}
-
-Before presenting the proof, for which we will require some additional facts, we note the following corollaries.
-
-\begin{corollary}
-  If $S = \{1, f, f^2, \ldots \}$, then
-  \[ \im i^* = \{ \mathfrak p \suchthat \mathfrak p \not\ni f\} = (\spec(A))_f. \]
-\end{corollary}
-
-\begin{corollary}
-  For $\mathfrak q \in \spec(A)$, $S = A \setminus q$,
-  \[ \im i^* = \{ \mathfrak p \suchthat \mathfrak p \subseteq \mathfrak q \} = \spec(A_p). \]
-\end{corollary}
+% Intuitively, we think of $A_f$ as the ring of functions on $X_f$, where $X = \spec(A)$.
+% TODO guess what X_f is supposed to mean
 
 \begin{lemma}
   \label{loc-3}
@@ -217,7 +190,17 @@ Before presenting the proof, for which we will require some additional facts, we
   \[ \frac{a}{s} \in I \implies \frac{a}{1} = \frac{a}{s} \cdot \frac{s}{i} \in I \implies a \in J \implies \frac{a}{s} \in \{\frac{j}{s} \suchthat j \in J, s \in S \}\]
 \end{proof}
 
-\begin{proof}[\cref{loc-2}]
+\begin{prop}
+  \label{loc-2}
+  Consider the maps
+  \begin{gather*}
+    i \colon A \to S^{-1}A \\
+    i^* \colon \spec(S^{-1}A) \to \spec(A).
+  \end{gather*}
+  Then $i^*$ is injective and
+  \[ \im i^* = \{ \mathfrak p \suchthat \mathfrak p \cap S = \emptyset \}. \]
+\end{prop}
+\begin{proof}
   Let $\mathfrak q \in \spec(S^{-1}A)$. We let
   \[ \mathfrak p = i^*(\mathfrak q) = i^{-1}(\mathfrak q) = \{a \in A \suchthat f \in \mathfrak q \}.\]
   By \cref{loc-3} we can recover $\mathfrak q$ from $\mathfrak p$ alone, and so $i^*$ is injective.
@@ -231,17 +214,26 @@ Before presenting the proof, for which we will require some additional facts, we
 
   Suppose $\mathfrak p \in \spec(A)$, $\mathfrak p \cap S = \emptyset$.
   We wish to find $\mathfrak q$. We guess that
-  \[ q \coloneqq \{ \frac{p}{s} \suchthat p \in \mathfrak p, s \in S \} \subseteq S^{-1}A\]
+  \[ q = \{ \frac{p}{s} \suchthat p \in \mathfrak p, s \in S \} \subseteq S^{-1}A\]
   does the job.
   This $\mathfrak q$ is an ideal, we want to see that it is prime.
 
   Suppose that
   \[ \frac{a}{s} \cdot \frac{b}{t} \in \mathfrak q .\]
   Then
-  $ab / 1 \in \mathfrak q$
-  and so
-  %TODO
+  $ab / {bt} \in \mathfrak q$
+  and so, \(ab \in \mathfrak{p}.\) Hence, either \(a \in \mathfrak{p}\) or \(b \in \mathfrak{p}\) and we win.
 \end{proof}
+
+\begin{corollary}
+  If $S = \{1, f, f^2, \ldots \}$, then
+  \[ \im i^* = \{ \mathfrak p \suchthat \mathfrak p \not\ni f\} = (\spec(A))_f. \]
+\end{corollary}
+
+\begin{corollary}
+  For $\mathfrak q \in \spec(A)$, $S = A \setminus q$,
+  \[ \im i^* = \{ \mathfrak p \suchthat \mathfrak p \subseteq \mathfrak q \} = \spec(A_p). \]
+\end{corollary}
 
 \begin{corollary}
   For $f \in A$, the following are equivalent:
