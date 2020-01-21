@@ -27,7 +27,7 @@
 \begin{example}
   The polynomial ring $\complex [x]$ becomes a $\complex$-algebra under the inclusion map onto the zero degree component.
 
-  In this case, if $I$ is an ideal, then 
+  In this case, if $I \subseteq \complex[x]$ is an ideal, then 
   the quotient map
   \[ \complex[x] \to \complex[x]/{I}\]
   is a complex algebra homomorphism.
@@ -44,6 +44,12 @@
 \item An ideal $I$ in a ring $B$ is maximal if $B/{I}$ is a field.
 \end{enumerate}
 \end{df}
+
+\begin{prop}
+  An ideal \(\mathfrak{p} \subseteq A\) is prime if and only if for elements \(a, b \in A,\) from \(ab \in \mathfrak{p}\) it follows that either \(a \in \mathfrak{p}\) or \(b \in \mathfrak{p}\).
+
+  An ideal \(\mathfrak{m} \subseteq A\) is maximal if it is a maximal (proper) ideal in \(A\) under inclusion.
+\end{prop}
 
 
 %%% Local Variables:

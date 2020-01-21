@@ -1,13 +1,13 @@
 \section{The Spec() functor}
-We aim to repeat the previous considerations of \cref{mot-circle} for an arbitrary ring.
+We aim to mirror the previous considerations of \cref{mot-circle} in the case of an arbitrary ring.
 
 \begin{df}
 Let $A$ be a ring. The \textit{spectrum} of $A$ is its set of prime ideals:
-\[\spec(A) = \{ \mathfrak p \text{ a prime ideal in} A \}.\]
+\[\spec(A) = \{ \mathfrak p \text{ a prime ideal in } A \}.\]
 \end{df}
 
 \begin{example}
-  $\spec(\complex [x]) =  \{0\} \cup \{ (x-a) | a \in \complex \}$.
+  $\spec(\complex [x]) =  \{0\} \cup \{ (xf-a) \suchthat a \in \complex \}$.
 \end{example}
 
 For a ring homomorphism $f \colon A \to B$, \cref{primes are preserved under preimage} asserts that there is a map
@@ -99,12 +99,13 @@ Note that the considerations here are purely set-theoretical. The condition that
 
 The upshot is: when $k = \bar k$, $\spec_{max}(k[x_1, \ldots, x_n])$ is well-behaved. We will see later, in the Nullstellensatz, that all maximal ideals in $k[x_1, \ldots, x_n]$ are of the form $(x_1 - a_1, \ldots x_n - a_n)$.
 
-In fact,
-$\spec_{max}(k[x_1, \ldots, x_n]) \cong k^n$
-under
-$(x_1 - a_1, \ldots, x_n - a_n) \mapsto (a_1, \ldots, a_n)$.
+% In fact,
+% $\spec_{max}(k[x_1, \ldots, x_n]) \cong k^n$
+% under
+% $(x_1 - a_1, \ldots, x_n - a_n) \mapsto (a_1, \ldots, a_n)$.
 
-The intuition here is: $k[x_1, \ldots, x_n]$ is the ring of regular functions on $k^n$.
+% The intuition here is: $k[x_1, \ldots, x_n]$ is the ring of regular functions on $k^n$.
+% TODO explain or remove
 
 %%% Local Variables:
 %%% mode: latex
