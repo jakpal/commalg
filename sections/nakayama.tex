@@ -1,4 +1,4 @@
-\section{More on modules}
+\section{Nakayama's lemma}
 \begin{note}
   In the following, when we write $I \cdot M$, we will mean the linear span of elements of the form $i \cdot m$.
 \end{note}
@@ -19,8 +19,9 @@
 We skip the proof of \cref{adjugate matrix}.
 
 \begin{theorem}[Cayley-Hamilton]
-  Let $M$ be an $A$-module. Let $\phi: M \to M$ be a homomorphism of $A$-modules such that
-  \[ \phi(m) = IM = \{ \sum i_k m_k \suchthat i_k \in I, m_k \in M \}. \]
+    \label{cayley-hamilton}
+  Let \(A\) be a ring, \(I \subseteq A\) an ideal. Let $M$ be a finitely generated $A$-module. Let $\phi: M \to M$ be a homomorphism of $A$-modules such that
+  \[ \phi(M) = IM = \{ \sum i_k m_k \suchthat i_k \in I, m_k \in M \}. \]
   Then there exist elements
   \[ a_{n-1} \in I, a_{n-2} \in I^2, \ldots, a_0 \in I^n \]
   such that
@@ -28,7 +29,6 @@ We skip the proof of \cref{adjugate matrix}.
 \end{theorem}
 
 \begin{proof}
-  \label{cayley-hamilton}
   Let
   \[ \pi \colon A^{\oplus n} \to M \quad \text{via} \quad e_i \mapsto m_i. \]
   Then
@@ -60,7 +60,7 @@ Hence $X$ acts on $A^{\oplus n}$ as the zero endomorphism.
 Now, use \cref{adjugate matrix} to see that
 \[ \exists Y \enspace Y \cdot X = \diag(d).\]
 Hence
-\[ \forall i \enspace 0 = Y \cdot X \cdot e_i = \diag{d} e_i = d \cdot e_i.\]
+\[ \forall i \enspace 0 = Y \cdot X \cdot e_i = \diag(d) e_i = d \cdot e_i.\]
 Expand the determinant by columns:
 \[ d = \det(X) = x^n + a_1 x^{n-1} + \dotsc + a_n, \quad a_k \in I^k.\]
 So as an endomorphism of $A^{\oplus n}$,
@@ -68,11 +68,8 @@ So as an endomorphism of $A^{\oplus n}$,
 But
 \[ \phi \circ \pi = \pi \circ \tilde{\phi}.\]
 So for all $i$
-\begin{align*}
-  (\phi^n + a_1 \phi^{n-1} + \dotsc + a_n)(m_i) & = \pi((\tilde{\phi}^n + a_1 \tilde{\phi}^{n-1} + \dotsc + a_n)(e_i)) \\
-            & = \pi (0) \\
-            & = 0.
-\end{align*}
+\[
+  (\phi^n + a_1 \phi^{n-1} + \dotsc + a_n)(m_i) = \pi((\tilde{\phi}^n + a_1 \tilde{\phi}^{n-1} + \dotsc + a_n)(e_i)) = \pi (0)= 0.\]
 \end{proof}
 
 \begin{lemma}[Nakayama]
@@ -85,7 +82,7 @@ So for all $i$
   By \cref{cayley-hamilton},
   \[ \exists a_i \enspace \id^n + a_1 \id^{n-1} + \dotsc + a_n = 0\]
   and then
-  \[ \forall m \in M (1 + a_1 + \dotsc + a_n) \cdot m = 0.\]
+  \[ \forall m \in M \enspace (1 + a_1 + \dotsc + a_n) \cdot m = 0.\]
   We now let
   \[ -i \coloneqq a_1 + \dotsc + a_n.\]
 \end{proof}
@@ -98,7 +95,7 @@ So for all $i$
 \begin{proof}
   Apply \cref{nakayama}:
   \[ \exists a \in \mathfrak m \enspace (1-a) \cdot M = 0, \quad (1-a) \notin \mathfrak m.\]
-  But $(1 - a)$ is invertible; let its inverse be $b$. Then
+  But $(1 - a)$ is invertible, as it is not contained in any ideal; let its inverse be $b$. Then
   \[ M = 1 \cdot M = b(1-a) M = b \cdot 0 = 0.\]
 \end{proof}
 
@@ -118,6 +115,7 @@ So for all $i$
 \end{proof}
 
 \begin{corollary}
+  \cref{local-nakayama3}
   Let $M$ be a finitely generated $A$-module, $(A, \mathfrak m)$ a local ring. Suppose
   \[ m_1, \dotsc, m_k \in M\]
   be such that their images in $M / {\mathfrak m \cdot M}$ generate $M / {\mathfrak m \cdot M}$. Then $m_1, \dotsc, m_k$ generate $M$.
@@ -129,12 +127,11 @@ So for all $i$
   \[ N \to M / {\mathfrak m \cdot M}\]
   is surjective by assumption, so by \cref{local-nakayama2}:
   \[ M = \mathfrak m \cdot M + N \implies M = N = \sum_{i=1}^k A \cdot m_i.\]
-  % Note that
-  % $A / {\mathfrak m}$
-  % is a field, so
-  % $M / {\mathfrak m \cdot M}$
-  % is a vector space. This finishes the proof.
 \end{proof}
+
+\begin{note}
+  The results of \cref{local-nakayama}, \cref{local-nakayama} and \cref{local-nakayama} remain valid with \(A\) not necessarily local and \(\mathfrak{m}\) replaced by an arbitrary ideal \(I\) that is contained in the Jacobson radical (which is the intersection of all maximal ideals).
+\end{note}
 
 \begin{example}
   Consider $\rational \in \module{\integer}$. Consider $I = (2019) \subseteq \integer$.
@@ -154,7 +151,7 @@ So for all $i$
 \begin{example}
   Let $X = S^1$, $A = C(S^1, \real)$. Consider
   \[ \mathfrak m_x = \{ f \suchthat f(x) = 0 \}. \]
-  Then $\mathfrak m_x^2 = \mathfrak m_x$, hence $\mathfrak m_x$ is not a finitely generated ideal.
+  Then $\mathfrak m_x^2 = \mathfrak m_x$, hence $\mathfrak m_x$ is not a finitely generated ideal (as it is certainly maximal).
 \end{example}
 
 %%% Local Variables:
