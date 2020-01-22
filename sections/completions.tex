@@ -1,0 +1,92 @@
+\section{Completions}
+Consider the singular curve \(\spec(A),\) \(A = k[x,y]/{x^3+x^2-y^2}.\) This has the normalization \(A \to \tilde{A} = k[t];\) there is the induced map of spectra
+\(\mathbb{A}^1 = \spec(\tilde{A}) \to \spec(A),\) which is an isomorphism outside the singular point \((0, 0).\)
+
+One should note that the localization \(A_{\mathfrak{m}}\) at the singular point is still a domain - in that, it can be said it does not recognize the components it posesses. On the other hand, the local completion we aim to define will not be a domain anymore.
+
+\begin{df}
+  A \emph{topological (abelian) group} is a group (an abelian group) with group maps \(\mu \colon G \times G \to G,\) \(\mathrm{inv} \colon G \to G\) together with a topology in which \(\mu\) and \(\mathrm{inv}\) are continuous.
+\end{df}
+
+\begin{note}
+  For all \(g \in G,\) the map \(\mu_g \colon G \to G,\) \(h \mapsto g + h\) is a homeomorphism with inverse \(\mu_{-g}.\)
+\end{note}
+
+\begin{corollary}
+  The topology on \(G\) is determined by the set of neighbourhoods of \(0 \in G.\)
+\end{corollary}
+
+\begin{df}
+  The completion of an abelian topological group \(G\) is \(\tilde{G}\) - the quotient
+  \[\text{Cauchy sequences}/{\text{sequences converging to 0}}.\]
+\end{df}
+
+\begin{example}
+  The completion of \(\rational\) (with the Euclidean topology) is \(\real.\)
+\end{example}
+
+\begin{example}
+  The completion of \(\rational\) with the \(p\)-adic topology is \(\rational_p.\)
+\end{example}
+
+\begin{example}
+  Let \(G = G_0 \supseteq G_1 \supseteq \dotso\) be a sequence of subgroups. Then one can defined a topology on \(G\) by taking \(G_n\) as neighbourhoods of \(0.\)
+
+  In particular, let \(A\) be a ring, \(I\) an ideal, \(G = (A, +),\) \(G_n = I^n.\) In this case, one can consider \(\tilde{A}_I.\)
+
+  In the case that \(A = k[x_1, \dotsc, x_n],\) \(\tilde{A}_I = k[x_1, \dotsc, x_n],\) \(I = (x_1, \dotsc, x_n).\)
+\end{example}
+
+\begin{prop}
+  If \(G = G_0 \supseteq G_1 \supseteq \dotso\) and we consider the system made up of maps
+  \(G/{G_{n+1}} \xto{\pi_n} G/{G_n},\) then
+  \[\lim_n G/{G_n} = \{a_n \in G/{G_n} \suchthat \pi_{n+1}(a_{n+1}) = a_n\} \subseteq \prod_n G/{G_n}.\]
+\end{prop}
+
+\begin{note}
+  If \(G/{G_n}\) are compact, then \(\prod G/{G_n}\) is compact by Tychonoff and so is \(\lim G/{G_n}.\)
+\end{note}
+
+\begin{prop}
+  There is a unique isomorphism \(\tilde{G} \to \lim G/{G_n}\) that commutes with maps \(G \to \tilde{G}\) and \(G \to \lim G/{G_n},\) \(g \mapsto (g).\)
+\end{prop}
+\begin{proof}
+  Let \((a_n) \in \tilde{G}.\) Since \((a_n)\) is Cauchy, we get a homomorphism
+  \(\tilde{G} \to G/{G_m}\) sending \((a_n)\) to \(a_n\) modulo \(G_m.\)
+  In this, \((a_n)\) is mapped to \(0 \in \lim G/{G_n}\) if and only if \((a_n)\) converges to \(0.\) This shows that the map \(\tilde{G} \to \lim G/{G_n}\) is injective.
+
+  For surjectivity, one chooses \(\tilde{g}_n \in \lim G/{G_n}\) and any \(g_n\) such that \(g_n = \tilde{g}_n\) modulo \(G_n.\) Then \(g_n\) is Cauchy.
+\end{proof}
+
+\begin{corollary}
+  The completion of \(k[x_1, \dotsc, x_r]_{\mathfrak{m}}\) is
+  \[\lim_n k[x_1, \dotsc, x_r]/{(x_1, \dotsc, x_r)^n} = k[[x_1, \dotsc, x_r]].\]
+\end{corollary}
+
+More generally, if one fixes \((A, I)\), then for any \(A\)-module \(M\) there exists a topology given by \((I^nM)_n,\) as well as a completion \(\tilde{M},\) which is an \(\tilde{A}\)-module.
+
+For \(f \colon M \to N\) an \(A\)-module homomorphism, one has \(g(I^nM) \subseteq I^nM,\) and so one gets \(\tilde{f} \colon \tilde{M} \to \tilde{N}.\)
+
+\begin{theorem}
+  The functor \(M \to \tilde{M}\) is exact on finitely generated \(A\)-modules, provided \(A\) is Noetherian.
+\end{theorem}
+\begin{proof}
+  Can be found in \cite{atiyah1994introduction}.
+\end{proof}
+
+\begin{example}
+  In the case \(A = k[x, y],\) \(J = (x^3 + x^2 - y)\) one gets
+  \(\tilde{(A/{J})} = \tilde{A}/{\tilde{J}} = k[[x, y]] /{\tilde{J}}.\)
+\end{example}
+
+\begin{theorem}[Cohen]
+  Let \((A, \mathfrak{m})\) be Noetherian, \(I = \mathfrak{m},\) \(A\) contains a field. Then there exists a ring homomorphism \(A/{\mathfrak{m}} \into A\) and an isomorphism
+  \(\tilde{A} \cong A/{\mathfrak{m}}[[x_1, \dotsc, x_r]]/{I}.\)
+  If \(A\) is regular, then \(I = 0\) and \(\tilde{A} \cong A/{\mathfrak{m}}[[x_1, \dotsc, x_r]].\)
+\end{theorem}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../commalg"
+%%% End:

@@ -1,0 +1,51 @@
+\section{Dimension of domains}
+
+We aim to prove the theorem that the dimension of a domain is equal to the dimension of its localization at any maximal ideal.
+
+\begin{prop}[going-down]
+  \label{going-down}
+  Let \(f \colon A \to B\) be an integral extension with \(A\) normal. Let \(\mathfrak{q}_2\) be prime in \(B,\) \(\mathfrak{p}_1 \subseteq \mathfrak{p}_2\) distinct prime ideals in \(A,\) such that \(\mathfrak{p}_2 = \mathfrak{q}_2 \cap A.\)
+  Then there exists a prime ideal \(\mathfrak{q}_1 \subseteq B\) such that
+  \(\mathfrak{q}_1 \cap A = \mathfrak{p}_1,\)
+  \(\mathfrak{q}_1 \subseteq \mathfrak{q}_2.\)
+\end{prop}
+\begin{proof}
+  Can be found in \cite{atiyah1994introduction}.
+\end{proof}
+
+\begin{theorem}
+  Let \(A\) be a finitely generated \(k\)-algebra that is a domain.
+\end{theorem}
+\begin{proof}
+  Let \(\mathfrak{p}\in \spec(A).\) We claim that
+  \(\dim (A_{\mathfrak{p}}) + \dim(A/{\mathfrak{p}}) = \dim(A).\)
+
+  Recall that
+  \[\spec(A_{\mathfrak{p}}) = \{\mathfrak{q} \subsetq \mathfrak{p}\}, \enspace\spec(A/{\mathfrak{p}}) = \{\mathfrak{q} \supseteq \mathfrak{p}\}.\]
+  Hence, the inequality
+  \(\dim(A_{\mathfrak{p}}) + \dim(A/{\mathfrak{p}}) \leq \dim(A)\)
+  follows because one can concatenate chains.
+
+  The other inequality is nontrivial and uses \cref{going-up}. The slogan now is: for any prime \(\mathfrak{p},\) the maximum length of a chain in \(A\) is the maximum length of a chain containing \(\mathfrak{p}.\)
+
+  Take any maximal chain \(\mathfrak{p}_0 \subseteq \dotso \subseteq \mathfrak{p}_r\) in \(A.\) We claim that the length of this chain is \(\dim(A)\) it will then follow that all maximal chains have the same lengths, and so one can pick any maximal chain containing \(\mathfrak{p};\) the remaining inequality is then satisfied.
+
+  We proceed using Noether normalization and going-down (\cref{going-down}). Namely, we can find \(S = k[x_1, \dotsc, x_d] \subseteq A\) a finite extension wich \(\mathfrak{p}_i \cap S = (x_{d_{i+1}}, \dotsc, x_d),\) \(d_i = \dim(A/{\mathfrak{p}_i}).\)
+  We aim to find that \(r = d,\) so that \(\mathfrak{p}_i \cap S = (x_i, \dotsc, x_d).\)
+  If it is not so and \(r < d,\) then there exists \(i\) such that
+  \(\mathfrak{p}_i \cap S = (x_j, \dotsc, x_d)\)
+  and
+  \(\mathfrak{p}_{i+1} \cap \supseteq (x_{j-2}, \dotsc, x_d).\)
+  Now, we find \(\tilde{\mathfrak{p}}\) such that \(\mathfrak{p}_i \subseteq \tilde{\mathfrak{p}} \subseteq \mathfrak{p}_{i+1},\) \(\tilde{\mathfrak{p}} \cap S = (x_{j-1}, \dotsc, x_d).\)
+  We obtain this by using \cref{going-down} in the case of
+  \(k[x_1, \dotsc, x_{j-1}] \cong S/{S \cap \mathfrak{p}_i} \to A/{\mathfrak{p}_i},\)
+  \(x_{j-1} \subseteq \mathfrak{p}_{i+1} \cap S /{\mathfrak{p}_i \cap S}\) in \(S/{S \cap \mathfrak{p}_i},\)
+  \(\mathfrak{p}_{i+1}/{\mathfrak{p}_i}\) in \(A/{\mathfrak{p}_i};\) this gives
+  \(\mathfrak{q} \subseteq \mathfrak{p}_{i+1}/{\mathfrak{p}_i} \subseteq A/{\mathfrak{p}_i}.\)
+\end{proof}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../commalg"
+%%% End:
