@@ -48,30 +48,30 @@ We aim to prove the theorem that the dimension of a domain is equal to the dimen
 % For some time, we will consider the following setup: \(A\) is a finitely generated algebra over \(k = \cl{k},\) as well as a domain. Then the set of regular points is open (does not need the domain assumption) and we will claim that \(A\) has regular points.
 % For technical reasons, we will consider the case of characteristic zero, though our results carry over to arbitrary characteristic.
 
-\begin{example}
-  If \(A\) is not a domain, then \(A = k[\varepsilon]/{\varepsilon^2}\) has no regular points.
-\end{example}
-
 \begin{df}
   The \emph{cotangent space} at \(\mathfrak m\) is \(\mathfrak m / {\mathfrak m^2}.\)
 \end{df}
 
 We make use of the formalism of Kaehler differentials, introduced in \cref{kaehler section}.
 
-We use the following two facts without proof.
-
 \begin{lemma}
   \label{differentials and ideal quotient}
-  Let \(A\) be a finitely generated \(k\)-algebra over an algebraically closed field, as well as a domain, and \(\mathfrak m \subseteq A\) a maximal ideal. Then
+  Let \(A\) be a \(k\)-algebra, \(k\) an algebraically closed field, and \(\mathfrak m \subseteq A\) a maximal ideal. Then
   \[\Omega_{A/{\mathfrak{m}}} /{\mathfrak m \Omega_{A/{\mathfrak{m}}}} \cong \mathfrak m /{\mathfrak m^2}.\]
 \end{lemma}
+\begin{proof}
+  A proof can be found in \cite[Proposition 8.8]{Hartshorne1977}. Note that \(\Omega_{A/{\mathfrak{m}}} /{\mathfrak m \Omega_{A/{\mathfrak{m}}}} \cong \Omega_{A/{\mathfrak{m}}} \tensor_A A/{\mathfrak{m}}.\) Moreover, since \(k\) is algebraically closed, \(A/{\mathfrak{m}} \cong k.\)
+\end{proof}
 
 \begin{lemma}
-  Under the assumptions of \cref{differentials and ideal quotient}, let \(K = \fractions(A).\) Then
+  Let \(A\) be a \(k-\)algebra, \(k\) algebraically closed \(A\) a domain. Let \(K = \fractions(A).\) Then
   \(\Omega_{A/{\mathfrak{m}}} \tensor_A K = K^{\oplus \dim(A)}.\)
 \end{lemma}
+\begin{proof}
+  Omitted.
+\end{proof}
 
-Those allow us to derive the following.
+The above allow us to derive the following.
 
 \begin{prop}
   \label{prop omega}
