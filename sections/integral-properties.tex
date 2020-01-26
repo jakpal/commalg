@@ -1,11 +1,11 @@
-\section{Further properties of integral extensions}
+\section{Properties of integral extensions}
 
 Recall that we have talked about the fiber and noted an isomorphism of $A$-algebras $A_{\mathfrak p} /{ \mathfrak p A_{\mathfrak p}}$ and $\text{Frac}(A/{\mathfrak p})$; we denoted this result by $\kappa(\mathfrak p)$.
 
 
 As motivation for the following, consider the diagram
 \[
-\begin{tikzcd}[column sep = huge]
+\begin{tikzcd}[column sep = huge, row sep = huge]
   A \arrow{r}{\text{integral}} \arrow{d}
   & B \arrow{d} \\
   A/{\mathfrak p} \arrow{r}{\text{integral}}
@@ -13,6 +13,7 @@ As motivation for the following, consider the diagram
 \end{tikzcd}
 \]
 with $\mathfrak p$, $\mathfrak q$ prime.
+% Here, if \(\mathfrak{q}\) is maximal, then \(\mathfrak{p}\) is also maximal.
 
 \begin{lemma}
   \label{integral extensions of domains propagate fields}
@@ -45,21 +46,25 @@ with $\mathfrak p$, $\mathfrak q$ prime.
   In particular, $S^{-1}B$ is nonzero.
   Thus, there exists a maximal ideal $\mathfrak m \subseteq S^{-1}B$. If we now let $\mathfrak p'$ be the preimage of $\mathfrak p$, then by \cref{integral extensions of domains propagate fields}, $S^{-1}A /{\mathfrak p'}$ is a field.
 
-  In particular, $A_{\mathfrak p} = S^{-1}A$ has only one maximal ideal $\mathfrak p A_{\mathfrak p}$ and we get $\mathfrak p' = mathfrak p A_{\mathfrak p}$.
+  In particular, $A_{\mathfrak p} = S^{-1}A$ has only one maximal ideal $\mathfrak p A_{\mathfrak p}$ and we get $\mathfrak p' = \mathfrak p A_{\mathfrak p}$.
 
-  If we now tahe $\mathfrak m \subseteq B$ to be the preimage of $\mathfrak m \subseteq S^{-1}B$, then $f^*(\mathfrak m) = \mathfrak p$.
+  If we now take $\mathfrak m \subseteq B$ to be the preimage of $\mathfrak m \subseteq S^{-1}B$, then $f^*(\mathfrak m) = \mathfrak p$.
 \end{proof}
 
 \begin{note}
-  For $f \colon A \to A/{\mathfrak p}$ integral, $\spec(A) \ot \spec(A/{\mathfrak p}$ is not usually surjective.
+  For $f \colon A \to A/{\mathfrak p}$ integral, $\spec(A) \ot \spec(A/{\mathfrak p})$ is not usually surjective.
 \end{note}
 
+\begin{prop}
+  \label{tensor integral}
+  Tensoring preserves integrality.
+\end{prop}
 
 \begin{prop}[incomparability]
   Suppose $f \colon A \to B$ is integral, $\mathfrak p \in \spec(A)$. Let $\mathfrak q_1 \subseteq \mathfrak q_2$, $\mathfrak q_i \in \spec(B)$ such that $f^*(\mathfrak q_1) = f^*(\mathfrak q_2) = \mathfrak p$. Then $\mathfrak q_1 = \mathfrak q_2$.
 \end{prop}
 \begin{proof}
-  Take $D \coloneqq \kappa(\mathfrak p) \tensor_A B$. Consider the integral extensions
+  Take $D \coloneqq \kappa(\mathfrak p) \tensor_A B$. Consider the integral extensions (cf. \cref{tensor integral})
   \[ \kappa(\mathfrak p) \to D \to D/{\mathfrak q_i D}.\]
   By \cref{integral extensions of domains propagate fields}, from $\kappa(\mathfrak p)$ being a field it follows that $D/{\mathfrak q_i D}$ is also a field, and hence $\mathfrak q_i D \subseteq D$ is maximal. But $\mathfrak q_1 D \subseteq \mathfrak q_2 D$ and so $\mathfrak q_1 D = \mathfrak q_2 D$.
 

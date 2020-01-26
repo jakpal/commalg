@@ -8,6 +8,10 @@ Consider $B$ an $A$-algebra.
   $B$ is integral over $A$ if all its elements are integral over $A$.
 \end{df}
 
+\begin{note}
+  It is relevant that we require \(b\) to be a root of a monic polynomial; if all polynomials were allowed, then one could consider \(ax - 1,\) and so \(B\) would need to be a field.
+\end{note}
+
 \begin{df}
   An $A$-algebra $B$ is \textit{finite} over $A$ if it is finitely generated as an $A$-module, that is,
   \[ \exists b_1 \dotsc, b_k \enspace B = A b_1 + \dotso + A b_k.\]
@@ -30,7 +34,7 @@ Consider $B$ an $A$-algebra.
   Let $b \in B$ and consider the multiplication map
   \[ \phi \colon B \to B, \quad \phi(a) = a \cdot b.\]
   This is an $A$-module homomorphism.
-  By Cayley-Hamilton with $I = (1)$, one has
+  By Cayley-Hamilton \cref{cayley-hamilton} with $I = A$, one has
   \[ \exists a_{n-1}, \dotsc, a_0 \in A \enspace b^n + a_{n-1} b^{n-1} + \dotso + a_0 = 0.\]
 \end{proof}
 
@@ -40,9 +44,9 @@ Consider $B$ an $A$-algebra.
 \end{lemma}
 \begin{proof}
   Let
-  \[ B = A[x_1, \dotsc, x_n]/{I}.\]
+  \[ B = A[x_1, \dotsc, x_k]/{I}.\]
   Then every $x_i \in B$ is integral over $A$ and so
-  \[ \exists n \enspace \forall i \enspace \exists a_0^{(i)} \enspace x_i^n + a_{n-1}^{(i)} + \dotso + a_0^{(i)} = 0.\]
+  \[ \exists n \enspace \forall i \enspace \exists a_0^{(i)} \enspace x_i^n + a_{n-1}^{(i)}x_i^{n-1} + \dotso + a_0^{(i)} = 0.\]
   We check that $B$ is generated as an $A$-module by the finitely many monomials
   \[ \{ x_1^{c_1}, \dotsc, x_n^{c_n}, 0 \leq c_i \leq n\}.\]
 \end{proof}
@@ -71,7 +75,8 @@ Consider $B$ an $A$-algebra.
 
   For ``$ 3 \implies 1$, fix a finitely generated $A$-module $A[b] \subseteq C$. Then the multiplication map
   \[ \phi_b \colon C \to C\]
-  is an $A-$module homomorphism, so Cayley-Hamilton implies
+  % TODO not really defined in this context without further assumptions: what is this multiplication, if this is but an inclusion of modules?
+  is an \(A\)-module homomorphism, so Cayley-Hamilton implies
   \[ \exists n \exists a_{n-1}, \dotsc, a_0 \in A \enspace b^n + a_{n-1} b^{n-1} + \dotso + a_0 = 0.\]
 \end{proof}
 
@@ -79,7 +84,7 @@ Consider $B$ an $A$-algebra.
   Let $B$ be an $A$-algebra. Then the \textit{integral closure} of $A$ in $B$ is
   \[ \bar A = \{ b \in B \suchthat \text{$b$ is integral in $A$}\}.\]
 
-  The \textit{normalization} of a domain $A$ is its integral closure in the field of fractions $\text{Frac}(A)$.
+  The \textit{normalization} of a domain $A$ is its integral closure in the field of fractions $\text{Frac}(A);$ \(A\) is called normal if \(A = \bar{A}.\)
 \end{df}
 
 
@@ -107,8 +112,8 @@ Consider $B$ an $A$-algebra.
 
 \begin{theorem}[Nagata]
   If $A$ is finitely generated over $k$, then the normalization of $A$ is as well. Moreover,
-  \[ A \to \bar A\]
-  is finite.
+  \( A \to \bar A\)
+  is a finite extension.
 \end{theorem}
 
 

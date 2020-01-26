@@ -21,17 +21,9 @@
   \end{enumerate}
 \end{example}
 
-The following result is more difficult to prove.
-
-\begin{theorem}
-  \label{poly dimension}
-  If $k$ is a field, then
-  \[\dim (k[x_1, \dotsc, x_n]) = n.\]
-\end{theorem}
-
-A chain of length $n$ is given as
+Clearly, \(\dim(k[x_1, \dotsc, x_n]) \geq n,\) as a chain of length $n$ is given as
 \[ (0) \subseteq (x_1) \subseteq (x_1, x_2) \subseteq \dotso \subseteq (x_1, \dotsc, x_n).\]
-However, $k[x_1, \dotsc, x_n]$ has many more prime ideals than those.
+However, the opposite inequality if more difficult to prove since $k[x_1, \dotsc, x_n]$ has many more prime ideals than those. Nevertheless, we aim to tackle this problem in the immediate future.
 
 \begin{example}
   Let $f = x_n^3 + x_n^2 x_1$. One can take $x_i' = x_i$ for $i=1, 2, \dotsc, n-1$. Then
@@ -42,8 +34,9 @@ However, $k[x_1, \dotsc, x_n]$ has many more prime ideals than those.
 This approach can be extended in a way allowing us to prove \cref{poly dimension}.
 
 \begin{lemma}[Nagata's trick]
+  \label{nagata}
   Let $f \in S = k[x_1, \dotsc, x_n]$, $f \notin k$. Then there exist \[x_1', \dotsc, x_{n-1}' \in S\] such that
-  \[k[x_1', x_2', \dotsc, x_{n-1}' \cdot f] \subseteq k[x_1, \dotsc, x_n]\]
+  \[k[x_1', x_2', \dotsc, x_{n-1}', f] \subseteq k[x_1, \dotsc, x_n]\]
   is a finite extension.
 \end{lemma}
 \begin{proof}
@@ -97,11 +90,16 @@ This approach can be extended in a way allowing us to prove \cref{poly dimension
   $\mathfrak q_i = \mathfrak q_{i+1}$.
 \end{proof}
 
-\begin{proof}(\cref{poly dimension})
+\begin{theorem}
+  \label{poly dimension}
+  If $k$ is a field, then
+  \[\dim (k[x_1, \dotsc, x_n]) = n.\]
+\end{theorem}
+\begin{proof}
   Proceed by induction on $n$. Base $n=0$ is fine.
 
-  Now assume that we have shown the claim for $n-1$ want to prove for $n$. Suppose that this is false, and so we get a chain of length $n+1$. For $i \geq 1$, pick $f \in \mathfrak p_i$.
-  Use Nagata's trick to get a finite extension
+  Now assume that we have shown the claim for $n-1$ want to prove for $n$. Suppose that this is false, and so we get a chain of length $n+1$. For $i \geq 1$, pick \(f \in \mathfrak p_i.\)
+  Use Nagata's trick (\cref{nagata}) to get a finite extension
   \[ A = k[x_1', \dotsc, x_{n-1}' \cdot f] \subseteq k[x_1, \dotsc, x_n].\]
   Take a preimage of a chain on the right side in the left side.
   Consider a quotient map

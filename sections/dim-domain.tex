@@ -57,10 +57,10 @@ We make use of the formalism of Kaehler differentials, introduced in \cref{kaehl
 \begin{lemma}
   \label{differentials and ideal quotient}
   Let \(A\) be a \(k\)-algebra, \(k\) an algebraically closed field, and \(\mathfrak m \subseteq A\) a maximal ideal. Then
-  \[\Omega_{A/{\mathfrak{m}}} /{\mathfrak m \Omega_{A/{\mathfrak{m}}}} \cong \mathfrak m /{\mathfrak m^2}.\]
+  \[\Omega_{A/{k}} /{\mathfrak m \Omega_{A/{k}}} \cong \mathfrak m /{\mathfrak m^2}.\]
 \end{lemma}
 \begin{proof}
-  A proof can be found in \cite[Proposition 8.8]{Hartshorne1977}. Note that \(\Omega_{A/{\mathfrak{m}}} /{\mathfrak m \Omega_{A/{\mathfrak{m}}}} \cong \Omega_{A/{\mathfrak{m}}} \tensor_A A/{\mathfrak{m}}.\) Moreover, since \(k\) is algebraically closed, \(A/{\mathfrak{m}} \cong k.\)
+  A proof can be found in \cite[Proposition 8.7]{Hartshorne1977}. Note that \(\Omega_{A/{k}} /{\mathfrak{m} \Omega_{A/{k}}} \cong \Omega_{A/{k}} \tensor_A A/{\mathfrak{m}}.\) Moreover, since \(k\) is algebraically closed, \(A/{\mathfrak{m}} \cong k.\)
 \end{proof}
 
 \begin{lemma}
@@ -75,7 +75,7 @@ The above allow us to derive the following.
 
 \begin{prop}
   \label{prop omega}
-  The following are equivalent, where \(d = \dim(A).\)
+  The following are equivalent, where \(d = \dim(A),\) \(k\) algebraically closed.
   \begin{enumerate}
   \item \(\mathfrak m\) is regular,
   \item \(\dim_k(\Omega /{\mathfrak m \Omega}) = d,\)
@@ -88,7 +88,7 @@ The above allow us to derive the following.
   \[\dim_k(\mathfrak m /{\mathfrak m^2}) = \dim_k(\Omega / {\mathfrak m \Omega}) < d,\]
   contradicting a corollary from \cref{krull's principal ideal theorem} together with \cref{domain dimension}.
   For \(2 \iff 4,\) use a result from the exercise sheet.
-  % TODO ???
+  Also compare with \cite[Theorem 8.8]{Hartshorne1977}.
 \end{proof}
 
 \begin{prop}[smearing out]

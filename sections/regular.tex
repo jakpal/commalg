@@ -27,8 +27,7 @@
   Let \(\pi \colon A \to A_{\mathfrak q}.\) Now, a sequence
   \[\mathfrak q A_{\mathfrak q} \supseteq \mathfrak q^2 A_{\mathfrak q} \supseteq \dotso \supseteq \mathfrak q^n A_{\mathfrak q}\]
   leads to a sequence
-  \[I_1 \coloneqq \pi^{-1}(\mathfrak q A_{\mathfrak q}) \supseteq\]
-  % TODO etc.
+  \[I_1 \coloneqq \pi^{-1}(\mathfrak q A_{\mathfrak q}) \supseteq \dotso \supseteq I_n \coloneqq \pi^{-1}(\mathfrak{q}^n A_{\mathfrak{q}}).\]
   Then \(I_n+(f)/{(f)}\) stabilizes, because \(A/{(f)}\) is Artinian. Hence, \(I_n + (f)\) stabilizes. In particular, there exists an \(n\) such that \(I_n + (f) = I_{n+1} + (f).\)
   Hence, if we choose \(i \in I_n,\) there will be an \(\tilde{i} \in I_{n+1}\) and an \(a \in A\) such that
   \(i = \tilde{i} + af.\)
@@ -42,13 +41,23 @@
   This finishes the proof.
 \end{proof}
 
+\begin{note}
+  The intuition for this is as follows. The set \(V(\mathfrak{p})\) corresponds to an irreducible subvariety of \(V(f),\) maximal in the sense that there are no other subvarieties between them. The dimension of \(A_{\mathfrak{p}}\) is the codimension of \(V(\mathfrak{p})\) in \(\spec(A).\)
+
+  Perhaps we would like to state the result for \(V(f)\) itself; but in general, we are clueless as to what the codimension of \(V(f)\) (perhaps reducible) should be expressed as. But we can do that for irreducible subvarieties, here - \(\mathfrak{p}.\)
+\end{note}
+
+\begin{example}
+  The algebraic set given by \(xz\) and \(xy\) in \(k^3\) is not the vanishing set of a single polynomial, as \(x\) is of codimension \(2\) in \(k[x, y, z].\)
+\end{example}
+
 \begin{corollary}
   \label{krull corollary}
   Let \(A\) be Noetherian,
   \(f_1, \dotsc, f_r \in A,\)
   \(\mathfrak p \in V(f_1, \dotsc, f_r)\) minimal.
   Then
-  \(\dim(A_{\mathfrak p}) = 1.\)
+  \(\dim(A_{\mathfrak p}) \leq r.\)
 \end{corollary}
 \begin{proof}
   We proceed by induction on \(r,\) seeing that the case \(r=1\) is correct. In the following, replace \(A\) by \(A_{\mathfrak p}.\)
