@@ -100,6 +100,7 @@ Note that this translates to the claim that in the short exact sequence
 the middle term is Noetherian if and only if the other ones are.
 
 \begin{corollary}
+  \label{fin gen noetherian}
   If $A$ is a Noetherian ring, then all finitely generated $A$-modules are Noetherian.
 \end{corollary}
 \begin{proof}
@@ -138,17 +139,27 @@ Note the difference: when considered as a $\complex$-module, $\complex[x]$ is no
   \[ B = A[x_1, \dotsc, x_n]/{I}.\]
 \end{proof}
 
-\begin{question}
-  Are tensor products of Noetherian modules also Noetherian?
-\end{question}
-\begin{answer}
-  No, since
-  \[ \bar \rational \tensor_{\rational} \bar \rational\]
-  is not Noetherian.
-  In fact,
-  \[ \spec(\bar \rational \tensor_{\rational} \bar \rational ) \simeq \gal(\bar{\rational}/{\rational}) \]
-  is a natural isomorphism of sets (and not of groups).
-\end{answer}
+One is tempted to ask whether tensor products of Noetherian modules are Noetherian. Indeed, even a slightly stronger result remains true.
+
+\begin{prop}
+  \label{tensor fin-gen noetherian}
+  Let \(R\) be a ring, \(L\) a finitely generated \(R\)-module and \(N\) a Noetherian \(R\)-module. Then \(L \tensor_R N\) is a Noetherian \(R\)-module.
+\end{prop}
+\begin{proof}
+  That \(L\) is finitely generated means that for some integer \(m > 0,\) there exists a surjection of \(R\)-modules \(R^{\oplus m} \to L;\) this translates to an exact sequence
+  \[R^{\oplus m} \to L \to 0.\]
+  But the tensor product functor is right-exact (\cref{tensor-right-exact}), and so this leads to an exact sequence
+  \[N^{\oplus m} \cong R^{\oplus m} \tensor_R N \to L \tensor_R N \to 0,\]
+  the isomorphism on the left side also following from right-exactness.
+  Hence, from \cref{noetherian-extensions} it follows that \(L \tensor_R N\) is a Noetherian \(R\)-module, too, as was claimed.
+\end{proof}
+
+\begin{corollary}
+  If \(R\) is a ring and \(N, M\) are Noetherian \(R\)-modules, \(N \tensor_R M\) is also a Noetherian \(R\)-module.
+\end{corollary}
+\begin{proof}
+  Since a finitely generated \(R\)-module is necessarily Noetherian (\cref{fin gen noetherian}), the claim follows from \cref{tensor fin-gen noetherian}.
+\end{proof}
 
 \begin{lemma}
   If the ring $A$ is Noetherian, then so is $A/{I}$ for all ideals $I \subseteq A$.
