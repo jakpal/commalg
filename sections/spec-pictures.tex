@@ -1,19 +1,24 @@
 \section{Pictures of spectra}
 
-For any $I$, we get
+For any ideal $I \subseteq A$, we get
 \[ V(I) = \spec(A/{I}) \hookrightarrow \spec(A)\]
-with a bijection:
+together with a bijection:
 \[\{ \bar{\mathfrak p} \subseteq A / I\} \cong \{ \mathfrak q \subseteq A \suchthat \mathfrak q \supseteq I\}.\]
 From
-\[\pi: A \to A/{I}\]
-we get $\pi^*$, which is injective with image $V(I)$. Hence, we identify
-\[ \spec(A/I) \quad \text{with} \quad V(I) \subseteq \spec(A). \]
+\(\pi: A \to A/{I}\)
+we get the induced map $\pi^*$, which is injective with image $V(I)$. Hence, we may identify the sets \( \spec(A/{I})\) and \(V(I) \subseteq \spec(A).\)
+
+\begin{df}
+  The \emph{maximum spectrum} of a ring R is a subset \(\spec_{\mathrm{max}}(R) \subseteq \spec(R)\) consisting of the maximal ideals of \(R.\)
+\end{df}
 
 \begin{example}
   Consider
-  \[ \spec(k[x,y]/(xy-1)) \hookrightarrow \spec(k[x,y]) \supseteq \spec_{\max}(k[x,y]) = k^2.\]
+  \[ \spec(k[x,y]/(xy-1)) \hookrightarrow \spec(k[x,y]) \supseteq \spec_{\mathrm{max}}(k[x,y]) = k^2.\]
 A point $(a, b) \in k^2$ is seen as the maximal ideal $(x-a,y-b)$; that comes from $\spec(k[x,y]/{(xy-1)})$ if and only if $ab-1 = 0$.
 \end{example}
+
+The upshot is: when $k = \bar k$, $\spec_{max}(k[x_1, \ldots, x_n])$ is well-behaved. We will see later, in the Nullstellensatz, that all maximal ideals in $k[x_1, \ldots, x_n]$ are of the form $(x_1 - a_1, \ldots x_n - a_n)$.
 
 \begin{example}
   $\spec (k[x,y]/{xy})$ gives the "cross" $\{ ab=0 \}$.
@@ -24,9 +29,6 @@ A point $(a, b) \in k^2$ is seen as the maximal ideal $(x-a,y-b)$; that comes fr
   \[\spec(k[x,y]/(x^2 + y^2 + 1)) \hookleftarrow \spec(k[x,y]),\]
   geometric interpretations transcend our $\real$-intuitions.
 \end{example}
-
-% TODO
-% on second thought, comment about spec_max vs spec was not very enlightening
 
 \begin{note}
   In general, $\spec_{\text{max}}$ is the set of closed points in $\spec$, and if the ring $A$ be of finite type (that is, finitely generated over a field or $\integer$), then

@@ -173,9 +173,6 @@ This turns the set into an associative commutative ring with unity.
   \end{enumerate}
 \end{proof}
 
-% Intuitively, we think of $A_f$ as the ring of functions on $X_f$, where $X = \spec(A)$.
-% TODO guess what X_f is supposed to mean
-
 \begin{lemma}
   \label{loc-3}
   Let $I \subseteq S^{-1}A$ be an ideal. If we let
@@ -227,7 +224,8 @@ This turns the set into an associative commutative ring with unity.
 
 \begin{corollary}
   If $S = \{1, f, f^2, \ldots \}$, then
-  \[ \im i^* = \{ \mathfrak p \suchthat \mathfrak p \not\ni f\} = (\spec(A))_f. \]
+  \[ \im i^* = \{ \mathfrak p \suchthat \mathfrak p \not\ni f\} = \spec(A_f). \]
+  Note that this is the same as \(D(f)\) of \cref{spec basis}.
 \end{corollary}
 
 \begin{corollary}
