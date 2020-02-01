@@ -1,18 +1,22 @@
 \section{First definitions}
 
 \begin{df}
-  Let $A$ be a ring. Then an \textit{$A$-algebra} is a ring $B$ together with a fixed homomorphism
-  \[A \to B.\]
-  This homomorphism is called the \textit{structural homomorphism}.
+  Let $A$ be a ring. An \textit{$A$-algebra} is a ring $B$ together with a fixed homomorphism
+  \(A \to B.\)
+  This homomorphism is then called the \textit{structural homomorphism}.
 \end{df}
 
 \begin{df}
-  Let $A$ be a ring. A \textit{homomorphism of $A$-algebras} is a ring homomorphism commuting with the structural maps, that is, if
-  \[ \phi: A \to B, \quad \psi: A \to C\]
-  are $A$-algebras, then a ring homomorphism
+  Let $A$ be a ring. A \textit{homomorphism of $A$-algebras} is a ring homomorphism commuting with the structural maps. That is, if \(B\) and \(C\) are $A$-algebras with structural homomorphisms \(\phi,\) \(\psi,\) respectively, then a ring homomorphism 
   $f:B \to C$
-  is an algebra homomorphism if
-  \[\psi = f \circ \phi.\]
+  is an \(A\)-algebra homomorphism if
+  \(\psi = f \circ \phi.\)
+  \begin{equation*}
+    \begin{tikzcd}[row sep = huge]
+      & A \arrow{dl}[swap]{\phi} \arrow{dr}{\psi} & \\
+      B \arrow{rr}{f} && C
+    \end{tikzcd}
+  \end{equation*}
 \end{df}
 
 \begin{example}
